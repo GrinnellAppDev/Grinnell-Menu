@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello">Hello World, GrinnellMenuActivity!</string>
+    <string name="app_name">Grinnell Menu</string>
+    <string name="today">Today</string>
+    <string name="tomorrow">Tomorrow</string>
+    <string name="calendar_lable">Choose Menu</string>
+    <string name="go">Go</string>
+    <string name="title">Grinnell Dinning Menu</string>
+    <string name="dinner">Dinner</string>
+    <string name="lunch">Lunch</string>
+    <string name="breakfast">Breakfast</string>
+    <string name="calendarButtonCallback">onButtonPress</string>
+    <string name="venuesDescription">Selected Menu Listed Below:</string>
+</resources>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+        <array name="venues">
+    		<item>Plat Du Jour</item>
+    		<item>Honor Grill</item>
+    		<item>8th Ave Deli</item>
+    		<item>Pizza Parlour</item>
+    		<item>Pasta Bar</item>
+    		<item>Stir Fry Station</item>
+    		<item>Soups</item>
+    		<item>Vegan Special</item>
+    		<item>Gluten Free</item>
+    		<item>Desserts</item>
+    		<item>Rotisserie</item>
+    	
+    </array>
+</resources>
