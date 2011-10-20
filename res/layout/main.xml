@@ -2,14 +2,62 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent" android:background="@color/grinRed">
-    <TextView android:layout_height="wrap_content" android:textAppearance="?android:attr/textAppearanceLarge" android:id="@+id/textView1" android:layout_width="wrap_content" android:text="@string/title" android:padding="5dp" android:layout_gravity="center"></TextView>
-    <TextView android:layout_height="wrap_content" android:layout_width="fill_parent" android:padding="3dp" android:text="@string/venuesDescription"></TextView>
-    <LinearLayout android:layout_height="wrap_content" android:id="@+id/linearLayout1" android:layout_width="match_parent">
-        <Button android:layout_height="wrap_content" android:text="@string/breakfast" android:layout_weight="1" android:layout_width="wrap_content" android:id="@+id/buttonBreakfast"></Button>
-        <Button android:layout_height="wrap_content" android:text="@string/lunch" android:layout_width="wrap_content" android:layout_weight="1" android:id="@+id/buttonLunch"></Button>
-        <Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/dinner" android:layout_weight="1" android:id="@+id/buttonDinner"></Button>
+    android:layout_height="fill_parent" 
+    android:background="@color/grinRed">
+    
+    <TextView 
+    	android:layout_height="wrap_content" 
+    	android:textAppearance="?android:attr/textAppearanceLarge" 
+    	android:id="@+id/textView1" 
+    	android:layout_width="wrap_content" 
+    	android:text="@string/title" 
+    	android:padding="5dp" 
+    	android:layout_gravity="center">
+    </TextView>
+    <TextView 
+    	android:layout_height="wrap_content" 
+    	android:layout_width="fill_parent" 
+    	android:padding="3dp" 
+    	android:text="@string/venuesDescription">
+    </TextView>
+    <LinearLayout 
+    	android:layout_height="wrap_content" 
+    	android:layout_width="match_parent">
+    	
+        <Button 
+        	android:layout_height="wrap_content" 
+        	android:text="@string/breakfast" 
+        	android:layout_weight="1" 
+        	android:layout_width="wrap_content" 
+        	android:id="@+id/buttonBreakfast">
+        </Button>
+        <Button 
+        	android:layout_height="wrap_content" 
+        	android:text="@string/lunch" 
+        	android:layout_width="wrap_content" 
+        	android:layout_weight="1" 
+        	android:id="@+id/buttonLunch">
+        </Button>
+        <Button 
+        	android:layout_width="wrap_content" 
+        	android:layout_height="wrap_content" 
+        	android:text="@string/dinner" 
+        	android:layout_weight="1" 
+        	android:id="@+id/buttonDinner">
+        </Button>
     </LinearLayout>
-<ListView android:layout_height="wrap_content" android:id="@+id/listView1" android:layout_width="match_parent" android:entries="@array/venues" android:overScrollMode="always"></ListView>
-<ExpandableListView android:layout_height="wrap_content" android:layout_width="match_parent" android:id="@+id/expandableListViewMenu"></ExpandableListView>
+
+<ListView 
+	android:layout_height="wrap_content" 
+	android:layout_width="match_parent" 
+	android:entries="@array/venues" 
+	android:overScrollMode="always" 
+	android:id="@android:id/list" >
+</ListView>
+
+<ExpandableListView 
+	android:layout_height="wrap_content" 
+	android:layout_width="match_parent" 
+	android:id="@+id/expandableListViewMenu">
+</ExpandableListView>
 </LinearLayout>

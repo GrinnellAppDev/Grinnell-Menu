@@ -14,5 +14,6 @@
             </intent-filter>
         </activity>
         <activity android:name="MenuCalendar"></activity>
+        <activity android:name="MenuItemDetails"></activity>
     </application>
 </manifest>

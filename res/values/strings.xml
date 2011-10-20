@@ -12,4 +12,7 @@
     <string name="breakfast">Breakfast</string>
     <string name="calendarButtonCallback">onButtonPress</string>
     <string name="venuesDescription">Selected Menu Listed Below:</string>
+    <string name="detailsVenueText">Honor Grill</string>
+    <string name="name">Grilled Cheese</string>
+    <string name="description">Savory American cheese melted between two pieces of slightly stale bread lathered in oil and other fats and grilled to a golden brown perfection.</string>
 </resources>

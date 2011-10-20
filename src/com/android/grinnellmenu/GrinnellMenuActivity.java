@@ -3,11 +3,15 @@ package com.android.grinnellmenu;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
-import android.app.Activity;
+import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ListView;
+import android.widget.AdapterView.OnItemClickListener;
 
-public class GrinnellMenuActivity extends Activity {
+public class GrinnellMenuActivity extends ListActivity {
 	
 	public static int GET_DATE = 1;
 	GregorianCalendar mRequestedDate;
@@ -18,9 +22,22 @@ public class GrinnellMenuActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
         
+        ListView lv = getListView();
+        lv.setOnItemClickListener(new OnItemClick());
+        
+        
         mRequestedDate = new GregorianCalendar();
         updateMenu();
         
+    }
+    
+    private class OnItemClick implements OnItemClickListener {
+    	public void onItemClick(AdapterView<?> parent, View view, 
+    			int position, long id) {
+    		
+    		startActivityForResult(
+    				new Intent(view.getContext(), MenuItemDetails.class), position);        		
+    	}
     }
     
     public void onBackPressed() {
@@ -36,6 +53,8 @@ public class GrinnellMenuActivity extends Activity {
     	mRequestedDate.roll(Calendar.DAY_OF_MONTH, offset);
     	updateMenu();
     }
+    
+    
     
     void updateMenu() {
     	
