@@ -9,6 +9,7 @@ import java.util.Map;
 
 import android.app.ExpandableListActivity;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ExpandableListAdapter;
@@ -36,9 +37,11 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
  
 		
 		/* Initialize the ExpandableListView. */
+		
+		Resources r = getResources();
 		//Setup the GroupList:
 		mGroupList = new ArrayList<Map<String, String>>();
-		String[] venues = getResources().getStringArray(R.array.venues);
+		String[] venues = r.getStringArray(R.array.venues);
 		for (int i = 0; i < venues.length; i++) {
 			Map<String, String> map = new HashMap<String, String>();
 			map.put(VENUE, venues[i]);
@@ -48,7 +51,7 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 		//Setup the ChildLists to be empty at first since we have not read data yet:
 		mChildList = new ArrayList<List<Map<String, String>>>(); 
 		//--temporary default children values --
-		String empty = getResources().getString(R.string.empty);
+		String empty = r.getString(R.string.empty);
 		for (int i = 0; i < venues.length; i++) {
 			Map<String, String> map = new HashMap<String, String>();
 			map.put(ENTREE, empty);
@@ -59,7 +62,7 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 		
 		//-- --
 		//Setup the entrees:
-		populateEntrees();
+		populateEntrees(); // TODO: do this in updateMenu() instead
 		
 		//Setup the adapter:
 		mSELAdapter = new SimpleExpandableListAdapter(
@@ -71,8 +74,7 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 				mChildList,
 				R.layout.entree_field,
 				new String[] { ENTREE },
-				new int[] { R.id.entreeBox }
-				);
+				new int[] { R.id.entreeBox } );
 		
 		setListAdapter(mSELAdapter);
 		
