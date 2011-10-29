@@ -1,11 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <LinearLayout
   xmlns:android="http://schemas.android.com/apk/res/android"
   android:orientation="vertical"
   android:layout_width="match_parent"
   android:layout_height="match_parent" 
-  android:padding="15dp" 
+   
   android:background="@color/grinRed">
+  <ScrollView
+  	android:layout_height="wrap_content"
+  	android:layout_width="match_parent">
+  	<LinearLayout
+  		android:paddingLeft="15dp"
+  		android:paddingRight="15dp"
+  		android:orientation="vertical"
+  		android:layout_width="match_parent"
+  		android:layout_height="match_parent">
     <TextView 
     	android:layout_height="wrap_content" 
     	android:layout_width="wrap_content" 
@@ -13,6 +23,11 @@
     	android:text="@string/calendar_lable" 
     	android:padding="25dp">
     </TextView>
+    <LinearLayout android:id="@+id/linearLayout1" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <Button android:text="@string/breakfast" android:layout_width="wrap_content" android:layout_weight="1" android:id="@+id/buttonBreakfast" android:layout_height="wrap_content"></Button>
+        <Button android:text="@string/lunch" android:layout_width="wrap_content" android:layout_weight="1" android:id="@+id/buttonLunch" android:layout_height="wrap_content"></Button>
+        <Button android:text="@string/dinner" android:layout_width="wrap_content" android:layout_weight="1" android:id="@+id/buttonDinner" android:layout_height="wrap_content"></Button>
+    </LinearLayout>
     <Button 
     	android:layout_height="wrap_content" 
     	android:layout_marginBottom="10dp" 
@@ -44,6 +59,6 @@
     	android:text="@string/go" 
     	android:onClick="@string/calendarButtonCallback">
     </Button>
-    
-    
+    </LinearLayout>
+    </ScrollView>
 </LinearLayout>

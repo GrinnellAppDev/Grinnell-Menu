@@ -20,32 +20,6 @@
     	android:padding="3dp" 
     	android:text="@string/venuesDescription">
     </TextView>
-    <LinearLayout 
-    	android:layout_height="wrap_content" 
-    	android:layout_width="match_parent">
-    	
-        <Button 
-        	android:layout_height="wrap_content" 
-        	android:text="@string/breakfast" 
-        	android:layout_weight="1" 
-        	android:layout_width="wrap_content" 
-        	android:id="@+id/buttonBreakfast">
-        </Button>
-        <Button 
-        	android:layout_height="wrap_content" 
-        	android:text="@string/lunch" 
-        	android:layout_width="wrap_content" 
-        	android:layout_weight="1" 
-        	android:id="@+id/buttonLunch">
-        </Button>
-        <Button 
-        	android:layout_width="wrap_content" 
-        	android:layout_height="wrap_content" 
-        	android:text="@string/dinner" 
-        	android:layout_weight="1" 
-        	android:id="@+id/buttonDinner">
-        </Button>
-    </LinearLayout>
     
 <!--
 <ListView 
