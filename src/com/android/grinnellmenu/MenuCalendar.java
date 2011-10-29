@@ -4,18 +4,23 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.DatePicker;
 
 public class MenuCalendar extends Activity {
 
-	static final String DATEKEY = "date";
-	static final int RESULTOK = 1;
-	static final int TODAY = 0;
-	static final int TOMORROW = 1;
+	public static final String DATEKEY = "date";
+	public static final int RESULTOK = 1;
+	public static final int TODAY = 0;
+	public static final int TOMORROW = 1;
 
 	// Button mButtonToday, mButtonTomorrow, mButtonGo;
-	DatePicker mDp;
-	int mInitialDay;
+	private DatePicker mDp;
+	private int mInitialDay;
+	
+	private Button mBreakfast;
+	private Button mLunch;
+	private Button mDinner;
 
 	/** Called when the activity is first created. */
 	@Override
@@ -28,6 +33,11 @@ public class MenuCalendar extends Activity {
 		 * mButtonTomorrow = (Button) findViewById(R.id.buttonTomorrow);
 		 * mButtonGo = (Button) findViewById(R.id.buttonGo);
 		 */
+		
+		mBreakfast = (Button) findViewById(R.id.buttonBreakfast);
+		mLunch = (Button) findViewById(R.id.buttonLunch);
+		mDinner = (Button) findViewById(R.id.buttonDinner);
+		
 		mDp = (DatePicker) findViewById(R.id.datePicker);
 		// GregorianCalendar today = new GregorianCalendar();
 		/*
