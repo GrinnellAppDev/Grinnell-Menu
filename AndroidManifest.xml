@@ -15,5 +15,6 @@
         </activity>
         <activity android:name="MenuCalendar"></activity>
         <activity android:name="MenuItemDetails"></activity>
+        <activity android:name="DietaryPrefs"></activity>
     </application>
 </manifest>

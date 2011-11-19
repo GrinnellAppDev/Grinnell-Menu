@@ -7,10 +7,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import android.app.Activity;
 import android.app.ExpandableListActivity;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
@@ -19,14 +23,29 @@ import android.widget.ExpandableListView.OnChildClickListener;
 
 public class GrinnellMenuActivity extends ExpandableListActivity {
 
-	public static int GET_DATE = 1;
-	protected GregorianCalendar mRequestedDate;
+	/* Request codes: */
+	public static final int GET_DATE 			= 1;
+	public static final int SET_DIETARY_PREFS 	= 2;
 	
+	
+	/* Expandable List View Configuration Items */ 
 	protected List<Map<String, String>> mGroupList;
 	protected List<List<Map<String, String>>> mChildList;
 	public static String VENUE = "venue";
 	public static String ENTREE = "entree";
 	
+	/* Date of Menu to Retrieve */
+	protected GregorianCalendar mRequestedDate;
+	
+	/* Dietary Dish Preferences */
+	protected int mDishPrefs;
+	/* Dietary Dish Flags */
+	public static final int ALL 	= 0x00000000;
+	public static final int VEGAN 	= 0x00000001;
+	public static final int OL    	= 0x00000002;
+	
+
+
 	private ExpandableListAdapter mSELAdapter;
 
 	/** Called when the activity is first created. */
@@ -35,6 +54,9 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
  
+		/* Assume user will want to view all dishes initially: */
+		mDishPrefs &= ALL;
+	
 		
 		/* Initialize the ExpandableListView. */
 		
@@ -94,7 +116,7 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 	}
 
 	private class OnEntreeClick implements OnChildClickListener {
-		@Override
+		
 		public boolean onChildClick(ExpandableListView parent, View v,
 				int groupPosition, int childPosition, long id) {
 			
@@ -116,16 +138,59 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 	@Override
 	public void onActivityResult(int requestCode, int resultCode, Intent intent) {
 		
-		if (resultCode == MenuCalendar.RESULTOK) {
-			Bundle b = intent.getExtras();
+		
+		if(resultCode == Activity.RESULT_OK) {
+			Bundle b;
+		switch (requestCode) {
+		case GET_DATE:
+			b = intent.getExtras();
 			int offset = b.getInt(MenuCalendar.DATEKEY);
 			mRequestedDate.roll(Calendar.DAY_OF_MONTH, offset);
 			updateMenu();
+			break;
+		case SET_DIETARY_PREFS:
+			b = intent.getExtras();
+			int dp = b.getInt(DietaryPrefs.DP_KEY);
+			mDishPrefs &= dp;
+			updateMenu();
+			break;	
+			}
 		}
 	}
 
 	void updateMenu() {
-
+		//TODO: write this
+		
 		return;
 	}
+
+	/* Options Menu Code */
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		MenuInflater mi = new MenuInflater(this);
+		mi.inflate(R.menu.mainmenu, menu);
+		return super.onCreateOptionsMenu(menu);
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		
+		switch(item.getItemId()) {
+		case R.id.dietaryprefs:
+			Intent i = new Intent(this, DietaryPrefs.class);
+			Bundle b = new Bundle();
+			b.putInt(DietaryPrefs.DP_KEY, mDishPrefs);
+			i.putExtras(b);
+			startActivityForResult(i, SET_DIETARY_PREFS);
+			break;
+		
+		}
+		
+		return super.onOptionsItemSelected(item);
+	}
+	
+
+	
+	
+	
 }

@@ -1,5 +1,7 @@
 package com.android.grinnellmenu;
 
+import java.util.GregorianCalendar;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,7 +16,7 @@ public class MenuCalendar extends Activity {
 	public static final int TODAY = 0;
 	public static final int TOMORROW = 1;
 
-	// Button mButtonToday, mButtonTomorrow, mButtonGo;
+	Button mButtonToday, mButtonTomorrow, mButtonGo;
 	private DatePicker mDp;
 	private int mInitialDay;
 	
@@ -28,18 +30,21 @@ public class MenuCalendar extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.calendar);
 
-		/*
-		 * mButtonToday = (Button) findViewById(R.id.buttonToday);
-		 * mButtonTomorrow = (Button) findViewById(R.id.buttonTomorrow);
-		 * mButtonGo = (Button) findViewById(R.id.buttonGo);
-		 */
+		
+		mButtonToday = (Button) findViewById(R.id.buttonToday);
+		mButtonTomorrow = (Button) findViewById(R.id.buttonTomorrow);
+		mButtonGo = (Button) findViewById(R.id.buttonGo);
+		 
 		
 		mBreakfast = (Button) findViewById(R.id.buttonBreakfast);
 		mLunch = (Button) findViewById(R.id.buttonLunch);
 		mDinner = (Button) findViewById(R.id.buttonDinner);
 		
 		mDp = (DatePicker) findViewById(R.id.datePicker);
-		// GregorianCalendar today = new GregorianCalendar();
+		
+		Intent i = this.getIntent();
+		i.getExtras();
+		
 		/*
 		 * GregorianCalendar max = new GregorianCalendar(
 		 * today.get(Calendar.YEAR), today.get(Calendar.MONTH) + 7,

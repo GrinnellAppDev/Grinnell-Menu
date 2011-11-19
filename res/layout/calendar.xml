@@ -5,8 +5,8 @@
   android:orientation="vertical"
   android:layout_width="match_parent"
   android:layout_height="match_parent" 
-   
   android:background="@color/grinRed">
+  
   <ScrollView
   	android:layout_height="wrap_content"
   	android:layout_width="match_parent">
@@ -23,11 +23,34 @@
     	android:text="@string/calendar_lable" 
     	android:padding="25dp">
     </TextView>
-    <LinearLayout android:id="@+id/linearLayout1" android:layout_width="match_parent" android:layout_height="wrap_content">
-        <Button android:text="@string/breakfast" android:layout_width="wrap_content" android:layout_weight="1" android:id="@+id/buttonBreakfast" android:layout_height="wrap_content"></Button>
-        <Button android:text="@string/lunch" android:layout_width="wrap_content" android:layout_weight="1" android:id="@+id/buttonLunch" android:layout_height="wrap_content"></Button>
-        <Button android:text="@string/dinner" android:layout_width="wrap_content" android:layout_weight="1" android:id="@+id/buttonDinner" android:layout_height="wrap_content"></Button>
+    
+    <LinearLayout 
+    	android:id="@+id/linearLayout1" 
+    	android:layout_width="match_parent" 
+    	android:layout_height="wrap_content">
+        <Button 
+        	android:text="@string/breakfast" 
+        	android:layout_width="wrap_content" 
+        	android:layout_weight="1" 
+        	android:id="@+id/buttonBreakfast" 
+        	android:layout_height="wrap_content">
+        </Button>
+        <Button 
+        	android:text="@string/lunch" 
+        	android:layout_width="wrap_content" 
+        	android:layout_weight="1" 
+        	android:id="@+id/buttonLunch" 
+        	android:layout_height="wrap_content">
+        </Button>
+        <Button 
+        	android:text="@string/dinner" 
+        	android:layout_width="wrap_content" 
+        	android:layout_weight="1" 
+        	android:id="@+id/buttonDinner" 
+        	android:layout_height="wrap_content">
+        </Button>
     </LinearLayout>
+    
     <Button 
     	android:layout_height="wrap_content" 
     	android:layout_marginBottom="10dp" 
