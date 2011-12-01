@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+        <PreferenceCategory
+                android:title="Dietary Constraints">
+                <CheckBoxPreference
+                        android:title="All"
+                        android:defaultValue="false"
+                        android:summary="View all entrees."
+                        android:key="allEntrees" />
+                <CheckBoxPreference
+                        android:title="Ovolacto"
+                        android:defaultValue="false"
+                        android:summary="Show entrees considered ovolacto."
+                        android:key="ovolactoEntrees" />
+                <CheckBoxPreference
+                        android:title="Vegan"
+                        android:defaultValue="false"
+                        android:summary="Show entrees considered vegan."
+                        android:key="veganEntrees" />
+                
+        </PreferenceCategory>
+</PreferenceScreen>
