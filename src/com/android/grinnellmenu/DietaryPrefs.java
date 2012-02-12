@@ -17,7 +17,7 @@ public class DietaryPrefs extends PreferenceActivity {
 	    super.onCreate(savedInstanceState);
 	    
 	    /* Obtain the current preferences from the user */
-	    mDishPrefs = getIntent().getExtras().getInt(DP_KEY);
+	    //TODO: Change to sharedPreferences
 	
 	    addPreferencesFromResource(R.xml.dietary_prefs);
 	}
