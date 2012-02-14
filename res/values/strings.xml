@@ -20,4 +20,9 @@
     <string name="mealSelectorTitle">View Other Meals</string>
     <string name="menuSelectorTitle">Choose Meal:</string>
     <string name="laurelLeaf">Laurel Leaf</string>
+    <string name="noNetworkMessage">No network connection could be established.  Please make sure Airplane Mode is OFF and your Data/Network connection is turned ON.</string>
+    <string name="okay">Okay</string>
+    <string name="noMealContent">No information is available for this meal.  Try refreshing the menu.</string>
+	<string name="refresh">Refresh</string>
+	<string name="chooseDate">Select Date</string>
 </resources>

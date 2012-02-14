@@ -1,12 +1,22 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 	<item 
+		android:id="@+id/mealselector"
+		android:icon="@android:drawable/ic_menu_recent_history"
+		android:title="@string/mealSelectorTitle"
+		/>
+	<item
+	    android:id="@+id/selectDate"
+	    android:icon="@android:drawable/ic_menu_today"
+	    android:title="@string/chooseDate"
+	    />
+	<item 
 		android:id="@+id/dietaryprefs"
 		android:icon="@android:drawable/ic_menu_edit"
 		android:title="@string/dietaryPrefsTitle"
 		/>
 	<item 
-		android:id="@+id/mealselector"
-		android:icon="@android:drawable/ic_menu_recent_history"
-		android:title="@string/mealSelectorTitle"
-		/>
+	    android:id="@+id/menuRefresh"
+	    android:icon="@drawable/ic_menu_refresh"
+	    android:title="@string/refresh"
+	    />
 </menu>

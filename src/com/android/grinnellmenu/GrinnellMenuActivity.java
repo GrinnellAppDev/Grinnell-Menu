@@ -21,19 +21,23 @@ import org.json.JSONObject;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.ExpandableListActivity;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Resources;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ExpandableListAdapter;
+import android.widget.DatePicker;
 import android.widget.ExpandableListView;
 import android.widget.ExpandableListView.OnChildClickListener;
 import android.widget.SimpleExpandableListAdapter;
@@ -41,10 +45,17 @@ import android.widget.Toast;
 
 public class GrinnellMenuActivity extends ExpandableListActivity {
 
+	/* JSON Menu Server Information: */
 	public static final String MENU_SERVER = 
-			"http://www.cs.grinnell.edu/~knolldug/parser/menu.php";
+			"http://www.cs.grinnell.edu/";
+	public static final String SCRIPT_PATH =
+			"~knolldug/parser/menu.php";
 	
-	/* Request codes: */
+	/* Dialog code constants: */
+	public static final int NO_NETWORK = 0;
+	public static final int NO_ROUTE = 1;
+	
+	/* Request code constants: */
 	public static final int GET_DATE 			= 1;
 	public static final int SET_DIETARY_PREFS 	= 2;
 	
@@ -55,7 +66,7 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 	public static final String mDebug = "Print";
 	
 	/* Meal Constants */
-	//TODO: replace with enumeration class.
+	//TODO: replace with enumeration class??
 	public static final int B = 0;
 	public static final int L = 1;
 	public static final int D = 2;
@@ -155,8 +166,15 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 
 	protected void populateEntrees() {
 		
+		
+		
 		JSONObject meal = calculateMenu(mRequestedMeal);
 		Log.d(mDebug, "Populating list for: " + mRequestedMeal);
+		
+		if (meal == null) {
+			Toast.makeText(this, R.string.noMealContent, Toast.LENGTH_LONG).show();
+			return;
+		}
 		
 		@SuppressWarnings("unchecked")
 		Iterator<String> it = (Iterator<String>) meal.keys();
@@ -227,9 +245,6 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 		
 		/* Get the JSON menu data from the current server. */
 		String menu = getMenuFromServer();
-
-		if (menu != null)
-			Log.d("az", "menu = "+menu+" END MENU");
 		
 		/* Parse the JSON data. */
 		if (menu != null)
@@ -249,43 +264,52 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 
 	private String getMenuFromServer() {
 		
-		ProgressDialog status = ProgressDialog.show(this,"","Loading Menu...", true);
+		ProgressDialog status = ProgressDialog.show(this,"","Retrieving Menu...", true);
 		
 		Log.d("az", "getMenuFromServer");
-		int year = mRequestedDate.get(Calendar.YEAR);
-		int month = mRequestedDate.get(Calendar.MONTH);
-		int day = mRequestedDate.get(Calendar.DAY_OF_MONTH);
 
 		String r = null;
 		
-		//TODO: check network connection before executing http request
 		//TODO: handle unsuccessful http requests
 		
-		try {
-			String request = MENU_SERVER + "?mon="+month+"&day="+day+"&year="+year;
-			Log.d("http", request);
-			//debug
-			String debugrequest = MENU_SERVER+"?mon=2&day=1&year=2012";
-			
-			HttpClient client = new DefaultHttpClient();
-			//debug
-			HttpPost post = new HttpPost(debugrequest);
-			
-			HttpResponse response = client.execute(post);
-			Log.d("az", response.getStatusLine().toString());
-			
-			r = EntityUtils.toString(response.getEntity());
-			Log.d("az", "JSON = " + r);
-		
-		} catch (IOException e) {
-			Log.d("exception", e.toString());
-			Log.d("exception", e.getMessage());} 
-		catch (ParseException p) {Log.d("exception", p.toString());} 
-		finally {
-			Log.d("az", "finally");
+		if (!networkEnabled()) {
 			status.dismiss();
+			showDialog(NO_NETWORK);
+		} else if (!routeClear(MENU_SERVER)) {
+			status.dismiss();
+			showDialog(NO_ROUTE); //TODO: implement this!
+		} else {
+			// connection is up, attempt to retrieve the menu:
+			try {
+				int year = mRequestedDate.get(Calendar.YEAR);
+				int month = mRequestedDate.get(Calendar.MONTH);
+				int day = mRequestedDate.get(Calendar.DAY_OF_MONTH);
+				
+				String request = MENU_SERVER + SCRIPT_PATH + 
+						"?mon="+(month+1)+"&day="+(day)+"&year="+year;
+				
+				Log.d("http", request);
+				//debug
+				//String debugrequest = MENU_SERVER+"?mon=2&day=1&year=2012";
+				
+				HttpClient client = new DefaultHttpClient();
+				HttpPost post = new HttpPost(request);
+				
+				HttpResponse response = client.execute(post);
+				Log.d("az", response.getStatusLine().toString());
+				
+				r = EntityUtils.toString(response.getEntity());
+				Log.d("az", "JSON = " + r);
+			
+			} catch (IOException e) {
+				Log.d("exception", e.toString());
+				Log.d("exception", e.getMessage());} 
+			catch (ParseException p) {Log.d("exception", p.toString());} 
+			finally {
+				Log.d("az", "finally");
+				status.dismiss();
+			}
 		}
-		
 		return r;
 	}
 
@@ -314,6 +338,20 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 		}
 	}
 	
+	/* Return true if the device has a network adapter that is capable of accessing
+	 * the network. */
+	public boolean networkEnabled() {
+		NetworkInfo n = ((ConnectivityManager)getSystemService(
+				Context.CONNECTIVITY_SERVICE)).getActiveNetworkInfo();
+		return (n != null) && n.isConnectedOrConnecting();
+	}
+	
+	/* Return true if the appropriate host is can be reached. */
+	public boolean routeClear(String host) {
+		//TODO: method stub -- possibly implement this..
+		return true;
+	}
+	
 	/* Listener for list child item click events. */
 	private class OnEntreeClick implements OnChildClickListener {
 		
@@ -330,7 +368,8 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 
 	@Override
 	public void onBackPressed() {
-		startActivityForResult(new Intent(this, MenuCalendar.class), GET_DATE);
+		//startActivityForResult(new Intent(this, MenuCalendar.class), GET_DATE);
+		super.onBackPressed();
 		return;
 	}
 
@@ -366,7 +405,6 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 	/* Handle menu selection events. */
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		
 		switch(item.getItemId()) {
 		case R.id.dietaryprefs:
 			Intent i = new Intent(this, DietaryPrefs.class);
@@ -374,6 +412,13 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 			break;
 		case R.id.mealselector:
 			showDialog(R.id.mealselector);
+			break;
+		case R.id.menuRefresh:
+			updateMenu();
+			populateEntrees();
+			break;
+		case R.id.selectDate:
+			showDialog(R.id.selectDate);
 			break;
 		}
 		
@@ -384,11 +429,13 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 	/* Setup the dialog for selecting a meal. */
 	@Override
 	protected Dialog onCreateDialog(int id) {
+		AlertDialog.Builder builder;
+		
 		switch(id) {
 		case R.id.mealselector:
-			AlertDialog.Builder builder = new AlertDialog.Builder(this);
-			builder.setTitle(R.string.menuSelectorTitle);
-			builder.setItems(R.array.mealsForSelector, 
+			builder = new AlertDialog.Builder(this);
+			builder.setTitle(R.string.menuSelectorTitle)
+				   .setItems(R.array.mealsForSelector, 
 							new DialogInterface.OnClickListener() {
 				@Override
 				public void onClick(DialogInterface dialog, int which) {
@@ -402,9 +449,28 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 				}
 			});
 			Dialog selector = builder.create();
-			selector.setOnDismissListener(mDismissListener);
+			selector.setOnDismissListener(new DismissListener());
 			return selector;
+			
+		case NO_NETWORK:
+			builder = new AlertDialog.Builder(this);
+			builder.setMessage(R.string.noNetworkMessage)
+				   .setNeutralButton(R.string.okay,
+						   new DialogInterface.OnClickListener() {
+					   @Override
+					   public void onClick(DialogInterface dialog, int which) {
+						   //TODO: take user to network settings
+					   }
+				   });
+			return builder.create();
+		
+		case R.id.selectDate:
+			return new DatePickerDialog(this, new DateDialogListener(), 
+					mRequestedDate.get(Calendar.YEAR), 
+					mRequestedDate.get(Calendar.MONTH), 
+					mRequestedDate.get(Calendar.DAY_OF_MONTH));
 		}
+		
 		return super.onCreateDialog(id);
 	}
 
@@ -418,8 +484,15 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 		}
 	}
 	
-	/* populateEntrees() needs to be called in the UI thread. */
-	DismissListener mDismissListener = new DismissListener();
-	
+	private class DateDialogListener implements DatePickerDialog.OnDateSetListener {
+		@Override 
+		public void onDateSet(DatePicker view, int year, int month, int day) {
+			int hour = mRequestedDate.get(Calendar.HOUR_OF_DAY);
+			int minute = mRequestedDate.get(Calendar.MINUTE);
+			mRequestedDate = new GregorianCalendar(year, month, day, hour, minute);
+			updateMenu();
+			populateEntrees();
+		}
+	}
 	
 }
