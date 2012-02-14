@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="grinRed">#a00010</color>
+    <color name="grinRed">#770010</color>
+    <color name="grinGrey">#272727</color>
     
 </resources>

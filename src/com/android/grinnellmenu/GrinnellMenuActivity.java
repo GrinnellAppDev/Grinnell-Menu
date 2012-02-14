@@ -20,7 +20,11 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.app.ExpandableListActivity;
+import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -33,6 +37,7 @@ import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
 import android.widget.ExpandableListView.OnChildClickListener;
 import android.widget.SimpleExpandableListAdapter;
+import android.widget.Toast;
 
 public class GrinnellMenuActivity extends ExpandableListActivity {
 
@@ -43,41 +48,49 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 	public static final int GET_DATE 			= 1;
 	public static final int SET_DIETARY_PREFS 	= 2;
 	
-	public static final int B = 1;
-	public static final int L = 2;
-	public static final int D = 3;
-	public static final int O = 4;
+	/* Debug Tags */
+	public static final String mJSON = "JSON Parsing";
+	public static final String mHTTP = "HTTP Request";
+	public static final String mUIThread = "GrinnellMenu UI";
+	public static final String mDebug = "Print";
 	
-	/* Expandable List View Configuration Items */ 
-	protected List<Map<String, String>> mGroupList;
-	protected List<List<Map<String, String>>> mChildList;
-	public static String VENUE = "venue";
-	public static String ENTREE = "entree";
+	/* Meal Constants */
+	//TODO: replace with enumeration class.
+	public static final int B = 0;
+	public static final int L = 1;
+	public static final int D = 2;
+	public static final int O = 3;
 	
 	/* Date of Menu to Retrieve */
 	protected GregorianCalendar mRequestedDate;
+	/* Meal to show in the list. */
 	protected int mRequestedMeal;
 	
 	/* Menus retrieved for mRequestedDate */
-	JSONObject mBreakfast;
-	JSONObject mLunch;
-	JSONObject mDinner;
-	JSONObject mOuttakes;
+	protected JSONObject mBreakfast;
+	protected JSONObject mLunch;
+	protected JSONObject mDinner;
+	protected JSONObject mOuttakes;
 	
 	/* Dietary Dish Preferences */
 	protected boolean mFilterVegan;
 	protected boolean mFilterOvolacto;
+
+	/* Expandable List View Configuration Items */ 
+	protected List<Map<String, String>> mGroupList;
+	protected List<List<Map<String, String>>> mChildList;
+	public static final String VENUE = "venue";
+	public static final String ENTREE = "entree";
 	
-
-
-	private ExpandableListAdapter mSELAdapter;
+	/* Adapter used by the expandable list. */
+	private SimpleExpandableListAdapter mSELAdapter;
 
 	/** Called when the activity is first created. */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
- 
+		
 		/* Load Stored Dish preferences and set mDishPrefs accordingly */
 		//TODO: add code here
 		mFilterVegan = false;
@@ -127,42 +140,38 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 
 		/* Get the current date and store as the default requested date. */
 		mRequestedDate = new GregorianCalendar();
+		
+		/* Retrieve most current menu for mRequestedDate from server. */
 		updateMenu();
 		
+		/* Calculate which meal (breakfast, lunch, dinner, or out-takes) should be
+		 * shown based upon what time of day it is. */
 		mRequestedMeal = calculateMeal(mRequestedDate.get(Calendar.HOUR_OF_DAY));
 
-		//Setup the entrees:
-		populateEntrees(); // TODO: do this in updateMenu() instead
+		/* Setup the entrees: */
+		populateEntrees();
 
 	}
 
-	private void populateEntrees() {
+	protected void populateEntrees() {
 		
-		JSONObject meal;
-		
-		switch (mRequestedMeal) {
-		case B:
-			meal = mBreakfast;
-			break;
-		case L:
-			meal = mLunch;
-			break;
-		case D:
-			meal = mDinner;
-			break;
-		default:
-			meal = mOuttakes;
-			break;
-		}
+		JSONObject meal = calculateMenu(mRequestedMeal);
+		Log.d(mDebug, "Populating list for: " + mRequestedMeal);
 		
 		@SuppressWarnings("unchecked")
 		Iterator<String> it = (Iterator<String>) meal.keys();
 		
-		/* Prepare the new GroupList with the operating venues. */
+		/* Collapse all the groups. */
+		for (int g = 0; g < mSELAdapter.getGroupCount(); g++)
+			this.getExpandableListView().collapseGroup(g);
+		
+		/* Clear the lists which the expandableListView uses. */
 		mGroupList.clear();
 		mChildList.clear();
 		
+		/* Setup the lists to reflect the new data. */
 		try {
+			/* Iterate through all the venues. */
 			while (it.hasNext()) {
 				/* Add venues to the GroupList */
 				Map<String,String> map = new HashMap<String,String>();
@@ -180,9 +189,9 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 						String itemName = item.getString("name");
 						String itemVegan = item.getString("vegan");
 						String itemOvolacto = item.getString("ovolacto");
-						String itemHalal = item.getString("halal");
-						String itemPassover = item.getString("passover");
-						String itemNutrition = item.getString("nutrition");
+						//String itemHalal = item.getString("halal");
+						//String itemPassover = item.getString("passover");
+						//String itemNutrition = item.getString("nutrition");
 						
 						//TODO: check against global preference flags
 						if ((!mFilterVegan    && !mFilterOvolacto) || //allow all
@@ -204,7 +213,9 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 		}
 		
 		
-		
+		mSELAdapter.notifyDataSetChanged();
+		Log.d(mDebug, "ListAdapter set with new values.");
+		return;
 	}
 	
 	private void updateMenu() {
@@ -237,6 +248,9 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 	}
 
 	private String getMenuFromServer() {
+		
+		ProgressDialog status = ProgressDialog.show(this,"","Loading Menu...", true);
+		
 		Log.d("az", "getMenuFromServer");
 		int year = mRequestedDate.get(Calendar.YEAR);
 		int month = mRequestedDate.get(Calendar.MONTH);
@@ -249,6 +263,7 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 		
 		try {
 			String request = MENU_SERVER + "?mon="+month+"&day="+day+"&year="+year;
+			Log.d("http", request);
 			//debug
 			String debugrequest = MENU_SERVER+"?mon=2&day=1&year=2012";
 			
@@ -266,7 +281,10 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 			Log.d("exception", e.toString());
 			Log.d("exception", e.getMessage());} 
 		catch (ParseException p) {Log.d("exception", p.toString());} 
-		finally {Log.d("az", "finally");}
+		finally {
+			Log.d("az", "finally");
+			status.dismiss();
+		}
 		
 		return r;
 	}
@@ -283,6 +301,20 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 			return O;
 	}
 	
+	protected JSONObject calculateMenu(int hourOfDay) {
+		switch (hourOfDay) {
+		case B:
+			return mBreakfast;
+		case L:
+			return mLunch;
+		case D:
+			return mDinner;
+		default:
+			return mOuttakes;
+		}
+	}
+	
+	/* Listener for list child item click events. */
 	private class OnEntreeClick implements OnChildClickListener {
 		
 		public boolean onChildClick(ExpandableListView parent, View v,
@@ -299,7 +331,6 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 	@Override
 	public void onBackPressed() {
 		startActivityForResult(new Intent(this, MenuCalendar.class), GET_DATE);
-
 		return;
 	}
 
@@ -332,6 +363,7 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 		return super.onCreateOptionsMenu(menu);
 	}
 
+	/* Handle menu selection events. */
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		
@@ -340,14 +372,54 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 			Intent i = new Intent(this, DietaryPrefs.class);
 			startActivityForResult(i, SET_DIETARY_PREFS);
 			break;
-		
+		case R.id.mealselector:
+			showDialog(R.id.mealselector);
+			break;
 		}
 		
 		return super.onOptionsItemSelected(item);
 	}
-	
 
+	/* Dialog Code */
+	/* Setup the dialog for selecting a meal. */
+	@Override
+	protected Dialog onCreateDialog(int id) {
+		switch(id) {
+		case R.id.mealselector:
+			AlertDialog.Builder builder = new AlertDialog.Builder(this);
+			builder.setTitle(R.string.menuSelectorTitle);
+			builder.setItems(R.array.mealsForSelector, 
+							new DialogInterface.OnClickListener() {
+				@Override
+				public void onClick(DialogInterface dialog, int which) {
+					mRequestedMeal = which;
+					Toast.makeText(getApplicationContext(), 
+							"Loading " + getResources().getStringArray(R.array.mealsForSelector)[which], 
+							Toast.LENGTH_SHORT).show();
+					Log.d(mDebug, "Item "+which+" selected.");
+					//bad move to UI thread
+					
+				}
+			});
+			Dialog selector = builder.create();
+			selector.setOnDismissListener(mDismissListener);
+			return selector;
+		}
+		return super.onCreateDialog(id);
+	}
+
+	/* Listener for Dialog onDismiss events. */
+	private class DismissListener implements DialogInterface.OnDismissListener {
 	
+		/* Repopulate the list when a the meal dialog is dismissed. */
+		@Override
+		public void onDismiss(DialogInterface dialog) {
+			populateEntrees();
+		}
+	}
+	
+	/* populateEntrees() needs to be called in the UI thread. */
+	DismissListener mDismissListener = new DismissListener();
 	
 	
 }

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="hello">Hello World, GrinnellMenuActivity!</string>
     <string name="app_name">Grinnell Menu</string>
     <string name="today">Today</string>
     <string name="tomorrow">Tomorrow</string>
@@ -18,4 +17,7 @@
     <string name="description">Savory American cheese melted between two pieces of slightly stale bread lathered in oil and other fats and grilled to a golden brown perfection.</string>
     <string name="dietaryPrefs">Dietary Concerns</string>
     <string name="dietaryPrefsTitle">Dietary Considerations</string>
+    <string name="mealSelectorTitle">View Other Meals</string>
+    <string name="menuSelectorTitle">Choose Meal:</string>
+    <string name="laurelLeaf">Laurel Leaf</string>
 </resources>

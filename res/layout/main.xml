@@ -3,37 +3,48 @@
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent" 
-    android:background="@color/grinRed">
+    android:background="@color/grinGrey">
     
-    <TextView 
-    	android:layout_height="wrap_content" 
-    	android:textAppearance="?android:attr/textAppearanceLarge" 
-    	android:id="@+id/textView1" 
-    	android:layout_width="wrap_content" 
-    	android:text="@string/title" 
-    	android:padding="5dp" 
-    	android:layout_gravity="center">
-    </TextView>
-    <TextView 
-    	android:layout_height="wrap_content" 
-    	android:layout_width="fill_parent" 
-    	android:padding="3dp" 
-    	android:text="@string/venuesDescription">
-    </TextView>
-    
-<!--
-<ListView 
-	android:layout_height="wrap_content" 
-	android:layout_width="match_parent" 
-	android:entries="@array/venues" 
-	android:overScrollMode="always" 
-	android:id="@android:id/list" >
-</ListView>
--->
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/grinRed">
+	    <TextView 
+	    	android:layout_height="wrap_content" 
+	    	android:textAppearance="?android:attr/textAppearanceLarge" 
+	    	android:id="@+id/textView1" 
+	    	android:layout_width="wrap_content" 
+	    	android:text="@string/title" 
+	    	android:padding="5dp" 
+	    	android:layout_gravity="left"
+	    	>
+	    </TextView>
 
-<ExpandableListView 
-	android:layout_height="wrap_content" 
-	android:layout_width="match_parent" 
-	android:id="@+id/android:list">
-</ExpandableListView>
+	    <ImageView
+	        android:layout_width="wrap_content"
+	        android:layout_height="match_parent"
+	        android:contentDescription="@string/laurelLeaf"
+	        android:cropToPadding="true"
+	        android:src="@drawable/grinicon" />
+	    
+	    <!--
+	    <TextView 
+	    	android:layout_height="wrap_content" 
+	    	android:layout_width="fill_parent" 
+	    	android:padding="3dp" 
+	    	android:text="@string/venuesDescription"
+	    	>
+	    </TextView>
+	    -->
+	    
+   	</LinearLayout>
+
+	<ExpandableListView 
+		android:layout_height="wrap_content" 
+		android:layout_width="match_parent" 
+		android:layout_marginTop="0dp"
+		android:id="@+id/android:list"
+		>
+	</ExpandableListView>
 </LinearLayout>

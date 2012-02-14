@@ -8,8 +8,6 @@ public class DietaryPrefs extends PreferenceActivity {
 	/* Bundle Keys */
 	public static final String DP_KEY = "dietary_prefs";
 	
-	/* Dish Preferences */
-	private int mDishPrefs;
 	
 	/** Called when the activity is first created. */
 	@Override

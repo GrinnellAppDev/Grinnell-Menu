@@ -4,5 +4,9 @@
 		android:icon="@android:drawable/ic_menu_edit"
 		android:title="@string/dietaryPrefsTitle"
 		/>
-
+	<item 
+		android:id="@+id/mealselector"
+		android:icon="@android:drawable/ic_menu_recent_history"
+		android:title="@string/mealSelectorTitle"
+		/>
 </menu>
