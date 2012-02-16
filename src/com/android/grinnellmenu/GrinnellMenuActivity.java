@@ -33,6 +33,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -48,8 +49,8 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 	/* JSON Menu Server Information: */
 	public static final String MENU_SERVER = 
 			"http://www.cs.grinnell.edu/";
-	public static final String SCRIPT_PATH =
-			"~knolldug/parser/menu.php";
+	public static final String DATA_PATH =
+			"~knolldug/parser/";
 	
 	/* Dialog code constants: */
 	public static final int NO_NETWORK = 0;
@@ -67,10 +68,10 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 	
 	/* Meal Constants */
 	//TODO: replace with enumeration class??
-	public static final int B = 0;
-	public static final int L = 1;
-	public static final int D = 2;
-	public static final int O = 3;
+	public static final int B = 100;
+	public static final int L = 101;
+	public static final int D = 102;
+	public static final int O = 103;
 	
 	/* Date of Menu to Retrieve */
 	protected GregorianCalendar mRequestedDate;
@@ -97,6 +98,9 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 	private SimpleExpandableListAdapter mSELAdapter;
 
 	/** Called when the activity is first created. */
+	/* (non-Javadoc)
+	 * @see android.app.Activity#onCreate(android.os.Bundle)
+	 */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -106,6 +110,7 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 		//TODO: add code here
 		mFilterVegan = false;
 		mFilterOvolacto = false;
+		
 		
 		/* Initialize the ExpandableListView. */
 		Resources r = getResources();
@@ -143,18 +148,47 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 				new String[] { ENTREE },
 				new int[] { R.id.entreeBox } );
 		
+		
 		setListAdapter(mSELAdapter);
 		
 		/* Register Entree Click Listeners */
-		ExpandableListView elv = getExpandableListView();
-		elv.setOnChildClickListener(new OnEntreeClick());
+		//ExpandableListView elv = getExpandableListView();
+		//elv.setOnChildClickListener(new OnEntreeClick());
 
+		/* Attempt to restore date from a previous saved instance state. */
+		int year = 0, month = -1, day = 0, hour = 0, minute = 0;
+		if (savedInstanceState != null && !savedInstanceState.isEmpty()) {
+			year = savedInstanceState.getInt(""+Calendar.YEAR);
+			month = savedInstanceState.getInt(""+Calendar.MONTH);
+			day = savedInstanceState.getInt(""+Calendar.DAY_OF_MONTH);
+			hour = savedInstanceState.getInt(""+Calendar.HOUR_OF_DAY);
+			minute = savedInstanceState.getInt(""+Calendar.MINUTE);
+		}
+			
 		/* Get the current date and store as the default requested date. */
-		mRequestedDate = new GregorianCalendar();
+		GregorianCalendar c = new GregorianCalendar();
+		if (c.get(Calendar.YEAR) > year || 
+			c.get(Calendar.MONTH) > month || 
+			c.get(Calendar.DAY_OF_MONTH) > day) {
+			mRequestedDate = c;
+			setMenusNull();
+		}
+		else { //or use the old date
+			mRequestedDate = new GregorianCalendar(year, month, day, hour, minute);
+			// and load the old meal values
+			try {
+				mBreakfast = new JSONObject(savedInstanceState.getString(""+B));
+				mLunch = new JSONObject(savedInstanceState.getString(""+L));
+				mDinner = new JSONObject(savedInstanceState.getString(""+D));
+				mOuttakes = new JSONObject(savedInstanceState.getString(""+O));
+			} catch (JSONException je) {
+				Log.d(mJSON, je.toString());
+			} 
+		}	
 		
 		/* Retrieve most current menu for mRequestedDate from server. */
 		updateMenu();
-		
+	
 		/* Calculate which meal (breakfast, lunch, dinner, or out-takes) should be
 		 * shown based upon what time of day it is. */
 		mRequestedMeal = calculateMeal(mRequestedDate.get(Calendar.HOUR_OF_DAY));
@@ -166,18 +200,16 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 
 	protected void populateEntrees() {
 		
-		
-		
 		JSONObject meal = calculateMenu(mRequestedMeal);
 		Log.d(mDebug, "Populating list for: " + mRequestedMeal);
 		
-		if (meal == null) {
-			Toast.makeText(this, R.string.noMealContent, Toast.LENGTH_LONG).show();
+		/* Do no populate the list if there is no data to populate it with. */
+		if (meal.length() == 0) {
+			Toast t = Toast.makeText(this, R.string.noMealContent, Toast.LENGTH_LONG);
+			t.setGravity(Gravity.TOP, 0, 70);
+			t.show();
 			return;
 		}
-		
-		@SuppressWarnings("unchecked")
-		Iterator<String> it = (Iterator<String>) meal.keys();
 		
 		/* Collapse all the groups. */
 		for (int g = 0; g < mSELAdapter.getGroupCount(); g++)
@@ -186,6 +218,9 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 		/* Clear the lists which the expandableListView uses. */
 		mGroupList.clear();
 		mChildList.clear();
+		
+		@SuppressWarnings("unchecked")
+		Iterator<String> it = (Iterator<String>) meal.keys();
 		
 		/* Setup the lists to reflect the new data. */
 		try {
@@ -221,9 +256,7 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 							entreeList.add(m);
 						}
 					}
-						
 				}
-				
 				mChildList.add(entreeList);		
 			}
 		} catch (JSONException je) {
@@ -238,7 +271,7 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 	
 	private void updateMenu() {
 		
-		Log.d("az", "updateMenu");
+		Log.d(mDebug, "updateMenu");
 		
 		//TODO: display a retrieving menu progress/busy icon
 		//TODO: only retrieve menu from server if it has not been previously
@@ -247,7 +280,7 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 		String menu = getMenuFromServer();
 		
 		/* Parse the JSON data. */
-		if (menu != null)
+		if (menu != null && !menu.isEmpty()) {
 			try {
 				JSONObject jmenu = new JSONObject(menu);
 				
@@ -257,7 +290,11 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 				mOuttakes = jmenu.getJSONObject("OUTTAKES");
 			} catch (JSONException je) {
 				Log.d("JSON Parsing", je.toString());
+				setMenusNull();
 			}
+		} else {
+			setMenusNull();
+		}
 		
 		return;
 	}
@@ -285,13 +322,10 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 				int month = mRequestedDate.get(Calendar.MONTH);
 				int day = mRequestedDate.get(Calendar.DAY_OF_MONTH);
 				
-				String request = MENU_SERVER + SCRIPT_PATH + 
-						"?mon="+(month+1)+"&day="+(day)+"&year="+year;
+				String request = MENU_SERVER + DATA_PATH + 
+						(month+1)+"-"+(day)+"-"+year+".json";
 				
-				Log.d("http", request);
-				//debug
-				//String debugrequest = MENU_SERVER+"?mon=2&day=1&year=2012";
-				
+				Log.d(mHTTP, request);
 				HttpClient client = new DefaultHttpClient();
 				HttpPost post = new HttpPost(request);
 				
@@ -302,8 +336,8 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 				Log.d("az", "JSON = " + r);
 			
 			} catch (IOException e) {
-				Log.d("exception", e.toString());
-				Log.d("exception", e.getMessage());} 
+				Log.d(mHTTP, e.toString());
+				Log.d(mHTTP, e.getMessage());} 
 			catch (ParseException p) {Log.d("exception", p.toString());} 
 			finally {
 				Log.d("az", "finally");
@@ -336,6 +370,13 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 		default:
 			return mOuttakes;
 		}
+	}
+	
+	private void setMenusNull() {
+		mBreakfast = new JSONObject();
+		mLunch = new JSONObject();
+		mDinner = new JSONObject();
+		mOuttakes = new JSONObject();
 	}
 	
 	/* Return true if the device has a network adapter that is capable of accessing
@@ -376,23 +417,33 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 	@Override
 	public void onActivityResult(int requestCode, int resultCode, Intent intent) {
 		
-		
 		if(resultCode == Activity.RESULT_OK) {
-			Bundle b;
 		switch (requestCode) {
-		case GET_DATE:
-			b = intent.getExtras();
-			int offset = b.getInt(MenuCalendar.DATEKEY);
-			mRequestedDate.roll(Calendar.DAY_OF_MONTH, offset);
-			updateMenu();
-			break;
 		case SET_DIETARY_PREFS:
-			updateMenu();
+			populateEntrees();
 			break;	
 			}
 		}
 	}
+	
+	/* Save the menu data so it only has to be retrieved from
+	 * the server once every day */
+	@Override
+	protected void onSaveInstanceState(Bundle outState) {
+		super.onSaveInstanceState(outState);
 
+		/* Save the date information. */
+		outState.putInt(""+Calendar.YEAR, mRequestedDate.get(Calendar.YEAR));
+		outState.putInt(""+Calendar.MONTH, mRequestedDate.get(Calendar.MONTH));
+		outState.putInt(""+Calendar.DAY_OF_MONTH, mRequestedDate.get(Calendar.DAY_OF_MONTH));
+		outState.putInt(""+Calendar.HOUR_OF_DAY, mRequestedDate.get(Calendar.HOUR_OF_DAY));
+		outState.putInt(""+Calendar.MINUTE, mRequestedDate.get(Calendar.MINUTE));
+		/* Save the meal information. */
+		outState.putCharSequence(""+B, mBreakfast.toString());
+		outState.putCharSequence(""+L, mLunch.toString());
+		outState.putCharSequence(""+D, mDinner.toString());
+		outState.putCharSequence(""+O, mOuttakes.toString());	
+	}
 	
 	/* Options Menu Code */
 	@Override
@@ -439,10 +490,12 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 							new DialogInterface.OnClickListener() {
 				@Override
 				public void onClick(DialogInterface dialog, int which) {
-					mRequestedMeal = which;
-					Toast.makeText(getApplicationContext(), 
+					mRequestedMeal = 100+which;
+					Toast t = Toast.makeText(getApplicationContext(), 
 							"Loading " + getResources().getStringArray(R.array.mealsForSelector)[which], 
-							Toast.LENGTH_SHORT).show();
+							Toast.LENGTH_SHORT);
+						t.setGravity(Gravity.TOP, 0, 70);	
+						t.show();
 					Log.d(mDebug, "Item "+which+" selected.");
 					//bad move to UI thread
 					
@@ -463,7 +516,7 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 					   }
 				   });
 			return builder.create();
-		
+			
 		case R.id.selectDate:
 			return new DatePickerDialog(this, new DateDialogListener(), 
 					mRequestedDate.get(Calendar.YEAR), 
