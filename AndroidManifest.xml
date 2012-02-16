@@ -8,7 +8,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
-    <application android:icon="@drawable/grindiningicon2" 
+    <application android:icon="@drawable/grindiningicon3" 
         	android:label="@string/app_name">
         <activity android:name=".GrinnellMenuActivity"
                   android:label="@string/app_name"
@@ -20,7 +20,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="MenuItemDetails"></activity>
         <activity android:name="DietaryPrefs"></activity>
     </application>
 </manifest>

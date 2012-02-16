@@ -3,7 +3,8 @@
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent" 
-    android:background="@color/grinGrey">
+    android:background="@color/grinGrey"
+    >
     
     <LinearLayout
         android:orientation="horizontal"
@@ -26,18 +27,9 @@
 	        android:layout_height="match_parent"
 	        android:contentDescription="@string/laurelLeaf"
 	        android:cropToPadding="true"
-	        android:src="@drawable/grinicon" />
-	    
-	    <!--
-	    <TextView 
-	    	android:layout_height="wrap_content" 
-	    	android:layout_width="fill_parent" 
-	    	android:padding="3dp" 
-	    	android:text="@string/venuesDescription"
-	    	>
-	    </TextView>
-	    -->
-	    
+	        android:src="@drawable/grinicon2" 
+	        />
+	      
    	</LinearLayout>
 
 	<ExpandableListView 

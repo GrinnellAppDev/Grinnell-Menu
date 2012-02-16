@@ -7,6 +7,7 @@
   android:textAppearance="?android:attr/textAppearanceLarge" 
   android:textSize="24sp"
   android:paddingLeft="40dp"
+  android:paddingTop="2dp"
   >
   
 </TextView>

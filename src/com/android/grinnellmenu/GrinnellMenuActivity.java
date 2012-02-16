@@ -37,10 +37,7 @@ import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.DatePicker;
-import android.widget.ExpandableListView;
-import android.widget.ExpandableListView.OnChildClickListener;
 import android.widget.SimpleExpandableListAdapter;
 import android.widget.Toast;
 
@@ -150,10 +147,6 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 		
 		
 		setListAdapter(mSELAdapter);
-		
-		/* Register Entree Click Listeners */
-		//ExpandableListView elv = getExpandableListView();
-		//elv.setOnChildClickListener(new OnEntreeClick());
 
 		/* Attempt to restore date from a previous saved instance state. */
 		int year = 0, month = -1, day = 0, hour = 0, minute = 0;
@@ -272,10 +265,7 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 	private void updateMenu() {
 		
 		Log.d(mDebug, "updateMenu");
-		
-		//TODO: display a retrieving menu progress/busy icon
-		//TODO: only retrieve menu from server if it has not been previously
-		
+				
 		/* Get the JSON menu data from the current server. */
 		String menu = getMenuFromServer();
 		
@@ -390,28 +380,8 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 	/* Return true if the appropriate host is can be reached. */
 	public boolean routeClear(String host) {
 		//TODO: method stub -- possibly implement this..
+		//however, need DNS lookup
 		return true;
-	}
-	
-	/* Listener for list child item click events. */
-	private class OnEntreeClick implements OnChildClickListener {
-		
-		public boolean onChildClick(ExpandableListView parent, View v,
-				int groupPosition, int childPosition, long id) {
-			
-			Long p = ExpandableListView.getPackedPositionForChild(groupPosition, childPosition);
-			startActivityForResult(new Intent(v.getContext(),
-					MenuItemDetails.class), parent.getFlatListPosition(p));
-			
-			return false;
-		}
-	}
-
-	@Override
-	public void onBackPressed() {
-		//startActivityForResult(new Intent(this, MenuCalendar.class), GET_DATE);
-		super.onBackPressed();
-		return;
 	}
 
 	@Override
@@ -420,6 +390,7 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 		if(resultCode == Activity.RESULT_OK) {
 		switch (requestCode) {
 		case SET_DIETARY_PREFS:
+			//load preferences then:
 			populateEntrees();
 			break;	
 			}
@@ -496,9 +467,7 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 							Toast.LENGTH_SHORT);
 						t.setGravity(Gravity.TOP, 0, 70);	
 						t.show();
-					Log.d(mDebug, "Item "+which+" selected.");
-					//bad move to UI thread
-					
+					Log.d(mDebug, "Item "+which+" selected.");					
 				}
 			});
 			Dialog selector = builder.create();
