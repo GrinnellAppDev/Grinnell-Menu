@@ -28,6 +28,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -56,6 +57,27 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 	/* Request code constants: */
 	public static final int GET_DATE 			= 1;
 	public static final int SET_DIETARY_PREFS 	= 2;
+	
+	/* Keys! */
+	public static final String YEAR 	= "year";
+	public static final String MONTH 	= "month";
+	public static final String DAY 		= "day";
+	public static final String HOUR 	= "hour";
+	public static final String MINUTE 	= "min";
+	
+	public static String toKey(int k) {
+		return ""+k;
+	}
+	
+	public static final String F_OVO 	= "filterovolacto";
+	public static final String F_VEG	= "filtervegan";
+	
+	public static final String K_B		= "breakfast";
+	public static final String K_L		= "lunch";
+	public static final String K_D		= "dinner";
+	public static final String K_O		= "outtakes";
+	
+	public static final String MAIN_PREFS = "main";
 	
 	/* Debug Tags */
 	public static final String mJSON = "JSON Parsing";
@@ -93,6 +115,8 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 	
 	/* Adapter used by the expandable list. */
 	private SimpleExpandableListAdapter mSELAdapter;
+	/* SharedPreferences */
+	private SharedPreferences mPrefs;
 
 	/** Called when the activity is first created. */
 	/* (non-Javadoc)
@@ -102,12 +126,6 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
-		
-		/* Load Stored Dish preferences and set mDishPrefs accordingly */
-		//TODO: add code here
-		mFilterVegan = false;
-		mFilterOvolacto = false;
-		
 		
 		/* Initialize the ExpandableListView. */
 		Resources r = getResources();
@@ -147,17 +165,23 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 		
 		
 		setListAdapter(mSELAdapter);
+		
+		/* Load Stored Dish preferences and set mDishPrefs accordingly */
+		//TODO: add code here
+		
+		mPrefs = getSharedPreferences(MAIN_PREFS, MODE_PRIVATE);
+		
+		mFilterOvolacto = mPrefs.getBoolean(F_OVO, false);
+		mFilterVegan 	= mPrefs.getBoolean(F_VEG, false);
+		
+		
+		/* Attempt to restore date from a previous saved preferences. */
+		int year = mPrefs.getInt(YEAR, 0);
+		int month = mPrefs.getInt(MONTH, -1);
+		int day = mPrefs.getInt(DAY, 0);
+		int hour = mPrefs.getInt(HOUR, 0);
+		int minute = mPrefs.getInt(MINUTE, 0);
 
-		/* Attempt to restore date from a previous saved instance state. */
-		int year = 0, month = -1, day = 0, hour = 0, minute = 0;
-		if (savedInstanceState != null && !savedInstanceState.isEmpty()) {
-			year = savedInstanceState.getInt(""+Calendar.YEAR);
-			month = savedInstanceState.getInt(""+Calendar.MONTH);
-			day = savedInstanceState.getInt(""+Calendar.DAY_OF_MONTH);
-			hour = savedInstanceState.getInt(""+Calendar.HOUR_OF_DAY);
-			minute = savedInstanceState.getInt(""+Calendar.MINUTE);
-		}
-			
 		/* Get the current date and store as the default requested date. */
 		GregorianCalendar c = new GregorianCalendar();
 		if (c.get(Calendar.YEAR) > year || 
@@ -165,32 +189,70 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 			c.get(Calendar.DAY_OF_MONTH) > day) {
 			mRequestedDate = c;
 			setMenusNull();
+			updateMenu();
 		}
 		else { //or use the old date
 			mRequestedDate = new GregorianCalendar(year, month, day, hour, minute);
 			// and load the old meal values
 			try {
-				mBreakfast = new JSONObject(savedInstanceState.getString(""+B));
-				mLunch = new JSONObject(savedInstanceState.getString(""+L));
-				mDinner = new JSONObject(savedInstanceState.getString(""+D));
-				mOuttakes = new JSONObject(savedInstanceState.getString(""+O));
+				mBreakfast = new JSONObject(mPrefs.getString(K_B, null));
+				mLunch = new JSONObject(mPrefs.getString(K_L, ""));
+				mDinner = new JSONObject(mPrefs.getString(K_D, ""));
+				mOuttakes = new JSONObject(mPrefs.getString(K_O, ""));
 			} catch (JSONException je) {
 				Log.d(mJSON, je.toString());
+				updateMenu();
 			} 
 		}	
-		
-		/* Retrieve most current menu for mRequestedDate from server. */
-		updateMenu();
+	}
 	
+	@Override
+	protected void onRestoreInstanceState(Bundle state) {
+		super.onRestoreInstanceState(state);
+		
+		int year = 0, month = -1, day = 0, hour = 0, minute = 0;
+		if (state != null && !state.isEmpty()) {
+			year = state.getInt(YEAR);
+			month = state.getInt(MONTH);
+			day = state.getInt(DAY);
+			hour = state.getInt(HOUR);
+			minute = state.getInt(MINUTE);
+		}
+		/* Get the current date and store as the default requested date. */
+		GregorianCalendar c = new GregorianCalendar();
+		if (c.get(Calendar.YEAR) > year || 
+			c.get(Calendar.MONTH) > month || 
+			c.get(Calendar.DAY_OF_MONTH) > day) {
+			mRequestedDate = c;
+			setMenusNull();
+			updateMenu();
+		} else { //or use the old date
+			mRequestedDate = new GregorianCalendar(year, month, day, hour, minute);
+			// and load the old meal values
+			try {
+				mBreakfast = new JSONObject(state.getString(K_B));
+				mLunch = new JSONObject(state.getString(K_L));
+				mDinner = new JSONObject(state.getString(K_D));
+				mOuttakes = new JSONObject(state.getString(K_O));
+			} catch (JSONException je) {
+				Log.d(mJSON, je.toString());
+				updateMenu();
+			} 
+		}	
+	}
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+		
 		/* Calculate which meal (breakfast, lunch, dinner, or out-takes) should be
 		 * shown based upon what time of day it is. */
 		mRequestedMeal = calculateMeal(mRequestedDate.get(Calendar.HOUR_OF_DAY));
 
 		/* Setup the entrees: */
-		populateEntrees();
-
+		populateEntrees();		
 	}
-
+	
 	protected void populateEntrees() {
 		
 		JSONObject meal = calculateMenu(mRequestedMeal);
@@ -363,10 +425,10 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 	}
 	
 	private void setMenusNull() {
-		mBreakfast = new JSONObject();
-		mLunch = new JSONObject();
-		mDinner = new JSONObject();
-		mOuttakes = new JSONObject();
+		mBreakfast = 	new JSONObject();
+		mLunch = 		new JSONObject();
+		mDinner = 		new JSONObject();
+		mOuttakes = 	new JSONObject();
 	}
 	
 	/* Return true if the device has a network adapter that is capable of accessing
@@ -402,18 +464,41 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 	@Override
 	protected void onSaveInstanceState(Bundle outState) {
 		super.onSaveInstanceState(outState);
-
+		
 		/* Save the date information. */
-		outState.putInt(""+Calendar.YEAR, mRequestedDate.get(Calendar.YEAR));
-		outState.putInt(""+Calendar.MONTH, mRequestedDate.get(Calendar.MONTH));
-		outState.putInt(""+Calendar.DAY_OF_MONTH, mRequestedDate.get(Calendar.DAY_OF_MONTH));
-		outState.putInt(""+Calendar.HOUR_OF_DAY, mRequestedDate.get(Calendar.HOUR_OF_DAY));
-		outState.putInt(""+Calendar.MINUTE, mRequestedDate.get(Calendar.MINUTE));
+		outState.putInt(YEAR, mRequestedDate.get(Calendar.YEAR));
+		outState.putInt(MONTH, mRequestedDate.get(Calendar.MONTH));
+		outState.putInt(DAY, mRequestedDate.get(Calendar.DAY_OF_MONTH));
+		outState.putInt(HOUR, mRequestedDate.get(Calendar.HOUR_OF_DAY));
+		outState.putInt(MINUTE, mRequestedDate.get(Calendar.MINUTE));
 		/* Save the meal information. */
-		outState.putCharSequence(""+B, mBreakfast.toString());
-		outState.putCharSequence(""+L, mLunch.toString());
-		outState.putCharSequence(""+D, mDinner.toString());
-		outState.putCharSequence(""+O, mOuttakes.toString());	
+		outState.putCharSequence(toKey(B), mBreakfast.toString());
+		outState.putCharSequence(toKey(L), mLunch.toString());
+		outState.putCharSequence(toKey(D), mDinner.toString());
+		outState.putCharSequence(toKey(O), mOuttakes.toString());	
+	}
+	
+	@Override
+	protected void onStop() {
+		
+		SharedPreferences.Editor ed = mPrefs.edit();
+		ed.putInt(YEAR, mRequestedDate.get(Calendar.YEAR));
+		ed.putInt(MONTH, mRequestedDate.get(Calendar.MONTH));
+		ed.putInt(DAY, mRequestedDate.get(Calendar.DAY_OF_MONTH));
+		ed.putInt(HOUR, mRequestedDate.get(Calendar.HOUR_OF_DAY));
+		ed.putInt(MINUTE, mRequestedDate.get(Calendar.MINUTE));
+		
+		ed.putString(K_B, mBreakfast.toString());
+		ed.putString(K_L, mLunch.toString());
+		ed.putString(K_D, mDinner.toString());
+		ed.putString(K_O, mOuttakes.toString());
+		
+		ed.putBoolean(F_OVO, mFilterOvolacto);
+		ed.putBoolean(F_VEG, mFilterVegan);
+		
+		ed.commit();
+		
+		super.onStop();
 	}
 	
 	/* Options Menu Code */
