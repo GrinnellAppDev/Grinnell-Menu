@@ -212,11 +212,12 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 		}
 	}
 	
-	/* Since GetMenuTask is asynchronous, we only attempt to load the menu if there is no current
-	 * instance of our task thread OR if the previous instance has FINISHED executing. */
+	/* Since GetMenuTask is asynchronous, we only attempt to load the menu if there 
+	 * is no current instance of our task thread OR if the previous instance has 
+	 * FINISHED executing. */
 	private void loadMenu() {
 		if (mGetMenuTask == null || 
-				mGetMenuTask.getStatus() == AsyncTask.Status.FINISHED)
+			mGetMenuTask.getStatus() == AsyncTask.Status.FINISHED)
 			(mGetMenuTask = new GetMenuTask(this, new GetMenuTaskListener()))
 			.execute(mRequestedDate.get(Calendar.MONTH),
 					 mRequestedDate.get(Calendar.DAY_OF_MONTH),
@@ -317,7 +318,7 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 		Log.d(DEBUG, "ListAdapter set with new values.");
 		
 		/* Set the menu title to display the current meal and date. */
-		TextView tv = (TextView) findViewById(R.id.header);
+		TextView tv = (TextView) findViewById(R.id.headerText);
 		tv.setText(mMealString.substring(0,1).toUpperCase() 
 					+ mMealString.substring(1) + " | " 	
 					+ mRequestedDate.get(Calendar.MONTH)+1 + " - "
@@ -530,11 +531,12 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 	protected void onRestoreInstanceState(Bundle state) {
 		super.onRestoreInstanceState(state);
 		
-		int year = 0, month = -1, day = 0;
+		int year = 0, month = -1, day = 0, meal = 0;
 		if (state != null && !state.isEmpty()) {
 			year 	= state.getInt(YEAR);
 			month 	= state.getInt(MONTH);
 			day 	= state.getInt(DAY);
+			meal 	= state.getInt(REQMEAL);
 		}
 		/* Get the current date and store as the default requested date. */
 		GregorianCalendar c = new GregorianCalendar();
@@ -542,9 +544,11 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 			c.get(Calendar.MONTH) 	> month || 
 			c.get(Calendar.DAY_OF_MONTH) > day) {
 			mRequestedDate = c;
+			mMealRequest = calculateMeal(mRequestedDate.get(Calendar.HOUR_OF_DAY));
 			loadMenu();
 		} else { //or use the old date
 			mRequestedDate = new GregorianCalendar(year, month, day);
+			mMealRequest = meal;
 			// and load the old meal values
 			try {
 				mBreakfast 		= new JSONObject(state.getString(K_B));
