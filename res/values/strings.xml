@@ -1,27 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Grinnell Menu</string>
-    <string name="today">Today</string>
-    <string name="tomorrow">Tomorrow</string>
-    <string name="calendar_lable">Menu Picker</string>
-    <string name="go">Go</string>
     <string name="title">Grinnell Dining Menu</string>
     <string name="dinner">Dinner</string>
     <string name="lunch">Lunch</string>
     <string name="breakfast">Breakfast</string>
-    <string name="calendarButtonCallback">onButtonPress</string>
-    <string name="venuesDescription">Selected Menu Listed Below:</string>
     <string name="empty">Empty</string>
-    <string name="detailsVenueText">Honor Grill</string>
-    <string name="name">Grilled Cheese</string>
-    <string name="description">Savory American cheese melted between two pieces of slightly stale bread lathered in oil and other fats and grilled to a golden brown perfection.</string>
     <string name="dietaryPrefs">Dietary Concerns</string>
     <string name="dietaryPrefsTitle">Dietary Considerations</string>
+    <string name="ovopref">Show only items safe for a vegetarian diet.</string>
+    <string name="vegpref">Show only items safe for a vegan diet.</string>
     <string name="mealSelectorTitle">View Other Meals</string>
     <string name="menuSelectorTitle">Choose Meal:</string>
     <string name="laurelLeaf">Laurel Leaf</string>
     <string name="noNetworkMessage">No network connection could be established.  Please make sure Airplane Mode is OFF and your Data/Network connection is turned ON.</string>
     <string name="okay">Okay</string>
+    <string name="noRoute">The meal server could not be reached.  Please try again later.</string>
     <string name="noMealContent">No information is available for this meal.  Try refreshing the menu.</string>
 	<string name="refresh">Refresh</string>
 	<string name="chooseDate">Select Date</string>

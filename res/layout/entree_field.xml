@@ -4,7 +4,15 @@
     	android:id="@+id/entreeBox" 
     	android:layout_width="match_parent" 
     	android:layout_height="wrap_content"
-    	android:textSize="24sp"
+    	android:textSize="14sp"
+    	android:typeface="serif"
     	android:gravity="right"
+    	android:paddingLeft="5dp"
+    	android:paddingRight="12dp"
+    	android:paddingTop="7dp"
+    	android:paddingBottom="7dp"
+    	android:clickable="false"
+    	android:focusableInTouchMode="false"
+    	android:focusable="false"
     	>
     </TextView>

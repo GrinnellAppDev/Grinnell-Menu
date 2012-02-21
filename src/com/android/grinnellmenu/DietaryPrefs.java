@@ -3,11 +3,7 @@ package com.android.grinnellmenu;
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
 
-public class DietaryPrefs extends PreferenceActivity {
-
-	/* Bundle Keys */
-	public static final String DP_KEY = "dietary_prefs";
-	
+public class DietaryPrefs extends PreferenceActivity {	
 	
 	/** Called when the activity is first created. */
 	@Override
@@ -18,6 +14,8 @@ public class DietaryPrefs extends PreferenceActivity {
 	    //TODO: Change to sharedPreferences
 	
 	    addPreferencesFromResource(R.xml.dietary_prefs);
+	    
+	    
 	}
 
 }

@@ -3,19 +3,15 @@
         <PreferenceCategory
                 android:title="Dietary Constraints">
                 <CheckBoxPreference
-                        android:title="All"
-                        android:defaultValue="false"
-                        android:summary="View all entrees."
-                        android:key="allEntrees" />
-                <CheckBoxPreference
                         android:title="Ovolacto"
                         android:defaultValue="false"
-                        android:summary="Show entrees considered ovolacto."
+                        android:summary="@string/ovopref"
                         android:key="ovolactoEntrees" />
                 <CheckBoxPreference
                         android:title="Vegan"
                         android:defaultValue="false"
-                        android:summary="Show entrees considered vegan."
+                        android:dependency="ovolactoEntrees"
+                        android:summary="@string/vegpref"
                         android:key="veganEntrees" />
                 
         </PreferenceCategory>
