@@ -43,6 +43,8 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 	public static final String 					DATA_PATH =
 													"/~knolldug/parser/";
 	
+	public static final String					CACHE_FILE = "menu_cache";
+	
 	/* Request code constants: */
 	public static final int 					WIRELESS_SETTINGS	= 1,
 												SET_DIETARY_PREFS 	= 2;
@@ -148,6 +150,7 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 		
 		setListAdapter(mSELAdapter);
 		
+		
 		/* Load Stored Dish preferences and set mDishPrefs accordingly */
 		mPrefs = getSharedPreferences(MAIN_PREFS, MODE_PRIVATE);
 		
@@ -155,26 +158,30 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 		mFilterVegan 	= mPrefs.getBoolean(F_VEG, false);
 
 		mRequestedDate = new GregorianCalendar();
+		
+
+		/* Calculate which meal (breakfast, lunch, dinner, or out-takes) should be
+		 * shown based upon what time of day it is. */	
+		if (savedInstanceState != null)
+			mMealRequest = savedInstanceState.getInt(REQMEAL);
+		else
+			mMealRequest = mRequestedDate.get(Calendar.HOUR_OF_DAY);
 
 		setMenusNull();	
+		/* Load the menu from the nearest location. */
+		loadMenu();
+		/* Display the menu for the current meal. */
+		showToast(populateMenuView());
 	}
 
-	/*Load the menu from the nearest location. */
+	
 	protected void onStart() {
-		loadMenu();
 		super.onStart();
 	}
 	
 	@Override
 	protected void onResume() {
 		super.onResume();
-		/* Calculate which meal (breakfast, lunch, dinner, or out-takes) should be
-		 * shown based upon what time of day it is. */
-		int currentMealTime = calculateMeal(mRequestedDate.get(Calendar.HOUR_OF_DAY));
-		if (currentMealTime != mMealRequest) {
-			mMealRequest = currentMealTime; 
-			showToast(populateMenuView()); 
-		}	
 	}
 	
 	/* GetMenuTask handles acquiring the menu from either the local cache or the
@@ -448,7 +455,7 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 			//TODO: this..
 			return;
 		case Result.NO_MEAL_DATA:
-			t = Toast.makeText(this, R.string.noMealContent, Toast.LENGTH_LONG);
+			t = Toast.makeText(this, R.string.noMealContent, Toast.LENGTH_SHORT);
 			t.setGravity(Gravity.TOP, 0, 70);
 			t.show();
 			return;
@@ -546,6 +553,7 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 			mRequestedDate = c;
 			mMealRequest = calculateMeal(mRequestedDate.get(Calendar.HOUR_OF_DAY));
 			loadMenu();
+
 		} else { //or use the old date
 			mRequestedDate = new GregorianCalendar(year, month, day);
 			mMealRequest = meal;

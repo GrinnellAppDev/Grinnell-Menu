@@ -108,6 +108,7 @@
         android:background="@color/grinGrey"
         android:saveEnabled="true" 
         android:layout_below="@id/header"
-        android:layout_above="@id/footer">
+        android:layout_above="@id/footer"
+        android:listSelector="@android:color/transparent">
     </ExpandableListView>
 </RelativeLayout>

@@ -12,7 +12,5 @@
     	android:paddingTop="7dp"
     	android:paddingBottom="7dp"
     	android:clickable="false"
-    	android:focusableInTouchMode="false"
-    	android:focusable="false"
     	>
     </TextView>
