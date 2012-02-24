@@ -28,6 +28,9 @@ import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.SimpleExpandableListAdapter;
 import android.widget.TextView;
@@ -159,7 +162,6 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 
 		mRequestedDate = new GregorianCalendar();
 		
-
 		/* Calculate which meal (breakfast, lunch, dinner, or out-takes) should be
 		 * shown based upon what time of day it is. */	
 		if (savedInstanceState != null)
@@ -167,14 +169,30 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 		else
 			mMealRequest = mRequestedDate.get(Calendar.HOUR_OF_DAY);
 
+		/* Setup the meal button 'tabs' at the bottom. */
+		Button b1 = (Button) findViewById(R.id.breakfastButton);
+		Button b2 = (Button) findViewById(R.id.lunchButton);
+		Button b3 = (Button) findViewById(R.id.dinnerButton);
+		Button b4 = (Button) findViewById(R.id.outtakesButton);
+		
+		menuButtonQuadListener mButtonQuadListener = 
+				new menuButtonQuadListener(mMealRequest, b1, b2, b3, b4);
+		
+		b1.setOnClickListener(mButtonQuadListener);
+		b2.setOnClickListener(mButtonQuadListener);
+		b3.setOnClickListener(mButtonQuadListener);
+		b4.setOnClickListener(mButtonQuadListener);
+		
+
+		/* Initialize the menus. */
 		setMenusNull();	
 		/* Load the menu from the nearest location. */
 		loadMenu();
 		/* Display the menu for the current meal. */
 		showToast(populateMenuView());
 	}
-
 	
+		
 	protected void onStart() {
 		super.onStart();
 	}
@@ -519,6 +537,59 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 			showToast(populateMenuView());
 		}
 	}
+	
+	/* This class handles the tab-like behavior of the bottom buttons. */
+	private class menuButtonQuadListener implements OnClickListener {
+
+		int mState;
+		
+		Button mButton1, mButton2, mButton3, mButton4;
+		
+		public menuButtonQuadListener(int initialStateButtonId, 
+				Button button1, Button button2, Button button3, Button button4) {
+			super();
+			mState = initialStateButtonId;
+			mButton1 = button1;
+			mButton2 = button2;
+			mButton3 = button3;
+			mButton4 = button4;
+		}
+		
+		@Override
+		public void onClick(View v) {
+			
+			int buttonID = v.getId();
+			
+			/* Do nothing if the button is already pressed. */
+			if (mState == buttonID)
+				return;
+			
+			/* Otherwise, set the previously pressed button as not pressed
+			 * and 'press' the recently pressed button. */
+			//TODO: implement this, first try didn't work..		
+			
+			mState = buttonID;
+			
+			/* Reflect the changes in the enclosing class. */
+			mMealRequest = getMeal(mState);
+			/* Fill the list entries with the new requested meal. */
+			showToast(populateMenuView());
+		}
+		
+		private int getMeal(int buttonID) {
+			switch (buttonID) {
+			case R.id.breakfastButton:
+				return BREAKFAST;
+			case R.id.lunchButton:
+				return LUNCH;
+			case R.id.dinnerButton:
+				return DINNER;
+			default:
+				return OUTTAKES;
+			}
+		}
+	}
+	
 	
 	/* -- Some setting should be saved. */
 	@Override
