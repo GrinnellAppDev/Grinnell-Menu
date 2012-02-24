@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent" 
     android:background="@color/grinLG"
     >
     
     <RelativeLayout
+        android:id="@+id/header"
+        android:layout_alignParentTop="true"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:background="@color/grinRed"
+        android:background="@drawable/headerbox"
         android:clipChildren="true" >
 
 	    <TextView 
@@ -17,7 +18,7 @@
 	    	android:layout_width="wrap_content" 
 	    	android:textAppearance="?android:attr/textAppearanceLarge" 
 	    	android:typeface="serif"
-	    	android:id="@+id/header" 
+	    	android:id="@+id/headerText" 
 	    	android:text="@string/title" 
 	    	android:padding="5dp" 
 	    	android:layout_marginLeft="2dp"
@@ -28,9 +29,9 @@
 	    <ImageView
 	        android:layout_width="wrap_content"
 	        android:layout_height="match_parent"
-	        android:layout_alignBottom="@+id/header"
+	        android:layout_alignBottom="@id/headerText"
 	        android:layout_alignParentRight="true"
-	        android:layout_toRightOf="@+id/header"
+	        android:layout_toRightOf="@id/headerText"
 	        android:adjustViewBounds="true"
 	        android:contentDescription="@string/laurelLeaf"
 	        android:cropToPadding="true"
@@ -38,16 +39,76 @@
 	      
    	</RelativeLayout>
 
+ 
 
-	<ExpandableListView 
-	    android:background="@color/grinGrey"
-		android:layout_height="fill_parent" 
-		android:layout_width="match_parent" 
-		android:layout_marginTop="0dp"
-		android:layout_marginLeft="3dp"
-		android:layout_marginRight="3dp"
-		android:id="@+id/android:list"
-		android:saveEnabled="true"
-		>
-	</ExpandableListView>
-</LinearLayout>
+    <LinearLayout
+        android:id="@+id/footer"
+        android:layout_alignParentBottom="true"
+        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:orientation="horizontal"
+        android:paddingTop="0dp"
+        android:background="@color/grinGrey"
+        >
+        
+        <Button 
+            android:text="@string/breakfast"
+            android:id="@+id/breakfastButton"
+            android:layout_width="fill_parent"
+			android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:layout_marginRight="1dp"
+            android:padding="3dp"
+            android:typeface="serif"
+            android:textColor="@android:color/white"
+            android:background="@drawable/button"/>
+        <Button 
+            android:text="@string/lunch"
+            android:id="@+id/lunchButton"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:layout_marginRight="1dp"
+            android:padding="3dp"
+            android:typeface="serif"
+            android:textColor="@android:color/white"
+            android:background="@drawable/button"/>
+        <Button 
+            android:text="@string/dinner"
+            android:id="@+id/dinnerButton"
+            android:layout_width="fill_parent"
+			android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:layout_marginRight="1dp"
+            android:padding="3dp"
+            android:typeface="serif"
+            android:textColor="@android:color/white"
+            android:background="@drawable/button"/>
+        <Button 
+            android:text="@string/outtakes"
+            android:id="@+id/outtakesButton"
+            android:layout_width="fill_parent"
+			android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:padding="3dp"
+            android:typeface="serif"
+            android:textColor="@android:color/white"
+            android:background="@drawable/button"/>
+        
+    </LinearLayout>
+    
+    
+    <ExpandableListView
+        android:id="@+id/android:list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="3dp"
+        android:layout_marginRight="3dp"
+        android:layout_marginTop="0dp"
+        android:background="@color/grinGrey"
+        android:saveEnabled="true" 
+        android:layout_below="@id/header"
+        android:layout_above="@id/footer"
+        android:listSelector="@android:color/transparent">
+    </ExpandableListView>
+</RelativeLayout>

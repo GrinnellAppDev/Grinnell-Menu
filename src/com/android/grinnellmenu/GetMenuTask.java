@@ -1,5 +1,12 @@
 package com.android.grinnellmenu;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
@@ -48,10 +55,13 @@ public class GetMenuTask extends AsyncTask<Integer, Void, GetMenuTask.Result> {
 	
 	@Override
 	protected Result doInBackground(Integer... args) {
-		Result r = new Result();
-		//TODO: check for local cache..
+		/* Args come as 0: month, 1: day, 2: year. */
+		int month = args[0]+1, day = args[1], year = args[2];
+		
+		Result r = new Result();	
+		// check the local cache first.. this is MUCH faster...
 		if (!mForceUpdate) {
-			r.setValue(loadLocalMenu());
+			r.setValue(loadLocalMenu(mAppContext, getCacheFileName(month, day, year)));
 			if (r.getValue() != null)
 				return r.setCode(Result.SUCCESS);
 		}
@@ -65,7 +75,7 @@ public class GetMenuTask extends AsyncTask<Integer, Void, GetMenuTask.Result> {
 			return (r = new Result(Result.NO_NETWORK, ""));
 		
 		// THIS IS NOT WORKING AND APARENTLY DOESN'T ON SOME DEVICES..
-		//TODO: FIX IF possible..
+		//TODO: FIX IFF possible..
 		/*
 		 else if (!routeClear(GrinnellMenuActivity.MENU_SERVER, cm)) 
 			return (r = new Result(Result.NO_ROUTE, ""));
@@ -80,8 +90,10 @@ public class GetMenuTask extends AsyncTask<Integer, Void, GetMenuTask.Result> {
 		if (menu == null)
 			return r.setCode(Result.HTTP_ERROR);
 		
-		// return the menu
-		return r.setCode(Result.SUCCESS).setValue(menu);
+		r.setValue(menu);
+		//store the file in a cache and return the result
+		return writeCache(mAppContext, getCacheFileName(month, day, year), menu) ?
+				r.setCode(Result.SUCCESS) : r.setCode(Result.UNKNOWN);
 	}
 	
 	/* Stop the dialog and notify the main thread that the new menu
@@ -96,12 +108,60 @@ public class GetMenuTask extends AsyncTask<Integer, Void, GetMenuTask.Result> {
 		super.onPostExecute(result);
 	}
 	
-	protected static String loadLocalMenu() {
-		//TODO: method stub.. implement this
-		return null;
+	private static String getCacheFileName(int month, int day, int year) {
+		return new String(GrinnellMenuActivity.CACHE_FILE + 
+				"_"+(month)+"-"+day+"-"+year+".json");
+	}
+
+	protected static String loadLocalMenu(Context AppContext, String cacheFile) {
+
+		/* String builder to store the JSON from the cache file. */
+		StringBuilder r = new StringBuilder();
+		
+		try {
+			File cacheDir = AppContext.getFilesDir();
+			File f = new File(cacheDir, cacheFile); 
+			BufferedReader br = new BufferedReader(new FileReader(f));
+			String l;
+			while ((l = br.readLine()) != null)
+				r.append(l); 
+			br.close();
+			
+		} catch (FileNotFoundException ffe) {
+			Log.e(CACH, "No Cache file found.  " +
+					"One will be created on first data retrieval.");
+			return null;
+		} catch (IOException e) {
+			Log.e(CACH, e.toString());
+			return null;
+		}
+
+		return r.toString();
 	}
 	
+	protected static boolean writeCache(Context context, String cacheFile, String json) {
+		
+		/* Write to the cache file. */
+		try {
+			File f = new File(context.getFilesDir(), cacheFile);
+			BufferedWriter bw = new BufferedWriter(new FileWriter(f));
+			bw.write(json);
+			bw.close();
+			
+		} catch (IOException e) {
+			Log.e(CACH, e.toString());
+			return false;
+		}
+		return true;		
+	}
+	
+	//TODO: write a method manageCache that deletes all cache files older
+	//than one week.  This will be a Runable class that can be threaded and
+	//executed by the main activity onCreate or perhaps onFinish or onDestroy.
+	
 	protected static String downloadMenuFromServer(String request) {
+		//TODO: replace with simple java URL request.. no need for HTTP..
+		
 			// connection is up, attempt to retrieve the menu:
 		String r = null;
 		try {						
@@ -191,4 +251,5 @@ public class GetMenuTask extends AsyncTask<Integer, Void, GetMenuTask.Result> {
 	
 	/* Log Keys */
 	public static final String HTTP 	= "HTTP Request";
+	public static final String CACH	    = "File Input";
 }

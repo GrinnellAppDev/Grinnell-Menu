@@ -28,6 +28,9 @@ import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.SimpleExpandableListAdapter;
 import android.widget.TextView;
@@ -42,6 +45,8 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 													"www.cs.grinnell.edu";
 	public static final String 					DATA_PATH =
 													"/~knolldug/parser/";
+	
+	public static final String					CACHE_FILE = "menu_cache";
 	
 	/* Request code constants: */
 	public static final int 					WIRELESS_SETTINGS	= 1,
@@ -148,6 +153,7 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 		
 		setListAdapter(mSELAdapter);
 		
+		
 		/* Load Stored Dish preferences and set mDishPrefs accordingly */
 		mPrefs = getSharedPreferences(MAIN_PREFS, MODE_PRIVATE);
 		
@@ -155,26 +161,45 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 		mFilterVegan 	= mPrefs.getBoolean(F_VEG, false);
 
 		mRequestedDate = new GregorianCalendar();
+		
+		/* Calculate which meal (breakfast, lunch, dinner, or out-takes) should be
+		 * shown based upon what time of day it is. */	
+		if (savedInstanceState != null)
+			mMealRequest = savedInstanceState.getInt(REQMEAL);
+		else
+			mMealRequest = mRequestedDate.get(Calendar.HOUR_OF_DAY);
 
+		/* Setup the meal button 'tabs' at the bottom. */
+		Button b1 = (Button) findViewById(R.id.breakfastButton);
+		Button b2 = (Button) findViewById(R.id.lunchButton);
+		Button b3 = (Button) findViewById(R.id.dinnerButton);
+		Button b4 = (Button) findViewById(R.id.outtakesButton);
+		
+		menuButtonQuadListener mButtonQuadListener = 
+				new menuButtonQuadListener(mMealRequest, b1, b2, b3, b4);
+		
+		b1.setOnClickListener(mButtonQuadListener);
+		b2.setOnClickListener(mButtonQuadListener);
+		b3.setOnClickListener(mButtonQuadListener);
+		b4.setOnClickListener(mButtonQuadListener);
+		
+
+		/* Initialize the menus. */
 		setMenusNull();	
-	}
-
-	/*Load the menu from the nearest location. */
-	protected void onStart() {
+		/* Load the menu from the nearest location. */
 		loadMenu();
+		/* Display the menu for the current meal. */
+		showToast(populateMenuView());
+	}
+	
+		
+	protected void onStart() {
 		super.onStart();
 	}
 	
 	@Override
 	protected void onResume() {
 		super.onResume();
-		/* Calculate which meal (breakfast, lunch, dinner, or out-takes) should be
-		 * shown based upon what time of day it is. */
-		int currentMealTime = calculateMeal(mRequestedDate.get(Calendar.HOUR_OF_DAY));
-		if (currentMealTime != mMealRequest) {
-			mMealRequest = currentMealTime; 
-			showToast(populateMenuView()); 
-		}	
 	}
 	
 	/* GetMenuTask handles acquiring the menu from either the local cache or the
@@ -212,11 +237,12 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 		}
 	}
 	
-	/* Since GetMenuTask is asynchronous, we only attempt to load the menu if there is no current
-	 * instance of our task thread OR if the previous instance has FINISHED executing. */
+	/* Since GetMenuTask is asynchronous, we only attempt to load the menu if there 
+	 * is no current instance of our task thread OR if the previous instance has 
+	 * FINISHED executing. */
 	private void loadMenu() {
 		if (mGetMenuTask == null || 
-				mGetMenuTask.getStatus() == AsyncTask.Status.FINISHED)
+			mGetMenuTask.getStatus() == AsyncTask.Status.FINISHED)
 			(mGetMenuTask = new GetMenuTask(this, new GetMenuTaskListener()))
 			.execute(mRequestedDate.get(Calendar.MONTH),
 					 mRequestedDate.get(Calendar.DAY_OF_MONTH),
@@ -317,7 +343,7 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 		Log.d(DEBUG, "ListAdapter set with new values.");
 		
 		/* Set the menu title to display the current meal and date. */
-		TextView tv = (TextView) findViewById(R.id.header);
+		TextView tv = (TextView) findViewById(R.id.headerText);
 		tv.setText(mMealString.substring(0,1).toUpperCase() 
 					+ mMealString.substring(1) + " | " 	
 					+ mRequestedDate.get(Calendar.MONTH)+1 + " - "
@@ -447,7 +473,7 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 			//TODO: this..
 			return;
 		case Result.NO_MEAL_DATA:
-			t = Toast.makeText(this, R.string.noMealContent, Toast.LENGTH_LONG);
+			t = Toast.makeText(this, R.string.noMealContent, Toast.LENGTH_SHORT);
 			t.setGravity(Gravity.TOP, 0, 70);
 			t.show();
 			return;
@@ -512,6 +538,59 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 		}
 	}
 	
+	/* This class handles the tab-like behavior of the bottom buttons. */
+	private class menuButtonQuadListener implements OnClickListener {
+
+		int mState;
+		
+		Button mButton1, mButton2, mButton3, mButton4;
+		
+		public menuButtonQuadListener(int initialStateButtonId, 
+				Button button1, Button button2, Button button3, Button button4) {
+			super();
+			mState = initialStateButtonId;
+			mButton1 = button1;
+			mButton2 = button2;
+			mButton3 = button3;
+			mButton4 = button4;
+		}
+		
+		@Override
+		public void onClick(View v) {
+			
+			int buttonID = v.getId();
+			
+			/* Do nothing if the button is already pressed. */
+			if (mState == buttonID)
+				return;
+			
+			/* Otherwise, set the previously pressed button as not pressed
+			 * and 'press' the recently pressed button. */
+			//TODO: implement this, first try didn't work..		
+			
+			mState = buttonID;
+			
+			/* Reflect the changes in the enclosing class. */
+			mMealRequest = getMeal(mState);
+			/* Fill the list entries with the new requested meal. */
+			showToast(populateMenuView());
+		}
+		
+		private int getMeal(int buttonID) {
+			switch (buttonID) {
+			case R.id.breakfastButton:
+				return BREAKFAST;
+			case R.id.lunchButton:
+				return LUNCH;
+			case R.id.dinnerButton:
+				return DINNER;
+			default:
+				return OUTTAKES;
+			}
+		}
+	}
+	
+	
 	/* -- Some setting should be saved. */
 	@Override
 	protected void onStop() {
@@ -530,11 +609,12 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 	protected void onRestoreInstanceState(Bundle state) {
 		super.onRestoreInstanceState(state);
 		
-		int year = 0, month = -1, day = 0;
+		int year = 0, month = -1, day = 0, meal = 0;
 		if (state != null && !state.isEmpty()) {
 			year 	= state.getInt(YEAR);
 			month 	= state.getInt(MONTH);
 			day 	= state.getInt(DAY);
+			meal 	= state.getInt(REQMEAL);
 		}
 		/* Get the current date and store as the default requested date. */
 		GregorianCalendar c = new GregorianCalendar();
@@ -542,9 +622,12 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 			c.get(Calendar.MONTH) 	> month || 
 			c.get(Calendar.DAY_OF_MONTH) > day) {
 			mRequestedDate = c;
+			mMealRequest = calculateMeal(mRequestedDate.get(Calendar.HOUR_OF_DAY));
 			loadMenu();
+
 		} else { //or use the old date
 			mRequestedDate = new GregorianCalendar(year, month, day);
+			mMealRequest = meal;
 			// and load the old meal values
 			try {
 				mBreakfast 		= new JSONObject(state.getString(K_B));
