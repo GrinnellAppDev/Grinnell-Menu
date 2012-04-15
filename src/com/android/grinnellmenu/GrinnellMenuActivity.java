@@ -369,9 +369,10 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 						//String itemNutrition = item.getString("nutrition");
 						
 						//TODO: check against global preference flags properly...
-						if ((!mFilterVegan    && !mFilterOvolacto) || //allow all
-							( mFilterOvolacto && (itemOvolacto.equals("true") || itemVegan.equals("true"))) ||
-							( mFilterVegan    && (itemVegan.equals("true")))) {
+						if ( (!mFilterVegan ) 				||						//allow all
+							 ( itemVegan.equals("true") ) 	|| 						//allow vegan
+							 ( mFilterOvolacto && (itemOvolacto.equals("true"))) ) 	//allow vegetarian
+						{ 
 								
 							Map<String, String> m = new HashMap<String,String>();
 							m.put(ENTREE, itemName);

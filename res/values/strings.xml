@@ -9,7 +9,7 @@
     <string name="empty">Empty</string>
     <string name="dietaryPrefs">Dietary Concerns</string>
     <string name="dietaryPrefsTitle">Dietary Considerations</string>
-    <string name="ovopref">Show only items safe for a vegetarian diet.</string>
+    <string name="ovopref">Also show items safe for a vegetarian diet.</string>
     <string name="vegpref">Show only items safe for a vegan diet.</string>
     <string name="mealSelectorTitle">View Other Meals</string>
     <string name="menuSelectorTitle">Choose Meal:</string>
