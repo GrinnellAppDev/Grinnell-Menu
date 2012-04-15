@@ -52,6 +52,7 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 													"/~knolldug/parser/";
 	
 	public static final String					CACHE_FILE = "menu_cache";
+	public static final int						CACHE_AGE_LIMIT = -7;
 	
 	/* Request code constants: */
 	public static final int 					WIRELESS_SETTINGS	= 1;
@@ -65,7 +66,8 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 	/* AsyncTask used to issue web requests and load cache menu data. */
 	private GetMenuTask						 	mGetMenuTask;
 	/* Date of Menu to Retrieve */
-	protected GregorianCalendar 				mRequestedDate;
+	protected GregorianCalendar 				mRequestedDate,
+												mPendingDate;
 	/* Meal to show in the list. */
 	protected int	 							mMealRequest;
 	protected String 							mMealString;
@@ -169,7 +171,7 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 		mFilterVegan 	= mPrefs.getBoolean(F_VEG, false);
 		mPrefsDirty = false;
 		
-		mRequestedDate = new GregorianCalendar();
+		mPendingDate = mRequestedDate = new GregorianCalendar();
 		
 		/* Calculate which meal (breakfast, lunch, dinner, or out-takes) should be
 		 * shown based upon what time of day it is. Or, load the old menu information
@@ -186,12 +188,12 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 		if (c.get(Calendar.YEAR) 	> year  || 
 			c.get(Calendar.MONTH) 	> month || 
 			c.get(Calendar.DAY_OF_MONTH) > day) {
-			mRequestedDate = c;
+			mPendingDate = mRequestedDate = c;
 			mMealRequest = calculateMeal(mRequestedDate.get(Calendar.HOUR_OF_DAY));
 			loadMenu();
 
 		} else { //or use the old date
-			mRequestedDate = new GregorianCalendar(year, month, day);
+			mPendingDate = mRequestedDate = new GregorianCalendar(year, month, day);
 			mMealRequest = meal;
 			// and load the old meal values
 			try {
@@ -261,8 +263,9 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 				Log.i(UITHREAD, "Menu successfully loaded!");
 				/* On SUCCESS the menu string should be parsed into JSONObjects
 				 * and the venues and entrees should be put into the list. */
+				mRequestedDate = mPendingDate;
 				parseMenu(result.getValue());
-				showToast(populateMenuView());				
+				showToast(populateMenuView());			
 				break;
 			case Result.NO_NETWORK:
 				Log.i(UITHREAD, "No network connection was available through which to retrieve the menu.");
@@ -271,11 +274,10 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 			case Result.NO_ROUTE:
 				Log.i(UITHREAD, "Could not find a route to the menu server through the available connections");
 				showToast(Result.NO_ROUTE);
-				//TODO: Toast here..
 				break;
 			case Result.HTTP_ERROR:
-				Log.i(UITHREAD, "Bad HTTP request was issued.");
-				//TODO: Handle this case..
+				Log.i(UITHREAD, "Bad HTTP response was recieved.");
+				showToast(Result.HTTP_ERROR);
 			case Result.UNKNOWN:
 				Log.i(UITHREAD, "Unknown result in method 'onRetrieveDate'");
 				break;
@@ -290,9 +292,9 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 		if (mGetMenuTask == null || 
 			mGetMenuTask.getStatus() == AsyncTask.Status.FINISHED)
 			(mGetMenuTask = new GetMenuTask(this, new GetMenuTaskListener()))
-			.execute(mRequestedDate.get(Calendar.MONTH),
-					 mRequestedDate.get(Calendar.DAY_OF_MONTH),
-					 mRequestedDate.get(Calendar.YEAR));
+			.execute(mPendingDate.get(Calendar.MONTH),
+					 mPendingDate.get(Calendar.DAY_OF_MONTH),
+					 mPendingDate.get(Calendar.YEAR));
 	}
 	
 	/* Given a JSON string of menu data, parseMenu will set the member fields
@@ -306,15 +308,23 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 		if (menu == null || menu.isEmpty())
 			setMenusNull();
 		else {
+			JSONObject jmenu = null;
 			try {
-				JSONObject jmenu 	= new JSONObject(menu);
-				mBreakfast 			= jmenu.getJSONObject("BREAKFAST");
-				mLunch 				= jmenu.getJSONObject("LUNCH");
-				mDinner 			= jmenu.getJSONObject("DINNER");
-				mOuttakes 			= jmenu.getJSONObject("OUTTAKES");
+				//Parse the menu to a JSON Object
+				jmenu 	= new JSONObject(menu);
+				} catch (JSONException je) {
+				Log.e(JSON, je.toString());
+			}
+			
+			if (jmenu != null)
+				try {
+					//Parse retrieve the menus from the JSON Obeject
+					mLunch 		= jmenu.isNull("LUNCH") ? null : jmenu.getJSONObject("LUNCH");
+					mDinner 	= jmenu.isNull("DINNER") ? null : jmenu.getJSONObject("DINNER");
+					mBreakfast 	= jmenu.isNull("BREAKFAST") ? null : jmenu.getJSONObject("BREAKFAST");
+					mOuttakes 	= jmenu.isNull("OUTTAKES") ? null : jmenu.getJSONObject("OUTTAKES");
 			} catch (JSONException je) {
 				Log.e(JSON, je.toString());
-				setMenusNull();
 			}
 		}
 		return;
@@ -329,7 +339,7 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 		Log.i(UITHREAD, "Populating list for: " + mMealString);
 		
 		/* Do no populate the list if there is no data to populate it with. */
-		if (meal.length() == 0) {return Result.NO_MEAL_DATA;}
+		if (meal == null || meal.length() == 0) {return Result.NO_MEAL_DATA;}
 		
 		/* Collapse all the groups. */
 		ExpandableListView elv = this.getExpandableListView();
@@ -368,12 +378,11 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 						//String itemPassover = item.getString("passover");
 						//String itemNutrition = item.getString("nutrition");
 						
-						//TODO: check against global preference flags properly...
 						if ( (!mFilterVegan ) 				||						//allow all
 							 ( itemVegan.equals("true") ) 	|| 						//allow vegan
 							 ( mFilterOvolacto && (itemOvolacto.equals("true"))) ) 	//allow vegetarian
 						{ 
-								
+							//Place the entree in the mapping and add it to the list for the venue.
 							Map<String, String> m = new HashMap<String,String>();
 							m.put(ENTREE, itemName);
 							entreeList.add(m);
@@ -395,7 +404,7 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 		TextView tv = (TextView) findViewById(R.id.headerText);
 		tv.setText(mMealString.substring(0,1).toUpperCase() 
 					+ mMealString.substring(1) + " | " 	
-					+ mRequestedDate.get(Calendar.MONTH)+1 + " - "
+					+ (mRequestedDate.get(Calendar.MONTH)+1) + " - "
 					+ mRequestedDate.get(Calendar.DAY_OF_MONTH) + " - "
 					+ mRequestedDate.get(Calendar.YEAR));
 		
@@ -487,7 +496,6 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 						   new DialogInterface.OnClickListener() {
 					   @Override
 					   public void onClick(DialogInterface dialog, int which) {
-						   //TODO: take user to network settings
 						   startActivityForResult(
 							new Intent(android.provider.Settings.ACTION_WIRELESS_SETTINGS)
 							,WIRELESS_SETTINGS);
@@ -514,10 +522,12 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 			t.show();
 			return;
 		case Result.HTTP_ERROR:
-			//TODO: this..
+			t = Toast.makeText(this, R.string.httpError, Toast.LENGTH_SHORT);
+			t.setGravity(Gravity.TOP, 0, 70);
+			t.show();
 			return;
 		case Result.NO_MEAL_DATA:
-			t = Toast.makeText(this, R.string.noMealContent, Toast.LENGTH_SHORT);
+			t = Toast.makeText(this, R.string.noMealContent, Toast.LENGTH_LONG);
 			t.setGravity(Gravity.TOP, 0, 70);
 			t.show();
 			return;
@@ -566,7 +576,7 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 		public void onDateSet(DatePicker view, int year, int month, int day) {
 			int hour = mRequestedDate.get(Calendar.HOUR_OF_DAY);
 			int minute = mRequestedDate.get(Calendar.MINUTE);
-			mRequestedDate = new GregorianCalendar(year, month, day, hour, minute);
+			mPendingDate = new GregorianCalendar(year, month, day, hour, minute);
 			loadMenu();
 		}
 	}
@@ -639,43 +649,42 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 	}
 	
 	
-	/// --- These are rarely used and not well tested.  TODO: Test..
 	/* Show the menu as it was when the user left the application. */
-//	@Override
-//	protected void onRestoreInstanceState(Bundle state) {
-//		super.onRestoreInstanceState(state);
-//		
-//		int year = 0, month = -1, day = 0, meal = 0;
-//		if (state != null && !state.isEmpty()) {
-//			year 	= state.getInt(YEAR);
-//			month 	= state.getInt(MONTH);
-//			day 	= state.getInt(DAY);
-//			meal 	= state.getInt(REQMEAL);
-//		}
-//		/* Get the current date and store as the default requested date. */
-//		GregorianCalendar c = new GregorianCalendar();
-//		if (c.get(Calendar.YEAR) 	> year  || 
-//			c.get(Calendar.MONTH) 	> month || 
-//			c.get(Calendar.DAY_OF_MONTH) > day) {
-//			mRequestedDate = c;
-//			mMealRequest = calculateMeal(mRequestedDate.get(Calendar.HOUR_OF_DAY));
-//			loadMenu();
-//
-//		} else { //or use the old date
-//			mRequestedDate = new GregorianCalendar(year, month, day);
-//			mMealRequest = meal;
-//			// and load the old meal values
-//			try {
-//				mBreakfast 		= new JSONObject(state.getString(K_B));
-//				mLunch 			= new JSONObject(state.getString(K_L));
-//				mDinner 		= new JSONObject(state.getString(K_D));
-//				mOuttakes 		= new JSONObject(state.getString(K_O));
-//			} catch (JSONException je) {
-//				Log.d(JSON, je.toString());
-//				loadMenu();
-//			} 
-//		}	
-//	}
+	@Override
+	protected void onRestoreInstanceState(Bundle state) {
+		super.onRestoreInstanceState(state);
+		
+		int year = 0, month = -1, day = 0, meal = 0;
+		if (state != null && !state.isEmpty()) {
+			year 	= state.getInt(YEAR);
+			month 	= state.getInt(MONTH);
+			day 	= state.getInt(DAY);
+			meal 	= state.getInt(REQMEAL);
+		}
+		/* Get the current date and store as the default requested date. */
+		GregorianCalendar c = new GregorianCalendar();
+		if (c.get(Calendar.YEAR) 	> year  || 
+			c.get(Calendar.MONTH) 	> month || 
+			c.get(Calendar.DAY_OF_MONTH) > day) {
+			mRequestedDate = c;
+			mMealRequest = calculateMeal(mRequestedDate.get(Calendar.HOUR_OF_DAY));
+			loadMenu();
+
+		} else { //or use the old date
+			mRequestedDate = new GregorianCalendar(year, month, day);
+			mMealRequest = meal;
+			// and load the old meal values
+			try {
+				mBreakfast 		= new JSONObject(state.getString(K_B));
+				mLunch 			= new JSONObject(state.getString(K_L));
+				mDinner 		= new JSONObject(state.getString(K_D));
+				mOuttakes 		= new JSONObject(state.getString(K_O));
+			} catch (JSONException je) {
+				Log.d(JSON, je.toString());
+				loadMenu();
+			} 
+		}	
+	}
 	
 	/* Save the menu data so it only has to be retrieved from
 	 * the server once every day */
@@ -691,10 +700,23 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 		/* Save the active meal. */
 		outState.putInt(REQMEAL, mMealRequest);
 		/* Save the meal information. */
-		outState.putCharSequence(K_B, mBreakfast.toString());
-		outState.putCharSequence(K_L, mLunch.toString());
-		outState.putCharSequence(K_D, mDinner.toString());
-		outState.putCharSequence(K_O, mOuttakes.toString());	
+		outState.putCharSequence(K_B, (mBreakfast != null) 	? mBreakfast.toString() : null);
+		outState.putCharSequence(K_L, (mLunch != null) 		? mLunch.toString() 	: null);
+		outState.putCharSequence(K_D, (mDinner != null) 	? mDinner.toString() 	: null);
+		outState.putCharSequence(K_O, (mOuttakes != null) 	? mOuttakes.toString() 	: null);	
 	}
 	
-} // class
+	@Override
+	public void onDestroy() {
+		// Clean up the cache data.
+		GregorianCalendar g = new GregorianCalendar();
+		g.roll(GregorianCalendar.DAY_OF_MONTH, CACHE_AGE_LIMIT);
+		GetMenuTask.pruneCache(this, 
+				g.get(Calendar.MONTH)+1, 
+				g.get(Calendar.DAY_OF_MONTH), 
+				g.get(Calendar.YEAR));
+		
+		super.onDestroy();
+	}
+	
+} // activity class

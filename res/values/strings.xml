@@ -17,7 +17,9 @@
     <string name="noNetworkMessage">No network connection could be established.  Please make sure Airplane Mode is OFF and your Data/Network connection is turned ON.</string>
     <string name="okay">Okay</string>
     <string name="noRoute">The meal server could not be reached.  Please try again later.</string>
-    <string name="noMealContent">No information is available for this meal.  Try refreshing the menu.</string>
-	<string name="refresh">Refresh</string>
+    <string name="httpError">Unable to retrieve any menu data.  Please try again later.</string>
+    <string name="noMealContent">No information is available for this meal.  No breakfast on Sundays.  No outtakes on the weekends.</string>
+    <string name="pleaseTryAgain">Please try again later.</string>
+    <string name="refresh">Refresh</string>
 	<string name="chooseDate">Select Date</string>
 </resources>

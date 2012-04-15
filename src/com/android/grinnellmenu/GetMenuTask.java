@@ -6,11 +6,13 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.io.FilenameFilter;
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 
 import org.apache.http.HttpResponse;
+import org.apache.http.HttpStatus;
 import org.apache.http.ParseException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
@@ -31,6 +33,8 @@ public class GetMenuTask extends AsyncTask<Integer, Void, GetMenuTask.Result> {
 	private Context mAppContext;
 	private RetrieveDataListener mRetrieveDataListener;
 	private boolean mForceUpdate;
+	
+	private static final int MAX_ATTEMPTS = 3;
 			
 	protected GetMenuTask(Context context, RetrieveDataListener rdl) {
 		this(context, rdl, false);
@@ -87,7 +91,10 @@ public class GetMenuTask extends AsyncTask<Integer, Void, GetMenuTask.Result> {
 		
 		String menu = downloadMenuFromServer(request);
 		if (menu == null)
+			return r.setCode(Result.NO_MEAL_DATA);
+		else if (menu.equals(new Integer(Result.HTTP_ERROR).toString())) {
 			return r.setCode(Result.HTTP_ERROR);
+		}
 		
 		r.setValue(menu);
 		//store the file in a cache and return the result
@@ -106,11 +113,6 @@ public class GetMenuTask extends AsyncTask<Integer, Void, GetMenuTask.Result> {
 		mRetrieveDataListener.onRetrieveData(result);
 		super.onPostExecute(result);
 	}
-	
-	private static String getCacheFileName(int month, int day, int year) {
-		return new String(GrinnellMenuActivity.CACHE_FILE + 
-				"_"+(month)+"-"+day+"-"+year+".json");
-	}
 
 	protected static String loadLocalMenu(Context AppContext, String cacheFile) {
 
@@ -127,7 +129,7 @@ public class GetMenuTask extends AsyncTask<Integer, Void, GetMenuTask.Result> {
 			br.close();
 			
 		} catch (FileNotFoundException ffe) {
-			Log.e(CACH, "No Cache file found.  " +
+			Log.i(CACH, "No Cache file found.  " +
 					"One will be created on first data retrieval.");
 			return null;
 		} catch (IOException e) {
@@ -154,33 +156,85 @@ public class GetMenuTask extends AsyncTask<Integer, Void, GetMenuTask.Result> {
 		return true;		
 	}
 	
-	//TODO: write a method manageCache that deletes all cache files older
-	//than one week.  This will be a Runable class that can be threaded and
-	//executed by the main activity onCreate or perhaps onFinish or onDestroy.
-	
-	protected static String downloadMenuFromServer(String request) {
-		//TODO: replace with simple java URL request.. no need for HTTP..
+	/* pruneCache deletes all cache files older than the specified year, month, day.
+	 * This should be run by the context in order to manage its cache data.  This
+	 * function is NOT called automatically by any of the methods in GetMenuTask.
+	 */
+	protected static void pruneCache(Context app, int month, int day, int year) {
 		
-			// connection is up, attempt to retrieve the menu:
+		// Calculate the decimal value of the given date.
+		final long cutDate = toDecimalDate(month, day, year);
+		
+		// Get a list of all files older than cutDate.
+		File dir = app.getFilesDir();
+		File[] oldFiles = dir.listFiles(new FilenameFilter() {
+			@Override
+			public boolean accept(File dir, String filename) {
+				Log.d(GetMenuTask.CACH, filename);
+				String splits[] = filename.split("\\.");
+				if (splits == null || splits.length == 0) return false;
+				String dateString = splits[0];
+				long dateValue = 0;
+				try {
+					dateValue = Long.parseLong(dateString);
+				} catch(NumberFormatException nfe) {
+					return false;
+				}
+				return dateValue < cutDate;
+			}
+		});
+		
+		// Delete the old files.
+		for(File f : oldFiles) {
+			f.delete();
+		}
+	}
+	
+	/* File names constructed such that newer files will always be greater
+	 * numerically than older ones.  This way, it is easier to manage the cache.
+	 */
+	private static String getCacheFileName(int month, int day, int year) {
+		StringBuilder filename = new StringBuilder();
+		
+		return filename	.append(toDecimalDate(month, day, year).toString())
+						.append(".json").toString();
+	}
+	
+	/* Calculate the decimal value of the given date. */
+	private static Long toDecimalDate(int month, int day, int year) {
+		// Calculate the decimal value of the given date.
+		return new Long(day + (month * 100) + (year * 10000));
+	}
+
+		
+	protected static String downloadMenuFromServer(String request) {
+		// connection is up, attempt to retrieve the menu:
 		String r = null;
-		try {						
-			Log.i(HTTP, request);
-			HttpClient client = new DefaultHttpClient();
-			HttpPost post = new HttpPost(request);
+		int attempts = 0;
+		try {				
+			while (attempts < MAX_ATTEMPTS) {
 				
-			HttpResponse response = client.execute(post);
-			Log.i(HTTP, response.getStatusLine().toString());
-			//TODO: handle unsuccessful HTTP requests
+				Log.i(HTTP, request);
+				HttpClient client = new DefaultHttpClient();
+				HttpPost post = new HttpPost(request);
 				
-			r = EntityUtils.toString(response.getEntity());
-			//Log.i(HTTP, "JSON = " + r);
-				
-			} catch (IOException e) {
-				Log.i(HTTP, e.toString());
-				Log.i(HTTP, e.getMessage());
-			} catch (ParseException p) {
-				Log.e("ParseException", p.toString());} 
-			return r;
+				HttpResponse response = client.execute(post);
+				Log.i(HTTP, response.getStatusLine().toString());
+				// Make sure the result is okay.
+				if (response.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
+					r = EntityUtils.toString(response.getEntity());
+					//Log.i(HTTP, "JSON = " + r);
+					break;
+				}
+				attempts++;
+			}
+		} catch (IOException e) {
+			Log.i(HTTP, e.toString());
+			Log.i(HTTP, e.getMessage());
+		} catch (ParseException p) {
+			Log.e("ParseException", p.toString());} 
+		
+		return (attempts == MAX_ATTEMPTS) ? new Integer(Result.HTTP_ERROR).toString() : r;
 	}
 		
 	/* Return true if the device has a network adapter that is capable of 
@@ -230,8 +284,8 @@ public class GetMenuTask extends AsyncTask<Integer, Void, GetMenuTask.Result> {
 		private int code;
 		private String value;
 		
-		public Result (int ResultCode, String resultValue) {
-			code = ResultCode;
+		public Result (int resultCode, String resultValue) {
+			code = resultCode;
 			value = resultValue;
 		}
 		public Result () {this(-1, null);}
