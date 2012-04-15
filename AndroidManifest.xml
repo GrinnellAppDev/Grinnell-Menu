@@ -24,5 +24,15 @@
             </intent-filter>
         </activity>
         <activity android:name="DietaryPrefs"></activity>
+        
+		<!-- Start of Crittercism.com Code -->
+		<activity android:name="com.crittercism.NewFeedbackSpringboardActivity" android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"></activity>
+		<activity android:name="com.crittercism.NewFeedbackIssueListActivity" android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"></activity>
+		<activity android:name="com.crittercism.NewFeedbackQuestionListActivity" android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"></activity>
+		<activity android:name="com.crittercism.NewFeedbackItemDetailsActivity" android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"></activity>
+		<activity android:name="com.crittercism.NewFeedbackCreateActivity" android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"></activity>
+		<activity android:name="com.crittercism.NotificationActivity"/>
+		<!-- End of Crittercism.com Code -->
+        
     </application>
 </manifest>

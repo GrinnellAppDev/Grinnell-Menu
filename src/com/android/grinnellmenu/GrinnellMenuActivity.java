@@ -39,6 +39,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.grinnellmenu.GetMenuTask.Result;
+
+import com.crittercism.app.Crittercism;
 import com.flurry.android.FlurryAgent;
 
 public class GrinnellMenuActivity extends ExpandableListActivity {
@@ -97,6 +99,7 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 	
 	/* SharedPreferences */
 	private SharedPreferences 					mPrefs;
+	private boolean								mPrefsDirty;
 	
 	/* Dietary Dish Preferences */
 	protected boolean 							mFilterVegan;
@@ -114,6 +117,9 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
+		
+		/* Crittercism crash and error tracking */
+		Crittercism.init(getApplicationContext(), "4f8ab556b0931573b000033e");
 		
 		/* Initialize the ExpandableListView. */
 		Resources r = getResources();
@@ -161,16 +167,45 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 		
 		mFilterOvolacto = mPrefs.getBoolean(F_OVO, false);
 		mFilterVegan 	= mPrefs.getBoolean(F_VEG, false);
+		mPrefsDirty = false;
 		
 		mRequestedDate = new GregorianCalendar();
 		
 		/* Calculate which meal (breakfast, lunch, dinner, or out-takes) should be
-		 * shown based upon what time of day it is. */	
-		if (savedInstanceState != null)
-			mMealRequest = savedInstanceState.getInt(REQMEAL);
-		else
-			mMealRequest = mRequestedDate.get(Calendar.HOUR_OF_DAY);
+		 * shown based upon what time of day it is. Or, load the old menu information
+		 * if it exists*/	
+		int year = 0, month = -1, day = 0, meal = 0;
+		if (savedInstanceState != null && !savedInstanceState.isEmpty()) {
+			year 	= savedInstanceState.getInt(YEAR);
+			month 	= savedInstanceState.getInt(MONTH);
+			day 	= savedInstanceState.getInt(DAY);
+			meal 	= savedInstanceState.getInt(REQMEAL);
+		}
+		/* Get the current date and store as the default requested date. */
+		GregorianCalendar c = new GregorianCalendar();
+		if (c.get(Calendar.YEAR) 	> year  || 
+			c.get(Calendar.MONTH) 	> month || 
+			c.get(Calendar.DAY_OF_MONTH) > day) {
+			mRequestedDate = c;
+			mMealRequest = calculateMeal(mRequestedDate.get(Calendar.HOUR_OF_DAY));
+			loadMenu();
 
+		} else { //or use the old date
+			mRequestedDate = new GregorianCalendar(year, month, day);
+			mMealRequest = meal;
+			// and load the old meal values
+			try {
+				mBreakfast 		= new JSONObject(savedInstanceState.getString(K_B));
+				mLunch 			= new JSONObject(savedInstanceState.getString(K_L));
+				mDinner 		= new JSONObject(savedInstanceState.getString(K_D));
+				mOuttakes 		= new JSONObject(savedInstanceState.getString(K_O));
+			} catch (JSONException je) {
+				Log.d(JSON, je.toString());
+				loadMenu();
+			} 
+		}	
+
+		
 		/* Setup the meal button 'tabs' at the bottom. */
 		Button b1 = (Button) findViewById(R.id.breakfastButton);
 		Button b2 = (Button) findViewById(R.id.lunchButton);
@@ -188,7 +223,7 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 
 		/* Initialize the menus. */
 		setMenusNull();	
-		/* Load the menu from the nearest location. */
+		/* Load the menu from the nearest location. (Cache or Network) */
 		loadMenu();
 	}
 	
@@ -201,9 +236,16 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 	
 	@Override
 	protected void onResume() {
-		
-		
 		super.onResume();
+	
+		/* The menu needs to be reload if the user changed preferences. */ 
+		if (mPrefsDirty) {
+			mFilterOvolacto = mPrefs.getBoolean(F_OVO, false);
+			mFilterVegan 	= mPrefs.getBoolean(F_VEG, false);
+			mPrefsDirty = false;
+			populateMenuView();
+		}
+		
 	}
 	
 	/* GetMenuTask handles acquiring the menu from either the local cache or the
@@ -496,6 +538,7 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch(item.getItemId()) {
 		case R.id.dietaryprefs:
+			mPrefsDirty = true;
 			Intent i = new Intent(this, DietaryPrefs.class);
 			startActivity(i);
 			break;
@@ -597,41 +640,41 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 	
 	/// --- These are rarely used and not well tested.  TODO: Test..
 	/* Show the menu as it was when the user left the application. */
-	@Override
-	protected void onRestoreInstanceState(Bundle state) {
-		super.onRestoreInstanceState(state);
-		
-		int year = 0, month = -1, day = 0, meal = 0;
-		if (state != null && !state.isEmpty()) {
-			year 	= state.getInt(YEAR);
-			month 	= state.getInt(MONTH);
-			day 	= state.getInt(DAY);
-			meal 	= state.getInt(REQMEAL);
-		}
-		/* Get the current date and store as the default requested date. */
-		GregorianCalendar c = new GregorianCalendar();
-		if (c.get(Calendar.YEAR) 	> year  || 
-			c.get(Calendar.MONTH) 	> month || 
-			c.get(Calendar.DAY_OF_MONTH) > day) {
-			mRequestedDate = c;
-			mMealRequest = calculateMeal(mRequestedDate.get(Calendar.HOUR_OF_DAY));
-			loadMenu();
-
-		} else { //or use the old date
-			mRequestedDate = new GregorianCalendar(year, month, day);
-			mMealRequest = meal;
-			// and load the old meal values
-			try {
-				mBreakfast 		= new JSONObject(state.getString(K_B));
-				mLunch 			= new JSONObject(state.getString(K_L));
-				mDinner 		= new JSONObject(state.getString(K_D));
-				mOuttakes 		= new JSONObject(state.getString(K_O));
-			} catch (JSONException je) {
-				Log.d(JSON, je.toString());
-				loadMenu();
-			} 
-		}	
-	}
+//	@Override
+//	protected void onRestoreInstanceState(Bundle state) {
+//		super.onRestoreInstanceState(state);
+//		
+//		int year = 0, month = -1, day = 0, meal = 0;
+//		if (state != null && !state.isEmpty()) {
+//			year 	= state.getInt(YEAR);
+//			month 	= state.getInt(MONTH);
+//			day 	= state.getInt(DAY);
+//			meal 	= state.getInt(REQMEAL);
+//		}
+//		/* Get the current date and store as the default requested date. */
+//		GregorianCalendar c = new GregorianCalendar();
+//		if (c.get(Calendar.YEAR) 	> year  || 
+//			c.get(Calendar.MONTH) 	> month || 
+//			c.get(Calendar.DAY_OF_MONTH) > day) {
+//			mRequestedDate = c;
+//			mMealRequest = calculateMeal(mRequestedDate.get(Calendar.HOUR_OF_DAY));
+//			loadMenu();
+//
+//		} else { //or use the old date
+//			mRequestedDate = new GregorianCalendar(year, month, day);
+//			mMealRequest = meal;
+//			// and load the old meal values
+//			try {
+//				mBreakfast 		= new JSONObject(state.getString(K_B));
+//				mLunch 			= new JSONObject(state.getString(K_L));
+//				mDinner 		= new JSONObject(state.getString(K_D));
+//				mOuttakes 		= new JSONObject(state.getString(K_O));
+//			} catch (JSONException je) {
+//				Log.d(JSON, je.toString());
+//				loadMenu();
+//			} 
+//		}	
+//	}
 	
 	/* Save the menu data so it only has to be retrieved from
 	 * the server once every day */
