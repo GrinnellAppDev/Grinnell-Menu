@@ -6,13 +6,13 @@
                         android:title="Ovolacto"
                         android:defaultValue="false"
                         android:summary="@string/ovopref"
-                        android:key="ovolactoEntrees" />
+                        android:key="filterovolacto" />
                 <CheckBoxPreference
                         android:title="Vegan"
                         android:defaultValue="false"
-                        android:dependency="ovolactoEntrees"
+                        android:dependency="filterovolacto"
                         android:summary="@string/vegpref"
-                        android:key="veganEntrees" />
+                        android:key="filtervegan" />
                 
         </PreferenceCategory>
 </PreferenceScreen>

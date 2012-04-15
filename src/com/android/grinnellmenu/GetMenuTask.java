@@ -4,7 +4,6 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -174,7 +173,7 @@ public class GetMenuTask extends AsyncTask<Integer, Void, GetMenuTask.Result> {
 			//TODO: handle unsuccessful HTTP requests
 				
 			r = EntityUtils.toString(response.getEntity());
-			Log.i(HTTP, "JSON = " + r);
+			//Log.i(HTTP, "JSON = " + r);
 				
 			} catch (IOException e) {
 				Log.i(HTTP, e.toString());

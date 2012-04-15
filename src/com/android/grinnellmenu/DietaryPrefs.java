@@ -1,7 +1,10 @@
 package com.android.grinnellmenu;
 
+import com.flurry.android.FlurryAgent;
+
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
+import android.preference.PreferenceManager;
 
 public class DietaryPrefs extends PreferenceActivity {	
 	
@@ -11,11 +14,23 @@ public class DietaryPrefs extends PreferenceActivity {
 	    super.onCreate(savedInstanceState);
 	    
 	    /* Obtain the current preferences from the user */
-	    //TODO: Change to sharedPreferences
-	
+	   PreferenceManager.setDefaultValues(this, R.xml.dietary_prefs, false);
+	    
 	    addPreferencesFromResource(R.xml.dietary_prefs);
 	    
 	    
+	}
+	
+	@Override
+	public void onStart() {
+		super.onStart();
+		FlurryAgent.onStartSession(this, "S7MM444QPIJP91NGWGTA");
+	}
+	
+	@Override
+	public void onStop() {
+		super.onStop();
+		FlurryAgent.onEndSession(this);
 	}
 
 }

@@ -23,6 +23,7 @@ import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
@@ -32,11 +33,13 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.ExpandableListView;
 import android.widget.SimpleExpandableListAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.grinnellmenu.GetMenuTask.Result;
+import com.flurry.android.FlurryAgent;
 
 public class GrinnellMenuActivity extends ExpandableListActivity {
 
@@ -49,8 +52,7 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 	public static final String					CACHE_FILE = "menu_cache";
 	
 	/* Request code constants: */
-	public static final int 					WIRELESS_SETTINGS	= 1,
-												SET_DIETARY_PREFS 	= 2;
+	public static final int 					WIRELESS_SETTINGS	= 1;
 	
 	/* Meal Constants */
 	public static final int 					BREAKFAST = 0, 
@@ -95,7 +97,6 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 	
 	/* SharedPreferences */
 	private SharedPreferences 					mPrefs;
-	public static final String 					MAIN_PREFS = "main";
 	
 	/* Dietary Dish Preferences */
 	protected boolean 							mFilterVegan;
@@ -155,11 +156,12 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 		
 		
 		/* Load Stored Dish preferences and set mDishPrefs accordingly */
-		mPrefs = getSharedPreferences(MAIN_PREFS, MODE_PRIVATE);
+		PreferenceManager.setDefaultValues(this, R.xml.dietary_prefs, false);
+		mPrefs = PreferenceManager.getDefaultSharedPreferences(this);
 		
 		mFilterOvolacto = mPrefs.getBoolean(F_OVO, false);
 		mFilterVegan 	= mPrefs.getBoolean(F_VEG, false);
-
+		
 		mRequestedDate = new GregorianCalendar();
 		
 		/* Calculate which meal (breakfast, lunch, dinner, or out-takes) should be
@@ -176,7 +178,7 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 		Button b4 = (Button) findViewById(R.id.outtakesButton);
 		
 		menuButtonQuadListener mButtonQuadListener = 
-				new menuButtonQuadListener(mMealRequest, b1, b2, b3, b4);
+				new menuButtonQuadListener(mMealRequest);
 		
 		b1.setOnClickListener(mButtonQuadListener);
 		b2.setOnClickListener(mButtonQuadListener);
@@ -188,17 +190,19 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 		setMenusNull();	
 		/* Load the menu from the nearest location. */
 		loadMenu();
-		/* Display the menu for the current meal. */
-		showToast(populateMenuView());
 	}
 	
 		
 	protected void onStart() {
 		super.onStart();
+		/* Flurry is a user statistics reporting agent. */
+		FlurryAgent.onStartSession(this, "S7MM444QPIJP91NGWGTA");
 	}
 	
 	@Override
 	protected void onResume() {
+		
+		
 		super.onResume();
 	}
 	
@@ -286,8 +290,10 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 		if (meal.length() == 0) {return Result.NO_MEAL_DATA;}
 		
 		/* Collapse all the groups. */
+		ExpandableListView elv = this.getExpandableListView();
+		//elv.isGroupExpanded(groupPosition);
 		for (int g = 0; g < mSELAdapter.getGroupCount(); g++)
-			this.getExpandableListView().collapseGroup(g);
+			elv.collapseGroup(g);
 		
 		/* Clear the lists which the expandableListView uses. */
 		mGroupList.clear();
@@ -373,7 +379,7 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 			mMealString = K_B;
 			return mBreakfast;
 		case LUNCH:
-			mMealString = K_L;
+			mMealString = K_L;	
 			return mLunch;
 		case DINNER:
 			mMealString = K_D;
@@ -402,11 +408,6 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 		switch (requestCode) {
 		case WIRELESS_SETTINGS:
 			loadMenu();
-			break;
-		case SET_DIETARY_PREFS:
-			mFilterOvolacto = mPrefs.getBoolean(F_OVO, false);
-			mFilterVegan 	= mPrefs.getBoolean(F_VEG, false);
-			populateMenuView();
 			break;
 		default:
 			break;
@@ -496,7 +497,7 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 		switch(item.getItemId()) {
 		case R.id.dietaryprefs:
 			Intent i = new Intent(this, DietaryPrefs.class);
-			startActivityForResult(i, SET_DIETARY_PREFS);
+			startActivity(i);
 			break;
 		case R.id.mealselector:
 			showDialog(R.id.mealselector);
@@ -542,17 +543,10 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 	private class menuButtonQuadListener implements OnClickListener {
 
 		int mState;
-		
-		Button mButton1, mButton2, mButton3, mButton4;
-		
-		public menuButtonQuadListener(int initialStateButtonId, 
-				Button button1, Button button2, Button button3, Button button4) {
+			
+		public menuButtonQuadListener(int initialStateButtonId) {
 			super();
 			mState = initialStateButtonId;
-			mButton1 = button1;
-			mButton2 = button2;
-			mButton3 = button3;
-			mButton4 = button4;
 		}
 		
 		@Override
@@ -594,14 +588,12 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 	/* -- Some setting should be saved. */
 	@Override
 	protected void onStop() {
-		/* Save the dietary preferences to a file. */
-		SharedPreferences.Editor ed = mPrefs.edit();
-		ed.putBoolean(F_OVO, mFilterOvolacto);
-		ed.putBoolean(F_VEG, mFilterVegan);
-		/* Commit the changes. */
-		ed.commit();
+		/*Stop the Flurry Session*/
+		FlurryAgent.onEndSession(this);
+		
 		super.onStop();
 	}
+	
 	
 	/// --- These are rarely used and not well tested.  TODO: Test..
 	/* Show the menu as it was when the user left the application. */
