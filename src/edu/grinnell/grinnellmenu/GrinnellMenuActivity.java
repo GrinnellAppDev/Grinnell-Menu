@@ -1,4 +1,4 @@
-package com.android.grinnellmenu;
+package edu.grinnell.grinnellmenu;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -38,10 +38,10 @@ import android.widget.SimpleExpandableListAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.android.grinnellmenu.GetMenuTask.Result;
-
 import com.crittercism.app.Crittercism;
 import com.flurry.android.FlurryAgent;
+
+import edu.grinnell.grinnellmenu.GetMenuTask.Result;
 
 public class GrinnellMenuActivity extends ExpandableListActivity {
 
@@ -474,7 +474,7 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 		AlertDialog.Builder builder;
 		
 		switch(id) {
-		case R.id.mealselector:
+		case R.id.menuselector:
 			builder = new AlertDialog.Builder(this);
 			builder.setTitle(R.string.menuSelectorTitle)
 				   .setItems(R.array.mealsForSelector, 
@@ -553,8 +553,8 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 			Intent i = new Intent(this, DietaryPrefs.class);
 			startActivity(i);
 			break;
-		case R.id.mealselector:
-			showDialog(R.id.mealselector);
+		case R.id.menuselector:
+			showDialog(R.id.menuselector);
 			break;
 		case R.id.menuRefresh:
 			loadMenu();

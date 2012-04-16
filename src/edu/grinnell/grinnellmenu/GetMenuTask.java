@@ -1,4 +1,4 @@
-package com.android.grinnellmenu;
+package edu.grinnell.grinnellmenu;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -89,7 +89,7 @@ public class GetMenuTask extends AsyncTask<Integer, Void, GetMenuTask.Result> {
 				+ GrinnellMenuActivity.DATA_PATH + 
 				(args[0]+1)+"-"+args[1]+"-"+args[2]+".json";
 		
-		String menu = downloadMenuFromServer(request);
+		String menu = downloadDataFromServer(request);
 		if (menu == null)
 			return r.setCode(Result.NO_MEAL_DATA);
 		else if (menu.equals(new Integer(Result.HTTP_ERROR).toString())) {
@@ -207,7 +207,7 @@ public class GetMenuTask extends AsyncTask<Integer, Void, GetMenuTask.Result> {
 	}
 
 		
-	protected static String downloadMenuFromServer(String request) {
+	protected static String downloadDataFromServer(String request) {
 		// connection is up, attempt to retrieve the menu:
 		String r = null;
 		int attempts = 0;

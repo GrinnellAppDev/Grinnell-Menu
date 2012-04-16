@@ -1,8 +1,8 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 	<item 
-		android:id="@+id/mealselector"
+		android:id="@+id/menuselector"
 		android:icon="@android:drawable/ic_menu_recent_history"
-		android:title="@string/mealSelectorTitle"
+		android:title="@string/availableMenuSelectorTitle"
 		/>
 	<item
 	    android:id="@+id/selectDate"

@@ -11,7 +11,7 @@
     <string name="dietaryPrefsTitle">Dietary Considerations</string>
     <string name="ovopref">Also show items safe for a vegetarian diet.</string>
     <string name="vegpref">Show only items safe for a vegan diet.</string>
-    <string name="mealSelectorTitle">View Other Meals</string>
+    <string name="availableMenuSelectorTitle">Available Menus</string>
     <string name="menuSelectorTitle">Choose Meal:</string>
     <string name="laurelLeaf">Laurel Leaf</string>
     <string name="noNetworkMessage">No network connection could be established.  Please make sure Airplane Mode is OFF and your Data/Network connection is turned ON.</string>

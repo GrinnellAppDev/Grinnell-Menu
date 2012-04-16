@@ -1,10 +1,10 @@
-package com.android.grinnellmenu;
-
-import com.flurry.android.FlurryAgent;
+package edu.grinnell.grinnellmenu;
 
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceManager;
+
+import com.flurry.android.FlurryAgent;
 
 public class DietaryPrefs extends PreferenceActivity {	
 	
