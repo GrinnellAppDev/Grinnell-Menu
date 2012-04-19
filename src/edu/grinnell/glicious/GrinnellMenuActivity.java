@@ -106,8 +106,12 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 	/* Dietary Dish Preferences */
 	protected boolean 							mFilterVegan;
 	protected boolean 							mFilterOvolacto;
-	public static final String 					F_OVO 	= "filterovolacto";
-	public static final String 					F_VEG	= "filtervegan";
+	protected static final String 				F_OVO 	= "filterovolacto";
+	protected static final String 				F_VEG	= "filtervegan";
+	
+	/* Other Settings */
+	protected static final String				EXP_ALL_KEY = "expandall";
+	private boolean 							mExpAll;
 	
 	/* Debug Tags */
 	public static final String 					JSON 	= "JSON Parsing";
@@ -163,13 +167,19 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 		setListAdapter(mSELAdapter);
 		
 		
-		/* Load Stored Dish preferences and set mDishPrefs accordingly */
+		/* Obtain a reference to the preference manager for this app */
 		PreferenceManager.setDefaultValues(this, R.xml.dietary_prefs, false);
 		mPrefs = PreferenceManager.getDefaultSharedPreferences(this);
 		
+		/* Load Stored Dish preferences and set mDishPrefs accordingly */
 		mFilterOvolacto = mPrefs.getBoolean(F_OVO, false);
 		mFilterVegan 	= mPrefs.getBoolean(F_VEG, false);
+		// mPrefsDirty lets the app know if it needs to repopulate the fields
+		// after returning from the preference page.
 		mPrefsDirty = false;
+		
+		/* Other settings */
+		mExpAll = mPrefs.getBoolean(EXP_ALL_KEY, false);
 		
 		mPendingDate = mRequestedDate = new GregorianCalendar();
 		
@@ -244,7 +254,8 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 		if (mPrefsDirty) {
 			mFilterOvolacto = mPrefs.getBoolean(F_OVO, false);
 			mFilterVegan 	= mPrefs.getBoolean(F_VEG, false);
-			mPrefsDirty = false;
+			mPrefsDirty 	= false;
+			mExpAll 		= mPrefs.getBoolean(EXP_ALL_KEY, false); 
 			populateMenuView();
 		}
 		
@@ -353,7 +364,6 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 		
 		/* Setup the lists to reflect the new data. */
 		try {
-			/* Iterate through all the venues. */
 			while (it.hasNext()) {
 				/* Add venues to the GroupList */
 				Map<String,String> map = new HashMap<String,String>();
@@ -397,17 +407,26 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 		mSELAdapter.notifyDataSetChanged();
 		Log.d(DEBUG, "ListAdapter set with new values.");
 		
-		/* Set the menu title to display the current meal and date. */
-		TextView tv = (TextView) findViewById(R.id.headerText);
-		tv.setText(mMealString.substring(0,1).toUpperCase() 
-					+ mMealString.substring(1) + " | " 	
-					+ (mRequestedDate.get(Calendar.MONTH)+1) + " - "
-					+ mRequestedDate.get(Calendar.DAY_OF_MONTH) + " - "
-					+ mRequestedDate.get(Calendar.YEAR));
+		/* Expand all groups if the user requests */
+		if (mExpAll)
+			expandAllGroups();
+		
+		
+		setTitle();
 		
 		return Result.SUCCESS;
 	}
 
+	/* Set the menu title to display the current meal and date. */
+	private void setTitle() {
+	TextView tv = (TextView) findViewById(R.id.headerText);
+	tv.setText(mMealString.substring(0,1).toUpperCase() 
+				+ mMealString.substring(1) + " | " 	
+				+ (mRequestedDate.get(Calendar.MONTH)+1) + " - "
+				+ mRequestedDate.get(Calendar.DAY_OF_MONTH) + " - "
+				+ mRequestedDate.get(Calendar.YEAR));
+	}
+	
 	/* Return a different menu CONSTANT based on what time of day it is. */
 	private static int calculateMeal(int hourOfDay) {
 		int h = hourOfDay % 24;
@@ -549,7 +568,7 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch(item.getItemId()) {
-		case R.id.dietaryprefs:
+		case R.id.filtersandsettings:
 			mPrefsDirty = true;
 			Intent i = new Intent(this, DietaryPrefs.class);
 			startActivity(i);

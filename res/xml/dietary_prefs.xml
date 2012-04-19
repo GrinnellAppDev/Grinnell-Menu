@@ -1,17 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
         <PreferenceCategory
-                android:title="Dietary Constraints">
+                android:title="@string/dietconst">
                 <CheckBoxPreference
-                        android:title="Vegan"
+                        android:title="@string/veganpref"
                         android:defaultValue="false"      
-                        android:summary="@string/vegpref"
+                        android:summary="@string/veganprefsummary"
                         android:key="filtervegan" />
                 <CheckBoxPreference
-                        android:title="Ovolacto"
+                        android:title="@string/ovolactopref"
                         android:defaultValue="false"
-                        android:summary="@string/ovopref"
+                        android:summary="@string/ovolactoprefsummary"
                         android:key="filterovolacto" 
                         android:dependency="filtervegan" />
+        </PreferenceCategory>
+        <PreferenceCategory
+            android:title="@string/miscpref">
+            <CheckBoxPreference
+                        android:title="@string/expandpref"
+                        android:defaultValue="false"      
+                        android:summary="@string/expandprefsummary"
+                        android:key="expandall" />
         </PreferenceCategory>
 </PreferenceScreen>

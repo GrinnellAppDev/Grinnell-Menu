@@ -10,9 +10,9 @@
 	    android:title="@string/chooseDate"
 	    />
 	<item 
-		android:id="@+id/dietaryprefs"
+		android:id="@+id/filtersandsettings"
 		android:icon="@android:drawable/ic_menu_edit"
-		android:title="@string/dietaryPrefsTitle"
+		android:title="@string/settingstitle"
 		/>
 	<item 
 	    android:id="@+id/menuRefresh"

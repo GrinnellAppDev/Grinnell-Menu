@@ -7,19 +7,32 @@
     <string name="breakfast">Breakfast</string>
     <string name="outtakes">Outtakes</string>
     <string name="empty">Empty</string>
-    <string name="dietaryPrefs">Dietary Concerns</string>
-    <string name="dietaryPrefsTitle">Dietary Considerations</string>
-    <string name="ovopref">Also show items safe for a vegetarian diet.</string>
-    <string name="vegpref">Show only items safe for a vegan diet.</string>
-    <string name="expandAllOptionTitle">Expand All</string>
+            
+    <string name="expandAllOptionTitle">Expand All Venues</string>
+    <string name="settingstitle">Filters and Settings</string>
     <string name="menuSelectorTitle">Choose Meal:</string>
+    <string name="refresh">Refresh</string>
+	<string name="chooseDate">Select Date</string>
+	
+	<string name="dietconst">Dietary Considerations</string>
+    <string name="veganpref">Vegan</string>
+    <string name="ovolactopref">Ovolacto</string>
+    <string name="ovolactoprefsummary">Also show items safe for a vegetarian diet.</string>
+    <string name="veganprefsummary">Show only items safe for a vegan diet.</string>
+    
+    <string name="miscpref">Other Settings</string>
+    <string name="expandpref">Expanded Menu</string>
+    <string name="expandprefsummary">Always expand each venue when viewing.</string>
+	
+	
     <string name="laurelLeaf">Laurel Leaf</string>
+    
     <string name="noNetworkMessage">No network connection could be established.  Please make sure Airplane Mode is OFF and your Data/Network connection is turned ON.</string>
     <string name="okay">Okay</string>
     <string name="noRoute">The meal server could not be reached.  Please try again later.</string>
     <string name="httpError">Unable to retrieve any menu data.  Please try again later.</string>
     <string name="noMealContent">No information is available for this meal.  No breakfast on Sundays.  No outtakes on the weekends.</string>
     <string name="pleaseTryAgain">Please try again later.</string>
-    <string name="refresh">Refresh</string>
-	<string name="chooseDate">Select Date</string>
+    
+    
 </resources>
