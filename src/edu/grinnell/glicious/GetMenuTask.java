@@ -1,4 +1,4 @@
-package edu.grinnell.grinnellmenu;
+package edu.grinnell.glicious;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -92,7 +92,7 @@ public class GetMenuTask extends AsyncTask<Integer, Void, GetMenuTask.Result> {
 		String menu = downloadDataFromServer(request);
 		if (menu == null)
 			return r.setCode(Result.NO_MEAL_DATA);
-		else if (menu.equals(new Integer(Result.HTTP_ERROR).toString())) {
+		else if (menu.equals(Integer.valueOf(Result.HTTP_ERROR).toString())) {
 			return r.setCode(Result.HTTP_ERROR);
 		}
 		
@@ -234,7 +234,7 @@ public class GetMenuTask extends AsyncTask<Integer, Void, GetMenuTask.Result> {
 		} catch (ParseException p) {
 			Log.e("ParseException", p.toString());} 
 		
-		return (attempts == MAX_ATTEMPTS) ? new Integer(Result.HTTP_ERROR).toString() : r;
+		return (attempts == MAX_ATTEMPTS) ? Integer.valueOf(Result.HTTP_ERROR).toString() : r;
 	}
 		
 	/* Return true if the device has a network adapter that is capable of 

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Grinnell Menu</string>
+    <string name="app_name">G-licious</string>
     <string name="title">Grinnell Dining Menu</string>
     <string name="dinner">Dinner</string>
     <string name="lunch">Lunch</string>
@@ -11,7 +11,7 @@
     <string name="dietaryPrefsTitle">Dietary Considerations</string>
     <string name="ovopref">Also show items safe for a vegetarian diet.</string>
     <string name="vegpref">Show only items safe for a vegan diet.</string>
-    <string name="availableMenuSelectorTitle">Available Menus</string>
+    <string name="expandAllOptionTitle">Expand All</string>
     <string name="menuSelectorTitle">Choose Meal:</string>
     <string name="laurelLeaf">Laurel Leaf</string>
     <string name="noNetworkMessage">No network connection could be established.  Please make sure Airplane Mode is OFF and your Data/Network connection is turned ON.</string>

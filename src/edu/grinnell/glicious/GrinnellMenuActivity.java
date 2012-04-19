@@ -1,4 +1,4 @@
-package edu.grinnell.grinnellmenu;
+package edu.grinnell.glicious;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -41,7 +41,7 @@ import android.widget.Toast;
 import com.crittercism.app.Crittercism;
 import com.flurry.android.FlurryAgent;
 
-import edu.grinnell.grinnellmenu.GetMenuTask.Result;
+import edu.grinnell.glicious.GetMenuTask.Result;
 
 public class GrinnellMenuActivity extends ExpandableListActivity {
 
@@ -342,10 +342,7 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 		if (meal == null || meal.length() == 0) {return Result.NO_MEAL_DATA;}
 		
 		/* Collapse all the groups. */
-		ExpandableListView elv = this.getExpandableListView();
-		//elv.isGroupExpanded(groupPosition);
-		for (int g = 0; g < mSELAdapter.getGroupCount(); g++)
-			elv.collapseGroup(g);
+		collapseAllGroups();
 		
 		/* Clear the lists which the expandableListView uses. */
 		mGroupList.clear();
@@ -474,21 +471,6 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 		AlertDialog.Builder builder;
 		
 		switch(id) {
-		case R.id.menuselector:
-			builder = new AlertDialog.Builder(this);
-			builder.setTitle(R.string.menuSelectorTitle)
-				   .setItems(R.array.mealsForSelector, 
-							new DialogInterface.OnClickListener() {
-				@Override
-				public void onClick(DialogInterface dialog, int which) {
-					mMealRequest = which;
-					Log.i(DEBUG, "Item "+which+" selected.");					
-				}
-			});
-			Dialog selector = builder.create();
-			selector.setOnDismissListener(new DismissListener());
-			return selector;
-			
 		case Result.NO_NETWORK:
 			builder = new AlertDialog.Builder(this);
 			builder.setMessage(R.string.noNetworkMessage)
@@ -508,9 +490,28 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 					mRequestedDate.get(Calendar.YEAR), 
 					mRequestedDate.get(Calendar.MONTH), 
 					mRequestedDate.get(Calendar.DAY_OF_MONTH));
+			/* Not used anymore. 
+		case R.id.expandAll:
+			builder = new AlertDialog.Builder(this);
+			builder.setTitle(R.string.menuSelectorTitle)
+				   .setItems(R.array.mealsForSelector, 
+							new DialogInterface.OnClickListener() {
+				@Override
+				public void onClick(DialogInterface dialog, int which) {
+					mMealRequest = which;
+					Log.i(DEBUG, "Item "+which+" selected.");					
+				}
+			});
+			Dialog selector = builder.create();
+			selector.setOnDismissListener(new DismissListener());
+			return selector;
+			*/
+			
 		}
 		
 		return super.onCreateDialog(id);
+		
+		
 	}
 	
 	public void showToast(int message) {
@@ -553,8 +554,9 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 			Intent i = new Intent(this, DietaryPrefs.class);
 			startActivity(i);
 			break;
-		case R.id.menuselector:
-			showDialog(R.id.menuselector);
+		case R.id.expandAll:
+			expandAllGroups();
+			//showDialog(R.id.expandAll);
 			break;
 		case R.id.menuRefresh:
 			loadMenu();
@@ -636,6 +638,23 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 				return OUTTAKES;
 			}
 		}
+	}
+	
+	private void expandAllGroups() {
+		
+		/* Expand all the groups. */
+		ExpandableListView elv = this.getExpandableListView();
+		//elv.isGroupExpanded(groupPosition);
+		for (int g = 0; g < mSELAdapter.getGroupCount(); g++)
+			elv.expandGroup(g);
+	}
+	
+	private void collapseAllGroups() {
+		/* Collapse all the groups. */
+		ExpandableListView elv = this.getExpandableListView();
+		//elv.isGroupExpanded(groupPosition);
+		for (int g = 0; g < mSELAdapter.getGroupCount(); g++)
+			elv.collapseGroup(g);
 	}
 	
 	

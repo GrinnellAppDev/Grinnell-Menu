@@ -1,8 +1,8 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 	<item 
-		android:id="@+id/menuselector"
+		android:id="@+id/expandAll"
 		android:icon="@android:drawable/ic_menu_recent_history"
-		android:title="@string/availableMenuSelectorTitle"
+		android:title="@string/expandAllOptionTitle"
 		/>
 	<item
 	    android:id="@+id/selectDate"

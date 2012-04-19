@@ -1,4 +1,4 @@
-package edu.grinnell.grinnellmenu;
+package edu.grinnell.glicious;
 
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
