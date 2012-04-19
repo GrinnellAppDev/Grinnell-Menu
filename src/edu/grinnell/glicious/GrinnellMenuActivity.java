@@ -411,7 +411,7 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 		if (mExpAll)
 			expandAllGroups();
 		
-		
+		/* Update Title */
 		setTitle();
 		
 		return Result.SUCCESS;
