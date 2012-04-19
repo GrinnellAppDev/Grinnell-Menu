@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.StringTokenizer;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -368,9 +369,10 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 				/* Add venues to the GroupList */
 				Map<String,String> map = new HashMap<String,String>();
 				String venueName = it.next();
-				map.put(VENUE,venueName);
+				//TODO: only capitalize first letter..			
+				map.put(VENUE,captializeWords(venueName));
 				mGroupList.add(map);
-			
+				
 				/* Add entrees to the ChildLists */
 				JSONArray entrees = meal.getJSONArray(venueName);
 				JSONObject item;
@@ -676,6 +678,18 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 			elv.collapseGroup(g);
 	}
 	
+	protected String captializeWords(String s) {
+		String[] words = s.split(" ");
+		StringBuilder sb = new StringBuilder();
+		for(int i = 0; i < words.length; i++) {
+			sb.append(words[i].substring(0, 1).toUpperCase())
+			  .append(words[i].substring(1).toLowerCase());
+
+			if (i != words.length - 1)
+				sb.append(" ");
+		}
+		return sb.toString();
+	}
 	
 	/* -- Some setting should be saved. */
 	@Override
