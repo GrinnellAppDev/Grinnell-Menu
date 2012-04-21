@@ -24,7 +24,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="DietaryPrefs"></activity>
+        <activity android:name="DietaryPrefs"
+                  android:theme="@android:style/Theme.NoTitleBar"
+                  >
+        </activity>
         
 		<!-- Start of Crittercism.com Code -->
 		<activity android:name="com.crittercism.NewFeedbackSpringboardActivity" android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"></activity>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">G-licious</string>
-    <string name="title">Grinnell Dining Menu</string>
+    <string name="title">GrinnellDining</string>
     <string name="dinner">Dinner</string>
     <string name="lunch">Lunch</string>
     <string name="breakfast">Breakfast</string>

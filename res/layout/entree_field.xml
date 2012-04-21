@@ -4,6 +4,8 @@
     	android:id="@+id/entreeBox" 
     	android:layout_width="match_parent" 
     	android:layout_height="wrap_content"
+    	android:background="@drawable/entree_background"
+    	
     	android:textSize="14sp"
     	android:typeface="serif"
     	android:gravity="right"

@@ -6,8 +6,8 @@ import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
-import java.util.StringTokenizer;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -22,6 +22,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
+import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -57,6 +58,10 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 	
 	/* Request code constants: */
 	public static final int 					WIRELESS_SETTINGS	= 1;
+	
+	/* Vivaldi font for the text. */
+	public static Typeface						mVivaldi;
+	public static TextView						mHeader;
 	
 	/* Meal Constants */
 	public static final int 					BREAKFAST = 0, 
@@ -123,13 +128,20 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.main);
+		setContentView(R.layout.main2);
 		
 		/* Crittercism crash and error tracking */
 		Crittercism.init(getApplicationContext(), "4f8ab556b0931573b000033e");
 		
 		/* Initialize the ExpandableListView. */
 		Resources r = getResources();
+		
+		/* Grab the "title bar" text field and have it use Vivaldi */
+		mVivaldi = Typeface.createFromAsset(getAssets(), "fonts/Vivaldi_Italic.ttf");
+		mHeader  = (TextView) findViewById(R.id.headerText);
+		TextView t = (TextView) findViewById(R.id.headerTitle);
+		mHeader.setTypeface(mVivaldi);
+		t.setTypeface(mVivaldi);
 		
 		//Setup the GroupList:
 		mGroupList = new ArrayList<Map<String, String>>();
@@ -217,7 +229,6 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 				loadMenu();
 			} 
 		}	
-
 		
 		/* Setup the meal button 'tabs' at the bottom. */
 		Button b1 = (Button) findViewById(R.id.breakfastButton);
@@ -421,12 +432,15 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 
 	/* Set the menu title to display the current meal and date. */
 	private void setTitle() {
-	TextView tv = (TextView) findViewById(R.id.headerText);
-	tv.setText(mMealString.substring(0,1).toUpperCase() 
-				+ mMealString.substring(1) + " | " 	
-				+ (mRequestedDate.get(Calendar.MONTH)+1) + " - "
-				+ mRequestedDate.get(Calendar.DAY_OF_MONTH) + " - "
-				+ mRequestedDate.get(Calendar.YEAR));
+		if (mMealString != null)
+			mHeader.setText(mRequestedDate.getDisplayName(
+					Calendar.MONTH, Calendar.SHORT, Locale.US)
+					+ " "
+					+ mRequestedDate.get(Calendar.DAY_OF_MONTH) 
+					+ "\n" 
+					+ mMealString.substring(0,1).toUpperCase() 
+					+ mMealString.substring(1));
+	
 	}
 	
 	/* Return a different menu CONSTANT based on what time of day it is. */

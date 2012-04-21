@@ -12,7 +12,7 @@ public class DietaryPrefs extends PreferenceActivity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 	    super.onCreate(savedInstanceState);
-	    
+	    setContentView(R.layout.prefmain);
 	    /* Obtain the current preferences from the user */
 	   PreferenceManager.setDefaultValues(this, R.xml.dietary_prefs, false);
 	    
