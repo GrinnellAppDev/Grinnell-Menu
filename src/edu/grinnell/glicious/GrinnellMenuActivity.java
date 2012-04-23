@@ -49,9 +49,9 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 
 	/* JSON Menu Server Information: */
 	public static final String 					MENU_SERVER = 
-													"www.cs.grinnell.edu";
+													"tcdb.grinnell.edu";
 	public static final String 					DATA_PATH =
-													"/~knolldug/parser/";
+													"/apps/glicious/";
 	
 	public static final String					CACHE_FILE = "menu_cache";
 	public static final int						CACHE_AGE_LIMIT = -7;
