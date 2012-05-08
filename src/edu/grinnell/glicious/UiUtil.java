@@ -1,5 +1,8 @@
 package edu.grinnell.glicious;
 
+import java.lang.ref.SoftReference;
+import java.util.Hashtable;
+
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Typeface;
@@ -9,10 +12,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-
-import java.lang.ref.SoftReference;
-import java.lang.ref.WeakReference;
-import java.util.Hashtable;
 
 public class UiUtil {
 

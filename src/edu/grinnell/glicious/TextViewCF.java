@@ -6,7 +6,7 @@ import android.widget.TextView;
 import edu.grinnell.glicious.R;
 
 public class TextViewCF extends TextView { 
-	private static final String TAG = "TextViewCF"; 
+	//private static final String TAG = "TextViewCF"; 
 
         public TextViewCF(Context context) {
             super(context);

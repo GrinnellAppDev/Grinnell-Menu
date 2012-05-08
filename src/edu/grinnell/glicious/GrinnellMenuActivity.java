@@ -328,7 +328,7 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 		Log.i(UITHREAD, "updateMenu");
 		
 		/* Parse the JSON data. */
-		if (menu == null || menu.isEmpty())
+		if (menu == null || (menu.length() == 0))
 			setMenusNull();
 		else {
 			JSONObject jmenu = null;
@@ -621,14 +621,17 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 	/* Listener for Dialog onDismiss events -- used to swicth the visible menu
 	 * after the user selects a new menu from the available breakfast, lunch, 
 	 * dinner, or outtakes. */
+	/*
 	private class DismissListener implements DialogInterface.OnDismissListener {
 	
 		/* Repopulate the list when a the meal dialog is dismissed. */
+	/*
 		@Override
 		public void onDismiss(DialogInterface dialog) {
 			showToast(populateMenuView());
 		}
 	}
+	*/
 	
 	/* This class handles the tab-like behavior of the bottom buttons. */
 	private class menuButtonQuadListener implements OnClickListener {

@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <edu.grinnell.glicious.TextViewCF
   xmlns:android="http://schemas.android.com/apk/res/android"
-  xmlns:tvcf="http://schemas.android.com/apk/res/edu.grinnell.glicious" 
   
   android:id="@+id/venueBox" 
   android:layout_width="match_parent" 
   android:layout_height="wrap_content"
   android:textAppearance="?android:attr/textAppearanceLarge" 
-  android:textSize="24sp"
+  android:textSize="15sp"
   android:background="@drawable/venue_background"
 
   android:paddingLeft="	6dp"
@@ -17,6 +16,6 @@
   android:layout_marginLeft="10dp"
   
   android:textScaleX="1.17"
-  tvcf:customFont="Vivaldi_Italic.ttf"  
+  android:typeface="serif"
   >
 </edu.grinnell.glicious.TextViewCF>
