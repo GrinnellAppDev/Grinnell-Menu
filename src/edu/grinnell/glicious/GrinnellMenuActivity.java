@@ -647,7 +647,6 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 			
 			/* Otherwise, set the previously pressed button as not pressed
 			 * and 'press' the recently pressed button. */
-			//TODO: implement this, first try didn't work..		
 			
 			mState = buttonID;
 			
