@@ -388,7 +388,7 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 				String venueName = it.next();
 
 				/* ** TEMPORARY FIX for the Entrees category showing up.** */
-				if( venueName.trim().equalsIgnoreCase("ENTREES") )
+				if( mMealRequest != OUTTAKES && venueName.trim().equalsIgnoreCase("ENTREES") )
 					continue;
 				
 				map.put(VENUE,captializeWords(venueName));
