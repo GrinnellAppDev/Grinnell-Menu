@@ -129,8 +129,8 @@ public class GetMenuTask extends AsyncTask<Integer, Void, GetMenuTask.Result> {
 			br.close();
 			
 		} catch (FileNotFoundException ffe) {
-			Log.i(CACH, "No Cache file found.  " +
-					"One will be created on first data retrieval.");
+			//Log.i(CACH, "No Cache file found.  " +
+			//		"One will be created on first data retrieval.");
 			return null;
 		} catch (IOException e) {
 			Log.e(CACH, e.toString());
@@ -170,7 +170,7 @@ public class GetMenuTask extends AsyncTask<Integer, Void, GetMenuTask.Result> {
 		File[] oldFiles = dir.listFiles(new FilenameFilter() {
 			@Override
 			public boolean accept(File dir, String filename) {
-				Log.d(GetMenuTask.CACH, filename);
+				//Log.i(GetMenuTask.CACH, filename);
 				String splits[] = filename.split("\\.");
 				if (splits == null || splits.length == 0) return false;
 				String dateString = splits[0];
@@ -214,12 +214,12 @@ public class GetMenuTask extends AsyncTask<Integer, Void, GetMenuTask.Result> {
 		try {				
 			while (attempts < MAX_ATTEMPTS) {
 				
-				Log.i(HTTP, request);
+				//Log.i(HTTP, request);
 				HttpClient client = new DefaultHttpClient();
 				HttpPost post = new HttpPost(request);
 				
 				HttpResponse response = client.execute(post);
-				Log.i(HTTP, response.getStatusLine().toString());
+				//Log.i(HTTP, response.getStatusLine().toString());
 				// Make sure the result is okay.
 				if (response.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
 					r = EntityUtils.toString(response.getEntity());
@@ -229,8 +229,8 @@ public class GetMenuTask extends AsyncTask<Integer, Void, GetMenuTask.Result> {
 				attempts++;
 			}
 		} catch (IOException e) {
-			Log.i(HTTP, e.toString());
-			Log.i(HTTP, e.getMessage());
+			Log.e(HTTP, e.toString());
+			Log.e(HTTP, e.getMessage());
 		} catch (ParseException p) {
 			Log.e("ParseException", p.toString());} 
 		

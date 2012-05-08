@@ -225,7 +225,7 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 				mDinner 		= new JSONObject(savedInstanceState.getString(K_D));
 				mOuttakes 		= new JSONObject(savedInstanceState.getString(K_O));
 			} catch (JSONException je) {
-				Log.d(JSON, je.toString());
+				//Log.d(JSON, je.toString());
 				loadMenu();
 			} 
 		}	
@@ -283,7 +283,7 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 		public void onRetrieveData(Result result) {
 			switch(result.getCode()) {
 			case Result.SUCCESS:
-				Log.i(UITHREAD, "Menu successfully loaded!");
+				//Log.i(UITHREAD, "Menu successfully loaded!");
 				/* On SUCCESS the menu string should be parsed into JSONObjects
 				 * and the venues and entrees should be put into the list. */
 				mRequestedDate = mPendingDate;
@@ -291,15 +291,15 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 				showToast(populateMenuView());			
 				break;
 			case Result.NO_NETWORK:
-				Log.i(UITHREAD, "No network connection was available through which to retrieve the menu.");
+				//Log.i(UITHREAD, "No network connection was available through which to retrieve the menu.");
 				showDialog(Result.NO_NETWORK);
 				break;
 			case Result.NO_ROUTE:
-				Log.i(UITHREAD, "Could not find a route to the menu server through the available connections");
+				//Log.i(UITHREAD, "Could not find a route to the menu server through the available connections");
 				showToast(Result.NO_ROUTE);
 				break;
 			case Result.HTTP_ERROR:
-				Log.i(UITHREAD, "Bad HTTP response was recieved.");
+				//Log.i(UITHREAD, "Bad HTTP response was recieved.");
 				showToast(Result.HTTP_ERROR);
 			case Result.UNKNOWN:
 				Log.i(UITHREAD, "Unknown result in method 'onRetrieveDate'");
@@ -325,7 +325,7 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 	 * JSONObject representation of the menu.
 	 */
 	private void parseMenu(String menu) {
-		Log.i(UITHREAD, "updateMenu");
+		//Log.i(UITHREAD, "updateMenu");
 		
 		/* Parse the JSON data. */
 		if (menu == null || (menu.length() == 0))
@@ -359,7 +359,7 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 	private int populateMenuView() {
 		
 		JSONObject meal = menuFactory(mMealRequest);
-		Log.i(UITHREAD, "Populating list for: " + mMealString);
+		//Log.i(UITHREAD, "Populating list for: " + mMealString);
 		
 		/* Do no populate the list if there is no data to populate it with. */
 		if (meal == null || meal.length() == 0) {return Result.NO_MEAL_DATA;}
@@ -418,7 +418,7 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 		
 		/* Tell the list adapter to redraw the list since the content changed. */
 		mSELAdapter.notifyDataSetChanged();
-		Log.d(DEBUG, "ListAdapter set with new values.");
+		//Log.d(DEBUG, "ListAdapter set with new values.");
 		
 		/* Expand all groups if the user requests */
 		if (mExpAll)
@@ -525,27 +525,10 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 					mRequestedDate.get(Calendar.YEAR), 
 					mRequestedDate.get(Calendar.MONTH), 
 					mRequestedDate.get(Calendar.DAY_OF_MONTH));
-			/* Not used anymore. 
-		case R.id.expandAll:
-			builder = new AlertDialog.Builder(this);
-			builder.setTitle(R.string.menuSelectorTitle)
-				   .setItems(R.array.mealsForSelector, 
-							new DialogInterface.OnClickListener() {
-				@Override
-				public void onClick(DialogInterface dialog, int which) {
-					mMealRequest = which;
-					Log.i(DEBUG, "Item "+which+" selected.");					
-				}
-			});
-			Dialog selector = builder.create();
-			selector.setOnDismissListener(new DismissListener());
-			return selector;
-			*/
 			
 		}
 		
 		return super.onCreateDialog(id);
-		
 		
 	}
 	
