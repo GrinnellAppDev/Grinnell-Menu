@@ -194,6 +194,9 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 		/* Other settings */
 		mExpAll = mPrefs.getBoolean(EXP_ALL_KEY, false);
 		
+		/* Initialize the menus. */
+		setMenusNull();	
+		
 		mPendingDate = mRequestedDate = new GregorianCalendar();
 		
 		/* Calculate which meal (breakfast, lunch, dinner, or out-takes) should be
@@ -219,13 +222,20 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 			mPendingDate = mRequestedDate = new GregorianCalendar(year, month, day);
 			mMealRequest = meal;
 			// and load the old meal values
+			
+			String b = savedInstanceState.getString(K_B);
+			String l = savedInstanceState.getString(K_L);
+			String d = savedInstanceState.getString(K_D); 
+			String o = savedInstanceState.getString(K_O);
 			try {
-				mBreakfast 		= new JSONObject(savedInstanceState.getString(K_B));
-				mLunch 			= new JSONObject(savedInstanceState.getString(K_L));
-				mDinner 		= new JSONObject(savedInstanceState.getString(K_D));
-				mOuttakes 		= new JSONObject(savedInstanceState.getString(K_O));
+				mBreakfast 		= (b != null) ? new JSONObject(b) : new JSONObject();
+				mLunch 			= (l != null) ? new JSONObject(l) : new JSONObject();
+				mDinner 		= (d != null) ? new JSONObject(d) : new JSONObject();
+				mOuttakes 		= (o != null) ? new JSONObject(o) : new JSONObject();
+				populateMenuView();
 			} catch (JSONException je) {
-				//Log.d(JSON, je.toString());
+				//d(JSON, je.toString());
+				/* Load the menu from the nearest location. (Cache or Network) */
 				loadMenu();
 			} 
 		}	
@@ -243,12 +253,6 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 		b2.setOnClickListener(mButtonQuadListener);
 		b3.setOnClickListener(mButtonQuadListener);
 		b4.setOnClickListener(mButtonQuadListener);
-		
-
-		/* Initialize the menus. */
-		setMenusNull();	
-		/* Load the menu from the nearest location. (Cache or Network) */
-		loadMenu();
 	}
 	
 		
@@ -328,26 +332,28 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 		//Log.i(UITHREAD, "updateMenu");
 		
 		/* Parse the JSON data. */
-		if (menu == null || (menu.length() == 0))
+		if (menu == null || (menu.length() == 0)) {
 			setMenusNull();
-		else {
-			JSONObject jmenu = null;
+			return;
+		}
+
+		JSONObject jmenu = null;
+		try {
+			//Parse the menu to a JSON Object
+			jmenu 	= new JSONObject(menu);
+		} catch (JSONException je) {
+			Log.e(JSON, je.toString());
+		}
+		
+		if (jmenu != null) {
 			try {
-				//Parse the menu to a JSON Object
-				jmenu 	= new JSONObject(menu);
-				} catch (JSONException je) {
-				Log.e(JSON, je.toString());
-			}
-			
-			if (jmenu != null)
-				try {
-					//Parse retrieve the menus from the JSON Obeject
-					mLunch 		= jmenu.isNull("LUNCH") ? null : jmenu.getJSONObject("LUNCH");
-					mDinner 	= jmenu.isNull("DINNER") ? null : jmenu.getJSONObject("DINNER");
-					mBreakfast 	= jmenu.isNull("BREAKFAST") ? null : jmenu.getJSONObject("BREAKFAST");
-					mOuttakes 	= jmenu.isNull("OUTTAKES") ? null : jmenu.getJSONObject("OUTTAKES");
+				//Parse retrieve the menus from the JSON Object
+				mLunch 		= jmenu.isNull("LUNCH")  	? 	new JSONObject() : jmenu.getJSONObject("LUNCH");
+				mDinner 	= jmenu.isNull("DINNER") 	? 	new JSONObject() : jmenu.getJSONObject("DINNER");
+				mBreakfast 	= jmenu.isNull("BREAKFAST") ?	new JSONObject() : jmenu.getJSONObject("BREAKFAST");
+				mOuttakes 	= jmenu.isNull("OUTTAKES") 	? 	new JSONObject() : jmenu.getJSONObject("OUTTAKES");
 			} catch (JSONException je) {
-				Log.e(JSON, je.toString());
+			Log.e(JSON, je.toString());
 			}
 		}
 		return;
@@ -380,7 +386,11 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 				/* Add venues to the GroupList */
 				Map<String,String> map = new HashMap<String,String>();
 				String venueName = it.next();
-				//TODO: only capitalize first letter..			
+
+				/* ** TEMPORARY FIX for the Entrees category showing up.** */
+				if( venueName.trim().equalsIgnoreCase("ENTREES") )
+					continue;
+				
 				map.put(VENUE,captializeWords(venueName));
 				mGroupList.add(map);
 				
@@ -706,6 +716,9 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 	protected void onRestoreInstanceState(Bundle state) {
 		super.onRestoreInstanceState(state);
 		
+		/* Calculate which meal (breakfast, lunch, dinner, or out-takes) should be
+		 * shown based upon what time of day it is. Or, load the old menu information
+		 * if it exists*/	
 		int year = 0, month = -1, day = 0, meal = 0;
 		if (state != null && !state.isEmpty()) {
 			year 	= state.getInt(YEAR);
@@ -718,21 +731,28 @@ public class GrinnellMenuActivity extends ExpandableListActivity {
 		if (c.get(Calendar.YEAR) 	> year  || 
 			c.get(Calendar.MONTH) 	> month || 
 			c.get(Calendar.DAY_OF_MONTH) > day) {
-			mRequestedDate = c;
+			mPendingDate = mRequestedDate = c;
 			mMealRequest = calculateMeal(mRequestedDate.get(Calendar.HOUR_OF_DAY));
 			loadMenu();
 
 		} else { //or use the old date
-			mRequestedDate = new GregorianCalendar(year, month, day);
+			mPendingDate = mRequestedDate = new GregorianCalendar(year, month, day);
 			mMealRequest = meal;
 			// and load the old meal values
+			
+			String b = state.getString(K_B);
+			String l = state.getString(K_L);
+			String d = state.getString(K_D); 
+			String o = state.getString(K_O);
 			try {
-				mBreakfast 		= new JSONObject(state.getString(K_B));
-				mLunch 			= new JSONObject(state.getString(K_L));
-				mDinner 		= new JSONObject(state.getString(K_D));
-				mOuttakes 		= new JSONObject(state.getString(K_O));
+				mBreakfast 		= (b != null) ? new JSONObject(b) : new JSONObject();
+				mLunch 			= (l != null) ? new JSONObject(l) : new JSONObject();
+				mDinner 		= (d != null) ? new JSONObject(d) : new JSONObject();
+				mOuttakes 		= (o != null) ? new JSONObject(o) : new JSONObject();
+				populateMenuView();
 			} catch (JSONException je) {
-				Log.d(JSON, je.toString());
+				//d(JSON, je.toString());
+				/* Load the menu from the nearest location. (Cache or Network) */
 				loadMenu();
 			} 
 		}	
