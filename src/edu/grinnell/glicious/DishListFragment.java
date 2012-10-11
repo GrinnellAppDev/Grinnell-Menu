@@ -63,6 +63,7 @@ public class DishListFragment extends ListFragment {
     public static void refresh() {
     	for (String key : mInstances.keySet()) {
     		mInstances.get(key).mListAdapter.notifyDataSetChanged();
+    		Log.d("glic", "DishListFragment: " + key + " refreshed");
     	}
     	Log.d("glic", "DishListFragments refreshed");
     }
