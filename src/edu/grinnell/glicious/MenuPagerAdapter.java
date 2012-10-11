@@ -29,4 +29,9 @@ public class MenuPagerAdapter extends FragmentPagerAdapter {
 		return MenuContent.mMenuOrder.size();
 	}
 
+	@Override
+	public CharSequence getPageTitle(int position) {
+		return MenuContent.mMenuOrder.get(position);
+	}
+
 }
