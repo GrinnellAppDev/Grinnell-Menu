@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="edu.grinnell.glicious2"
+    package="edu.grinnell.glicious"
     android:versionCode="200"
     android:versionName="2.0" >
 

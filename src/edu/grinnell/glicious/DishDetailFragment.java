@@ -2,7 +2,7 @@ package edu.grinnell.glicious;
 
 import edu.grinnell.glicious.menucontent.Entree;
 import edu.grinnell.glicious.menucontent.MenuContent;
-import edu.grinnell.glicious2.R;
+import edu.grinnell.glicious.R;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;

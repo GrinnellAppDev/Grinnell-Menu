@@ -4,7 +4,7 @@ import android.content.Context;
 import android.view.Gravity;
 import android.widget.Toast;
 import edu.grinnell.glicious.menucontent.GetMenuTask.Result;
-import edu.grinnell.glicious2.R;
+import edu.grinnell.glicious.R;
 
 public class Utility {
 	

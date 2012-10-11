@@ -7,7 +7,7 @@ import edu.grinnell.glicious.menucontent.GetMenuTask;
 import edu.grinnell.glicious.menucontent.MenuContent;
 import edu.grinnell.glicious.menucontent.GetMenuTask.Result;
 import edu.grinnell.glicious.menucontent.GetMenuTask.RetrieveDataListener;
-import edu.grinnell.glicious2.R;
+import edu.grinnell.glicious.R;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;

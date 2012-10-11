@@ -15,7 +15,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import edu.grinnell.glicious.menucontent.Entree;
 import edu.grinnell.glicious.menucontent.MenuContent;
-import edu.grinnell.glicious2.R;
+import edu.grinnell.glicious.R;
 
 public class DishListFragment extends ListFragment {
 	
