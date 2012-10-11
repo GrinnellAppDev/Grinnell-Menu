@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import android.app.Activity;
+import android.graphics.drawable.Drawable.Callback;
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
 import android.util.Log;
@@ -28,11 +29,16 @@ public class DishListFragment extends ListFragment {
     public interface Callbacks {
 
         public void onItemSelected(String id);
+        public void setListActivateState();
     }
 
     private static Callbacks sDummyCallbacks = new Callbacks() {
         @Override
         public void onItemSelected(String id) {
+        }
+        @Override
+        public void setListActivateState() {
+        	
         }
     };
 
@@ -109,6 +115,7 @@ public class DishListFragment extends ListFragment {
             setActivatedPosition(savedInstanceState.getInt(STATE_ACTIVATED_POSITION));
         }
         setListAdapter(mListAdapter);
+        mCallbacks.setListActivateState();
     }
 
     @Override

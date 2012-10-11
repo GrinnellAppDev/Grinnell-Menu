@@ -55,16 +55,19 @@ public class DishListActivity extends FragmentActivity
         
         if (findViewById(R.id.dish_detail_container) != null) {
             mTwoPane = true;
-            
-            //((DishListFragment) mMenuPagerAdapter.getItem(mMenuPager.getCurrentItem()))
-            //.setActivateOnItemClick(true);
-        	
         }
         
         // Get a reference to the preferences class..
         mGPrefs 	= new GliciousPrefs(this);
     }
 
+    public void setListActivateState() {
+    	if (mTwoPane) {
+    		((DishListFragment) mMenuPagerAdapter.getItem(mMenuPager.getCurrentItem()))
+    		.setActivateOnItemClick(true);
+    	}
+    }
+    
     @Override
     public void onItemSelected(String id) {
         if (mTwoPane) {
