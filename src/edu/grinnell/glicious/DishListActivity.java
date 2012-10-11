@@ -56,8 +56,8 @@ public class DishListActivity extends FragmentActivity
         if (findViewById(R.id.dish_detail_container) != null) {
             mTwoPane = true;
             
-            ((DishListFragment) mMenuPagerAdapter.getItem(mMenuPager.getCurrentItem()))
-            .setActivateOnItemClick(true);
+            //((DishListFragment) mMenuPagerAdapter.getItem(mMenuPager.getCurrentItem()))
+            //.setActivateOnItemClick(true);
         	
         }
         

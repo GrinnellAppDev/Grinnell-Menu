@@ -104,6 +104,8 @@ public class MenuContent {
     	
     	Assert.assertNotNull(mMenuData);
     	// Clear out the old data..
+    	//for ( String meal : mMealsMap.keySet() )
+    	//	mMealsMap.get(meal).clear();
     	mMealsMap.clear();
     	mDishesMap.clear();
     	mMenuOrder.clear();
@@ -121,7 +123,7 @@ public class MenuContent {
     		if (meal == null || menu.trim().toLowerCase().contains("passover") ) 
     			continue;
     		// --
-    		Log.i("populateMealTable: ", meal.toString());
+    		//Log.i("populateMealTable: ", meal.toString());
     		//Assert.assertNotNull(meal);
     		
     		

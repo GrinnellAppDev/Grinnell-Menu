@@ -68,6 +68,13 @@ public class DishListFragment extends ListFragment {
     	Log.d("glic", "DishListFragments refreshed");
     }
     
+    public static void clearAdapters() {
+    	for (String key : mInstances.keySet()) {
+    		mInstances.get(key).mListAdapter.clear();
+    		Log.d("glic", "DishListFragment: " + key + " cleared");
+    	}
+    	Log.d("glic", "DishListFragments cleared");
+    }
     
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -123,6 +130,12 @@ public class DishListFragment extends ListFragment {
     public void onDetach() {
         super.onDetach();
         mCallbacks = sDummyCallbacks;
+    }
+    
+    @Override
+    public void onDestroy() {
+    	mInstances.remove(mMenuKey);
+    	super.onDestroy();
     }
 
     @Override
