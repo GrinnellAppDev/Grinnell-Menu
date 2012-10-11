@@ -1,10 +1,10 @@
-package edu.grinnell.glicious2;
+package edu.grinnell.glicious;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.util.Log;
-import edu.grinnell.glicious2.menucontent.MenuContent;
+import edu.grinnell.glicious.menucontent.MenuContent;
 
 public class MenuPagerAdapter extends FragmentPagerAdapter {
 

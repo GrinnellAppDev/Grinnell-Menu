@@ -1,4 +1,4 @@
-package edu.grinnell.glicious2.menucontent;
+package edu.grinnell.glicious.menucontent;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;

@@ -1,10 +1,10 @@
-package edu.grinnell.glicious2;
+package edu.grinnell.glicious;
 
 import android.content.Context;
 import android.view.Gravity;
 import android.widget.Toast;
+import edu.grinnell.glicious.menucontent.GetMenuTask.Result;
 import edu.grinnell.glicious2.R;
-import edu.grinnell.glicious2.menucontent.GetMenuTask.Result;
 
 public class Utility {
 	

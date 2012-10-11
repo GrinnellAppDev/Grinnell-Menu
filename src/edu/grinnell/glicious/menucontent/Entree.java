@@ -1,4 +1,4 @@
-package edu.grinnell.glicious2.menucontent;
+package edu.grinnell.glicious.menucontent;
 
 import org.json.JSONObject;
 

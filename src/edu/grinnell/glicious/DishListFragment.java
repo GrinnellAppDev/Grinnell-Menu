@@ -1,4 +1,4 @@
-package edu.grinnell.glicious2;
+package edu.grinnell.glicious;
 
 import java.util.HashMap;
 import java.util.List;
@@ -13,8 +13,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import edu.grinnell.glicious2.menucontent.Entree;
-import edu.grinnell.glicious2.menucontent.MenuContent;
+import edu.grinnell.glicious.menucontent.Entree;
+import edu.grinnell.glicious.menucontent.MenuContent;
+import edu.grinnell.glicious2.R;
 
 public class DishListFragment extends ListFragment {
 	

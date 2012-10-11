@@ -1,4 +1,4 @@
-package edu.grinnell.glicious2;
+package edu.grinnell.glicious;
 
 import android.content.Context;
 import android.content.SharedPreferences;

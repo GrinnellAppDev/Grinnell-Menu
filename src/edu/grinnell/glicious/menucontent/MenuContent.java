@@ -1,4 +1,4 @@
-package edu.grinnell.glicious2.menucontent;
+package edu.grinnell.glicious.menucontent;
 
 import java.util.ArrayList;
 import java.util.HashMap;

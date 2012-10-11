@@ -1,12 +1,13 @@
-package edu.grinnell.glicious2;
+package edu.grinnell.glicious;
 
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
-import edu.grinnell.glicious2.menucontent.GetMenuTask;
-import edu.grinnell.glicious2.menucontent.MenuContent;
-import edu.grinnell.glicious2.menucontent.GetMenuTask.Result;
-import edu.grinnell.glicious2.menucontent.GetMenuTask.RetrieveDataListener;
+import edu.grinnell.glicious.menucontent.GetMenuTask;
+import edu.grinnell.glicious.menucontent.MenuContent;
+import edu.grinnell.glicious.menucontent.GetMenuTask.Result;
+import edu.grinnell.glicious.menucontent.GetMenuTask.RetrieveDataListener;
+import edu.grinnell.glicious2.R;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
