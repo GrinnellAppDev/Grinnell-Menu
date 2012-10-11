@@ -31,7 +31,7 @@ public class MenuPagerAdapter extends FragmentPagerAdapter {
 
 	@Override
 	public CharSequence getPageTitle(int position) {
-		return MenuContent.mMenuOrder.get(position);
+		return Utility.captializeWords( MenuContent.mMenuOrder.get(position) );
 	}
 
 }

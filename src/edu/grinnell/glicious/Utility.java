@@ -8,7 +8,18 @@ import edu.grinnell.glicious.R;
 
 public class Utility {
 	
-	
+	public static String captializeWords(String s) {
+        String[] words = s.split(" ");
+        StringBuilder sb = new StringBuilder();
+        for(int i = 0; i < words.length; i++) {
+                sb.append(words[i].substring(0, 1).toUpperCase())
+                  .append(words[i].substring(1).toLowerCase());
+
+                if (i != words.length - 1)
+                        sb.append(" ");
+        }
+        return sb.toString();
+	}
 	
 	
 	public static void showToast(Context c, int message) {
