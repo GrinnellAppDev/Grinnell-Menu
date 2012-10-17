@@ -137,8 +137,8 @@ public class GetMenuTask extends AsyncTask<Integer, Void, GetMenuTask.Result> {
 			br.close();
 			
 		} catch (FileNotFoundException ffe) {
-			//Log.i(CACH, "No Cache file found.  " +
-			//		"One will be created on first data retrieval.");
+			Log.i(CACH, "No Cache file found.  " +
+					"One will be created on first data retrieval.");
 			return null;
 		} catch (IOException e) {
 			Log.e(CACH, e.toString());

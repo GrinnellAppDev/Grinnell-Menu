@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Map;
 
 import android.app.Activity;
-import android.graphics.drawable.Drawable.Callback;
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
 import android.util.Log;
@@ -86,6 +85,8 @@ public class DishListFragment extends ListFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         
+        setRetainInstance(true);
+        
         mMenuKey = getArguments().getString(MENU);
         Log.d("GLIC", mMenuKey);
         
@@ -106,6 +107,20 @@ public class DishListFragment extends ListFragment {
     	return inflater.inflate(R.layout.fragment_dish_list, container, false);
     }
     
+    @Override
+    public void onStart() {
+    	super.onStart();
+    	setListAdapter(mListAdapter);
+    	mCallbacks.setListActivateState();
+    	
+    }
+    
+    @Override
+    public void onActivityCreated(Bundle ofJoy) {
+    	super.onActivityCreated(ofJoy);
+    	//setListAdapter(mListAdapter);
+    	//mCallbacks.setListActivateState();
+    }
     
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
@@ -114,8 +129,8 @@ public class DishListFragment extends ListFragment {
                 .containsKey(STATE_ACTIVATED_POSITION)) {
             setActivatedPosition(savedInstanceState.getInt(STATE_ACTIVATED_POSITION));
         }
-        setListAdapter(mListAdapter);
-        mCallbacks.setListActivateState();
+        //setListAdapter(mListAdapter);
+        //mCallbacks.setListActivateState();
     }
 
     @Override

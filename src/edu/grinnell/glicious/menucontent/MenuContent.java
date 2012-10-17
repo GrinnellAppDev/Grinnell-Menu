@@ -192,6 +192,10 @@ public class MenuContent {
     	return mMealsMap.get(key);
     }
     
+    public JSONObject getJSONData() {
+    	return mMenuData;
+    }
+    
  }
 
 

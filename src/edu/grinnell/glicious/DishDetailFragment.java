@@ -23,6 +23,9 @@ public class DishDetailFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        
+        setRetainInstance(true);
+        
         if (getArguments().containsKey(ARG_ENTREE_ID)) {
             mDish = MenuContent.mDishesMap.get(getArguments().getString(ARG_ENTREE_ID));
         }

@@ -34,14 +34,16 @@ public class DishListActivity extends FragmentActivity
     private MenuPagerAdapter	mMenuPagerAdapter;
     
     /* Debug Tags */
-	public static final String 					JSON 	= "JSON Parsing";
-	public static final String 					UITHREAD = "GrinnellMenu UI";
-	public static final String 					DEBUG 	= "Print";
+	public static final String 		JSON 	= "JSON Parsing";
+	public static final String 		UITHREAD = "GrinnellMenu UI";
+	public static final String 		DEBUG 	= "Generic Debug";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dish_list);
+        
+        
         
         // Asynchronously load the menu data from nearest location (cache or server)..
         mPendingDate = new GregorianCalendar();
@@ -58,7 +60,7 @@ public class DishListActivity extends FragmentActivity
         }
         
         // Get a reference to the preferences class..
-        mGPrefs 	= new GliciousPrefs(this);
+        mGPrefs = new GliciousPrefs(this);
     }
 
     public void setListActivateState() {
