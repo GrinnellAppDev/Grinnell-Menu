@@ -62,7 +62,6 @@ public class DishListFragment extends ListFragment {
     		mInstances.put(menuKey, dlf);
     		return dlf;
     	}
-    	
     }
     
     public static void refresh() {

@@ -8,6 +8,7 @@ import edu.grinnell.glicious.menucontent.MenuContent;
 import edu.grinnell.glicious.menucontent.GetMenuTask.Result;
 import edu.grinnell.glicious.menucontent.GetMenuTask.RetrieveDataListener;
 import edu.grinnell.glicious.R;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -33,11 +34,16 @@ public class DishListActivity extends FragmentActivity
     private ViewPager 			mMenuPager;
     private MenuPagerAdapter	mMenuPagerAdapter;
     
+    private Object foo;
+    
     /* Debug Tags */
-	public static final String 		JSON 	= "JSON Parsing";
-	public static final String 		UITHREAD = "GrinnellMenu UI";
-	public static final String 		DEBUG 	= "Generic Debug";
+	public static final String 		JSON 		= "JSON Parsing";
+	public static final String 		UITHREAD 	= "glic dla UI";
+	public static final String 		DEBUG 		= "Generic Debug";
 
+	/* Request codes: */
+	public static final int DIETARY_PREFS 	= 2;
+	
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,19 +51,20 @@ public class DishListActivity extends FragmentActivity
         
         
         
-        // Asynchronously load the menu data from nearest location (cache or server)..
-        mPendingDate = new GregorianCalendar();
-        loadMenu(this, mPendingDate, new GetMenuTaskListener(this));
-
         // Obtain a reference to the pager..
         mMenuPager = (ViewPager) findViewById(R.id.menu_pager);
         mMenuPagerAdapter = new MenuPagerAdapter(getSupportFragmentManager());
         mMenuPager.setAdapter(mMenuPagerAdapter);
         
+        // Asynchronously load the menu data from nearest location (cache or server)..
+        mPendingDate = new GregorianCalendar();
+        loadMenu(this, mPendingDate, new GetMenuTaskListener(this));
         
         if (findViewById(R.id.dish_detail_container) != null) {
             mTwoPane = true;
         }
+        
+        
         
         // Get a reference to the preferences class..
         mGPrefs = new GliciousPrefs(this);
@@ -144,6 +151,18 @@ public class DishListActivity extends FragmentActivity
 		}
 	}	
 	
+	@Override
+	public void onActivityResult(int requestCode, int resultCode, Intent intent) {
+		
+		if(resultCode == Activity.RESULT_OK) {
+		switch (requestCode) {
+		case DIETARY_PREFS:
+			MenuContent.refresh();
+			break;	
+			}
+		}
+	}
+
 	
 	@Override
 	public void onDestroy() {
