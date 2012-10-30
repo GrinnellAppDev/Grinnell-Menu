@@ -45,18 +45,6 @@ public class MenuContent {
 		MEALINDEX.put(OUTTAKES, 3);
 		
 		// Create a default list..
-		List<Entree> dummyList = new ArrayList<Entree>();
-		Entree e = new Entree("dummy 1", "dummy 1",Entree.VENUENTREE);
-		Entree f = new Entree("dummy 2", "dummy 2",Entree.DISHENTREE);
-		Entree g = new Entree("dummy 3", "dummy 3",Entree.DISHENTREE);
-		mDishesMap.put(e.id, e);
-		mDishesMap.put(f.id, f);
-		mDishesMap.put(g.id, g);
-		dummyList.add(e);
-		dummyList.add(f);
-		dummyList.add(g);
-		mMealsMap.put(BREAKFAST, dummyList);
-		mMenuOrder.add(MEALINDEX.get(BREAKFAST), BREAKFAST);
 	}
 	
     

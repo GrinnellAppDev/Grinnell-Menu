@@ -9,10 +9,15 @@ import edu.grinnell.glicious.menucontent.GetMenuTask.Result;
 import edu.grinnell.glicious.menucontent.GetMenuTask.RetrieveDataListener;
 import edu.grinnell.glicious.R;
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.app.AlertDialog;
+import android.app.AlertDialog.Builder;
+import android.content.DialogInterface;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.NavUtils;
 import android.support.v4.view.ViewPager;
@@ -34,7 +39,6 @@ public class DishListActivity extends FragmentActivity
     private ViewPager 			mMenuPager;
     private MenuPagerAdapter	mMenuPagerAdapter;
     
-    private Object foo;
     
     /* Debug Tags */
 	public static final String 		JSON 		= "JSON Parsing";
@@ -43,6 +47,7 @@ public class DishListActivity extends FragmentActivity
 
 	/* Request codes: */
 	public static final int DIETARY_PREFS 	= 2;
+	public static final int NETWORK_SETTINGS = 3;
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -132,9 +137,12 @@ public class DishListActivity extends FragmentActivity
 				MenuContent.setMenuData(result.getValue());
 				DishListFragment.refresh();
 				mMenuPagerAdapter.notifyDataSetChanged();
+				
 				break;
 			case Result.NO_NETWORK:
 				Log.i(UITHREAD, "No network connection was available through which to retrieve the menu.");
+				DialogFragment df = new NoNetworkDialogFragment();
+				df.show(getSupportFragmentManager(), "network:dialog");
 				//showDialog(Result.NO_NETWORK);
 				break;
 			case Result.NO_ROUTE:
@@ -151,6 +159,33 @@ public class DishListActivity extends FragmentActivity
 		}
 	}	
 	
+	
+	public static class NoNetworkDialogFragment extends DialogFragment {
+	    @Override
+	    public Dialog onCreateDialog(Bundle savedInstanceState) {
+	        // Use the Builder class for convenient dialog construction
+	    	AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+			builder.setMessage(R.string.noNetworkMessage)
+				   .setPositiveButton(R.string.settings,
+						   new DialogInterface.OnClickListener() {
+					   @Override
+					   public void onClick(DialogInterface dialog, int which) {
+						   startActivityForResult(
+							new Intent(android.provider.Settings.ACTION_WIRELESS_SETTINGS),
+							DishListActivity.NETWORK_SETTINGS);
+					   }
+				   }).setNegativeButton(R.string.exit,
+						   new DialogInterface.OnClickListener() {
+							
+							@Override
+							public void onClick(DialogInterface dialog, int which) {
+								getActivity().finish();
+							}
+						});
+			return builder.create();
+	    }
+	}
+	
 	@Override
 	public void onActivityResult(int requestCode, int resultCode, Intent intent) {
 		
@@ -159,6 +194,8 @@ public class DishListActivity extends FragmentActivity
 		case DIETARY_PREFS:
 			MenuContent.refresh();
 			break;	
+		case NETWORK_SETTINGS:
+			loadMenu(this, mPendingDate, new GetMenuTaskListener(this));
 			}
 		}
 	}

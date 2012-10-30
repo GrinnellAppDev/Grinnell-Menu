@@ -5,11 +5,6 @@
     <string name="title_dish_list">Dishes</string>
 
     <string name="title">G-licious</string>
-    <string name="dinner">Dinner</string>
-    <string name="lunch">Lunch</string>
-    <string name="breakfast">Breakfast</string>
-    <string name="outtakes">Outtakes</string>
-    <string name="empty">Empty</string>
 	
     <string name="settingstitle">Filters and Settings</string>
     <string name="refresh">Refresh</string>
@@ -21,19 +16,13 @@
     <string name="ovolactoprefsummary">Also show items safe for a vegetarian diet.</string>
     <string name="veganprefsummary">Show only items safe for a vegan diet.</string>
     
-    <string name="miscpref">Other Settings</string>
-    <string name="expandpref">Expanded Menu</string>
-    <string name="expandprefsummary">Always expand each venue when viewing.</string>
-	
-	
-    <string name="laurelLeaf">Laurel Leaf</string>
-    
     <string name="noNetworkMessage">No network connection could be established.  Please make sure Airplane Mode is OFF and your Data/Network connection is turned ON.</string>
-    <string name="okay">Okay</string>
+    <string name="settings">Settings</string>
     <string name="noRoute">The meal server could not be reached.  Please try again later.</string>
     <string name="httpError">Unable to retrieve any menu data.  Please try again later.</string>
     <string name="noMealContent">No information is available for this meal.  No breakfast on Sundays.  No outtakes on the weekends.</string>
     <string name="pleaseTryAgain">Please try again later.</string>
+    <string name="exit">Exit</string>
     
     
 </resources>

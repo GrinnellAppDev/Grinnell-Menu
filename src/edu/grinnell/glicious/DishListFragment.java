@@ -52,26 +52,32 @@ public class DishListFragment extends ListFragment {
     
 
     public static DishListFragment getInstance(String menuKey) {
-    	if (mInstances.containsKey(menuKey)) {
-    		return mInstances.get(menuKey);
-    	} else {
+    	//if (mInstances.containsKey(menuKey)) {
+    		//return mInstances.get(menuKey);
+    	//} else {
     		Bundle b = new Bundle();
     		b.putString(MENU, menuKey);
     		DishListFragment dlf = new DishListFragment();
     		dlf.setArguments(b);
     		mInstances.put(menuKey, dlf);
     		return dlf;
-    	}
+    	//}
     }
     
+    
     public static void refresh() {
+    	
+    	
     	for (String key : mInstances.keySet()) {
     		mInstances.get(key).mListAdapter.notifyDataSetChanged();
     		Log.d("glic", "DishListFragment: " + key + " refreshed");
     	}
+    	
     	Log.d("glic", "DishListFragments refreshed");
+    	
     }
     
+    /*
     public static void clearAdapters() {
     	for (String key : mInstances.keySet()) {
     		mInstances.get(key).mListAdapter.clear();
@@ -79,7 +85,7 @@ public class DishListFragment extends ListFragment {
     	}
     	Log.d("glic", "DishListFragments cleared");
     }
-    
+    */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -155,7 +161,7 @@ public class DishListFragment extends ListFragment {
     
     @Override
     public void onDestroy() {
-    	mInstances.remove(mMenuKey);
+    	//mInstances.remove(mMenuKey);
     	super.onDestroy();
     }
 
