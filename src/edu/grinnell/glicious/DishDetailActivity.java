@@ -31,7 +31,11 @@ public class DishDetailActivity extends FragmentActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
-            NavUtils.navigateUpTo(this, new Intent(this, DishListActivity.class));
+        	
+        	Intent upIntent = new Intent(this, DishListActivity.class);
+        	upIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+            NavUtils.navigateUpTo(this, upIntent);
+            
             return true;
         }
 
