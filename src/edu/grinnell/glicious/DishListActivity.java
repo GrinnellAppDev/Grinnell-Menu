@@ -53,6 +53,9 @@ public class DishListActivity extends FragmentActivity
 	public static final int PREFS 	= 2;
 	public static final int NETWORK = 3;
 	
+	/* Intent Keys */
+	public static final String REFRESH = "refresh";
+	
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -78,6 +81,19 @@ public class DishListActivity extends FragmentActivity
         
         
         
+    }
+    
+    @Override
+    public void onNewIntent(Intent incoming) {
+    	super.onNewIntent(incoming);
+    	Log.i(DEBUG, "onNewIntent called");
+    	
+    	if (incoming.getBooleanExtra(REFRESH, false)) {
+    		GliciousPrefs.refresh();
+    		MenuContent.refresh();
+    		refreshPager();
+    	}
+    	
     }
 
     public void setListActivateState() {
@@ -121,6 +137,7 @@ public class DishListActivity extends FragmentActivity
 									pending.get(Calendar.YEAR) );
 	}
 	
+	
 	/* GetMenuTask handles acquiring the menu from either the local cache or the
 	 * web server.  An instance of this listener is passed to GetMenuTask so that
 	 * the proper methods can be called (by the UI thread and not the separate 
@@ -144,8 +161,7 @@ public class DishListActivity extends FragmentActivity
 				 * and the venues and entrees should be put into the list. */
 				mRequestedDate = mPendingDate;
 				MenuContent.setMenuData(result.getValue());
-				DishListFragment.refresh();
-				mMenuPagerAdapter.notifyDataSetChanged();
+				refreshPager();
 				
 				break;
 			case Result.NO_NETWORK:
@@ -201,9 +217,10 @@ public class DishListActivity extends FragmentActivity
 		if(resultCode == Activity.RESULT_OK) {
 		switch (requestCode) {
 		case PREFS:
+			Log.i(UITHREAD, "prefs result");
+			GliciousPrefs.refresh();
 			MenuContent.refresh();
-			DishListFragment.refresh();
-			mMenuPagerAdapter.notifyDataSetChanged();
+			refreshPager();
 			break;	
 		case NETWORK:
 			refreshMenu(this, mPendingDate, new GetMenuTaskListener(this), true);
@@ -211,6 +228,13 @@ public class DishListActivity extends FragmentActivity
 		}
 	}
 
+	public void refreshPager() {
+		
+		
+		DishListFragment.refresh();
+		mMenuPagerAdapter.notifyDataSetChanged();
+	}
+	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 	    getMenuInflater().inflate(R.menu.menu_bar, menu);

@@ -21,6 +21,7 @@ public class DishListFragment extends ListFragment {
 	
     private static final String STATE_ACTIVATED_POSITION = "activated_position";
     private static final String MENU = "menu";
+    private static final String DLF = "DishListFragment";
 
     private Callbacks mCallbacks = sDummyCallbacks;
     private int mActivatedPosition = ListView.INVALID_POSITION;
@@ -70,10 +71,10 @@ public class DishListFragment extends ListFragment {
     	
     	for (String key : mInstances.keySet()) {
     		mInstances.get(key).mListAdapter.notifyDataSetChanged();
-    		Log.d("glic", "DishListFragment: " + key + " refreshed");
+    		Log.d(DLF, "DishListFragment: " + key + " refreshed");
     	}
     	
-    	Log.d("glic", "DishListFragments refreshed");
+    	Log.d(DLF, "DishListFragments refreshed");
     	
     }
     
@@ -81,11 +82,23 @@ public class DishListFragment extends ListFragment {
     public static void clearAdapters() {
     	for (String key : mInstances.keySet()) {
     		mInstances.get(key).mListAdapter.clear();
-    		Log.d("glic", "DishListFragment: " + key + " cleared");
+    		Log.d(DLF, "DishListFragment: " + key + " cleared");
     	}
-    	Log.d("glic", "DishListFragments cleared");
+    	Log.d(DLF, "DishListFragments cleared");
     }
     */
+    
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        if (!(activity instanceof Callbacks)) {
+            throw new IllegalStateException("Activity must implement fragment's callbacks.");
+        }
+        mCallbacks = (Callbacks) activity;
+    }
+        
+        
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -93,7 +106,7 @@ public class DishListFragment extends ListFragment {
         setRetainInstance(true);
         
         mMenuKey = getArguments().getString(MENU);
-        Log.d("GLIC", mMenuKey);
+        Log.d(DLF, mMenuKey);
         
         mMenuList = MenuContent.mMealsMap.get(mMenuKey);
         
@@ -115,9 +128,6 @@ public class DishListFragment extends ListFragment {
     @Override
     public void onStart() {
     	super.onStart();
-    	setListAdapter(mListAdapter);
-    	mCallbacks.setListActivateState();
-    	
     }
     
     @Override
@@ -132,25 +142,25 @@ public class DishListFragment extends ListFragment {
         super.onViewCreated(view, savedInstanceState);
         if (savedInstanceState != null && savedInstanceState
                 .containsKey(STATE_ACTIVATED_POSITION)) {
-            setActivatedPosition(savedInstanceState.getInt(STATE_ACTIVATED_POSITION));
+            //setActivatedPosition(savedInstanceState.getInt(STATE_ACTIVATED_POSITION));
         }
+        
         //setListAdapter(mListAdapter);
-        //mCallbacks.setListActivateState();
-    }
-
-    @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-        if (!(activity instanceof Callbacks)) {
-            throw new IllegalStateException("Activity must implement fragment's callbacks.");
-        }
-
-        mCallbacks = (Callbacks) activity;
+    	//mCallbacks.setListActivateState();
     }
 
     @Override
     public void onResume() {
     	super.onResume();
+    	setListAdapter(mListAdapter);
+    }
+    
+    public static void doSetListAdapter() {
+    	for (String instance : mInstances.keySet()) {
+    		DishListFragment dlf = mInstances.get(instance);
+    		dlf.setListAdapter(dlf.mListAdapter);
+    	}
+    	
     }
     
     @Override

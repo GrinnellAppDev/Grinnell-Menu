@@ -2,7 +2,7 @@
 
     <string name="app_name">G-licious</string>
     <string name="title_dish_detail">Dish Information</string>
-    <string name="title_dish_list">Dishes</string>
+    <string name="title_menu">Menu</string>
     
     <string name="menu_date">Select Date</string>
 
