@@ -7,7 +7,7 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import android.util.Log;
 import edu.grinnell.glicious.menucontent.MenuContent;
 
-public class MenuPagerAdapter extends FragmentPagerAdapter {
+public class MenuPagerAdapter extends FragmentStatePagerAdapter {
 
 	
 	
