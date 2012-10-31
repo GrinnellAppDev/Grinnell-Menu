@@ -13,6 +13,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import edu.grinnell.glicious.GliciousPrefs;
+
 import android.util.Log;
 
 public class MenuContent {
@@ -159,17 +161,18 @@ public class MenuContent {
     		if (venue.optJSONObject(i) != null) {
     			Entree e = new Entree(venue.optJSONObject(i), Entree.DISHENTREE );
     			
-    			/* TODO: finish..
-    			if ((!mFilterVegan ) 				||						//allow all
-					( itemVegan.equals("true") ) 	|| 						//allow vegan
-					( mFilterOvolacto && (itemOvolacto.equals("true"))) ) 	//allow vegetarian
-    			*/
     			
-    			// Add entree to the list
-    			venueList.add(e);
+    			if ((!GliciousPrefs.mFilterVegan ) 	||		//allow all
+    									( e.vegan ) || 		//allow vegan
+					( GliciousPrefs.mFilterOvolacto && e.ovolacto )) { //allow vegetarian
+    				// Add entree to the list
+        			venueList.add(e);
+        			// Add to the entree to the entree map..
+        			mDishesMap.put(e.id, e);
+    			}
+    				
     			
-    			// Add to the entree to the entree map..
-    			mDishesMap.put(e.id, e);
+    			
     		}
     	}
     	

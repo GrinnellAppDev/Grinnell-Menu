@@ -34,6 +34,12 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".DishListActivity" />
         </activity>
+        
+        <activity android:name=".PrefActiv"
+                  android:theme="@android:style/Theme.NoTitleBar"
+                  >
+        </activity>
+        
     </application>
 
 </manifest>

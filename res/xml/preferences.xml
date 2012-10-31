@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+        <PreferenceCategory
+                android:title="@string/dietconst">
+                <CheckBoxPreference
+                        android:title="@string/veganpref"
+                        android:defaultValue="false"      
+                        android:summary="@string/veganprefsummary"
+                        android:key="filtervegan" />
+                <CheckBoxPreference
+                        android:title="@string/ovolactopref"
+                        android:defaultValue="false"
+                        android:summary="@string/ovolactoprefsummary"
+                        android:key="filterovolacto" 
+                        android:dependency="filtervegan" />
+        </PreferenceCategory>
+</PreferenceScreen>

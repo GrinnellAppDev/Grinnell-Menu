@@ -14,9 +14,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.support.v4.app.DialogFragment;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.NavUtils;
 import android.support.v4.view.ViewPager;
@@ -48,15 +50,17 @@ public class DishListActivity extends FragmentActivity
 	public static final String 		DEBUG 		= "Generic Debug";
 
 	/* Request codes: */
-	public static final int DIETARY_PREFS 	= 2;
-	public static final int NETWORK_SETTINGS = 3;
+	public static final int PREFS 	= 2;
+	public static final int NETWORK = 3;
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dish_list);
-        
-        
+        // Set default preferences..
+        PreferenceManager.setDefaultValues(this, R.xml.preferences, false);
+        // Get a reference to the preferences class..
+        mGPrefs = new GliciousPrefs(this);
         
         // Obtain a reference to the pager..
         mMenuPager = (ViewPager) findViewById(R.id.menu_pager);
@@ -73,8 +77,7 @@ public class DishListActivity extends FragmentActivity
         
         
         
-        // Get a reference to the preferences class..
-        mGPrefs = new GliciousPrefs(this);
+        
     }
 
     public void setListActivateState() {
@@ -178,7 +181,7 @@ public class DishListActivity extends FragmentActivity
 					   public void onClick(DialogInterface dialog, int which) {
 						   startActivityForResult(
 							new Intent(android.provider.Settings.ACTION_WIRELESS_SETTINGS),
-							DishListActivity.NETWORK_SETTINGS);
+							DishListActivity.NETWORK);
 					   }
 				   }).setNegativeButton(R.string.exit,
 						   new DialogInterface.OnClickListener() {
@@ -197,10 +200,12 @@ public class DishListActivity extends FragmentActivity
 		
 		if(resultCode == Activity.RESULT_OK) {
 		switch (requestCode) {
-		case DIETARY_PREFS:
+		case PREFS:
 			MenuContent.refresh();
+			DishListFragment.refresh();
+			mMenuPagerAdapter.notifyDataSetChanged();
 			break;	
-		case NETWORK_SETTINGS:
+		case NETWORK:
 			refreshMenu(this, mPendingDate, new GetMenuTaskListener(this), true);
 			}
 		}
@@ -225,6 +230,8 @@ public class DishListActivity extends FragmentActivity
 			//TODO: select date
 			break;
 		case R.id.settings:
+			// Display the fragment as the main content.
+			startActivityForResult(new Intent(this, PrefActiv.class), PREFS);
 			//TODO: start pref fragment
 		
 		
