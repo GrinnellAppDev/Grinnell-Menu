@@ -61,6 +61,6 @@ public class NutritionListAdapter extends ArrayAdapter<NutritionListAdapter.Labe
 			holder.amount.setText(l.amount);
 		}
 		
-		return null;
+		return convertView;
 	}
 }

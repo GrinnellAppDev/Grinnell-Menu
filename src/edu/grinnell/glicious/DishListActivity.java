@@ -3,6 +3,7 @@ package edu.grinnell.glicious;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
+import edu.grinnell.glicious.menucontent.Entree;
 import edu.grinnell.glicious.menucontent.GetMenuTask;
 import edu.grinnell.glicious.menucontent.MenuContent;
 import edu.grinnell.glicious.menucontent.GetMenuTask.Result;
@@ -105,6 +106,11 @@ public class DishListActivity extends FragmentActivity
     
     @Override
     public void onItemSelected(String id) {
+    	
+    	Entree e = MenuContent.mDishesMap.get(id);
+    	if( e == null || e.type == Entree.VENUENTREE)
+    		return;
+    	
         if (mTwoPane) {
             Bundle arguments = new Bundle();
             arguments.putString(DishDetailFragment.ARG_ENTREE_ID, id);
