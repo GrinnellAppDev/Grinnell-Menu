@@ -9,7 +9,9 @@ import edu.grinnell.glicious.menucontent.MenuContent;
 import edu.grinnell.glicious.menucontent.GetMenuTask.Result;
 import edu.grinnell.glicious.menucontent.GetMenuTask.RetrieveDataListener;
 import edu.grinnell.glicious.R;
+import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
@@ -26,7 +28,9 @@ import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.CalendarView;
+import android.widget.DatePicker;
 import android.widget.TextView;
 
 public class DishListActivity extends FragmentActivity
@@ -36,6 +40,7 @@ public class DishListActivity extends FragmentActivity
     
     protected GregorianCalendar mRequestedDate,
 								mPendingDate;
+    protected static int 		mDaysRemaining = 7;
     
     protected GliciousPrefs 	mGPrefs;
     
@@ -131,12 +136,13 @@ public class DishListActivity extends FragmentActivity
 	/* Since GetMenuTask is asynchronous, we only attempt to load the menu if there 
 	 * is no current instance of our task thread OR if the previous instance has 
 	 * FINISHED executing. */
-	private void loadMenu(Context context, GregorianCalendar pendingDate, RetrieveDataListener rdl) {
+	protected void loadMenu(Context context, GregorianCalendar pendingDate, RetrieveDataListener rdl) {
 		refreshMenu(context, pendingDate, rdl, false);
 	}
 	
 	private void refreshMenu(Context c, GregorianCalendar pending, RetrieveDataListener rdl, boolean force) {
 		if (mGetMenuTask == null || mGetMenuTask.getStatus() == AsyncTask.Status.FINISHED)
+			mPendingDate = pending;
 			mGetMenuTask = new GetMenuTask(c, rdl, force);
 			mGetMenuTask.execute(	pending.get(Calendar.MONTH),
 									pending.get(Calendar.DAY_OF_MONTH),
@@ -170,11 +176,15 @@ public class DishListActivity extends FragmentActivity
 				refreshPager();
 				
 				break;
+			case Result.NO_MEAL_DATA:
+				Log.i(UITHREAD, "No meal data returned from server.");
+				Utility.showToast(mContext, R.string.noMealContent);
+				
+				break;
 			case Result.NO_NETWORK:
 				Log.i(UITHREAD, "No network connection was available through which to retrieve the menu.");
 				DialogFragment df = new NoNetworkDialogFragment();
 				df.show(getSupportFragmentManager(), "network:dialog");
-				//showDialog(Result.NO_NETWORK);
 				break;
 			case Result.NO_ROUTE:
 				Log.i(UITHREAD, "Could not find a route to the menu server through the available connections");
@@ -257,7 +267,8 @@ public class DishListActivity extends FragmentActivity
 			refreshMenu(this, mPendingDate, new GetMenuTaskListener(this), true);
 			break;
 		case R.id.menu_date:
-			//TODO: select date
+			DialogFragment df = new DatePickerFragment(mRequestedDate);
+			df.show(getSupportFragmentManager(), "date_picker");
 			break;
 		case R.id.settings:
 			// Display the fragment as the main content.
@@ -269,6 +280,50 @@ public class DishListActivity extends FragmentActivity
 		
 		
 		return false;
+	}
+	
+	@SuppressLint("ValidFragment")
+	public static class DatePickerFragment extends DialogFragment {
+	    
+		private GregorianCalendar date;
+		
+		public DatePickerFragment() {
+			super();
+		}
+		
+		public DatePickerFragment(GregorianCalendar req) {
+			date = req;
+		}
+		
+		@Override
+	    public Dialog onCreateDialog(Bundle savedInstanceState) {
+	    	
+	    	DatePickerDialog dpd = new DatePickerDialog(getActivity(), 
+	    			new DatePickerDialog.OnDateSetListener() {
+						
+						@Override
+						public void onDateSet(DatePicker view, int year, int monthOfYear,
+								int dayOfMonth) {
+							final DishListActivity dla = (DishListActivity) getActivity();
+							dla.loadMenu(dla, new GregorianCalendar(year, monthOfYear, dayOfMonth), 
+									dla.new GetMenuTaskListener(dla));
+							//dismiss();
+							
+						}
+					}, date.get(Calendar.YEAR), 
+					date.get(Calendar.MONTH), 
+					date.get(Calendar.DAY_OF_MONTH));
+	    	
+	    	DatePicker dp = dpd.getDatePicker();
+	    	//dp.setCalendarViewShown(true);
+	    	GregorianCalendar d = new GregorianCalendar();
+	    	
+	    	//dp.setMinDate(Math.min(d.getTimeInMillis(), date.getTimeInMillis()));
+	    	d.add(Calendar.DAY_OF_YEAR, mDaysRemaining);
+	    	dp.setMaxDate(d.getTimeInMillis());
+		    
+			return dpd;
+	    }
 	}
 	
 	@Override

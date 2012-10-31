@@ -4,6 +4,7 @@
           android:title="@string/menu_date"
           android:icon="@android:drawable/ic_menu_today"
           android:showAsAction="ifRoom|collapseActionView"
+          android:actionProviderClass="edu.grinnell.glicious.CalendarActionProvider"
            />
     
     <item
