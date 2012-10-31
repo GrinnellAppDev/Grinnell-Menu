@@ -33,7 +33,8 @@ public class DishDetailActivity extends FragmentActivity {
         if (item.getItemId() == android.R.id.home) {
         	
         	Intent upIntent = new Intent(this, DishListActivity.class);
-        	upIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        	upIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP 
+        			| Intent.FLAG_ACTIVITY_SINGLE_TOP);
             NavUtils.navigateUpTo(this, upIntent);
             
             return true;

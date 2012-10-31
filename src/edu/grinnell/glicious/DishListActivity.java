@@ -21,7 +21,10 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.NavUtils;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.CalendarView;
+import android.widget.TextView;
 
 public class DishListActivity extends FragmentActivity
         implements DishListFragment.Callbacks {
@@ -104,11 +107,15 @@ public class DishListActivity extends FragmentActivity
 	 * is no current instance of our task thread OR if the previous instance has 
 	 * FINISHED executing. */
 	private void loadMenu(Context context, GregorianCalendar pendingDate, RetrieveDataListener rdl) {
+		refreshMenu(context, pendingDate, rdl, false);
+	}
+	
+	private void refreshMenu(Context c, GregorianCalendar pending, RetrieveDataListener rdl, boolean force) {
 		if (mGetMenuTask == null || mGetMenuTask.getStatus() == AsyncTask.Status.FINISHED)
-			mGetMenuTask = new GetMenuTask(context, rdl);
-			mGetMenuTask.execute(	pendingDate.get(Calendar.MONTH),
-									pendingDate.get(Calendar.DAY_OF_MONTH),
-									pendingDate.get(Calendar.YEAR) );
+			mGetMenuTask = new GetMenuTask(c, rdl, force);
+			mGetMenuTask.execute(	pending.get(Calendar.MONTH),
+									pending.get(Calendar.DAY_OF_MONTH),
+									pending.get(Calendar.YEAR) );
 	}
 	
 	/* GetMenuTask handles acquiring the menu from either the local cache or the
@@ -194,11 +201,38 @@ public class DishListActivity extends FragmentActivity
 			MenuContent.refresh();
 			break;	
 		case NETWORK_SETTINGS:
-			loadMenu(this, mPendingDate, new GetMenuTaskListener(this));
+			refreshMenu(this, mPendingDate, new GetMenuTaskListener(this), true);
 			}
 		}
 	}
 
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+	    getMenuInflater().inflate(R.menu.menu_bar, menu);
+	    //CalendarView cv = (CalendarView) menu.findItem(R.id.menu_date).getActionView();
+	    
+	    return super.onCreateOptionsMenu(menu);
+	}
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		
+		switch (item.getItemId()) {
+		case R.id.action_refresh:
+			refreshMenu(this, mPendingDate, new GetMenuTaskListener(this), true);
+			break;
+		case R.id.menu_date:
+			//TODO: select date
+			break;
+		case R.id.settings:
+			//TODO: start pref fragment
+		
+		
+		}
+		
+		
+		return false;
+	}
 	
 	@Override
 	public void onDestroy() {

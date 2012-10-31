@@ -3,6 +3,8 @@
     <string name="app_name">G-licious</string>
     <string name="title_dish_detail">Dish Information</string>
     <string name="title_dish_list">Dishes</string>
+    
+    <string name="menu_date">Select Date</string>
 
     <string name="title">G-licious</string>
 	
