@@ -22,24 +22,25 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:background="@color/gred" 
+        android:paddingBottom="3dp"
         >
+
     <TextView
         android:id="@+id/dish_serv_size"
-        android:text="@string/serv_size_string"
         style="?android:attr/textAppearanceSmall"
-        android:textColor="@android:color/white"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingBottom="2dp"
-        android:paddingLeft="16dp" />
+        android:paddingLeft="16dp"
+        android:text="@string/serv_size_string"
+        android:textColor="@android:color/white" />
 
     <TextView
         android:id="@+id/dish_serv_size_amt"
         style="?android:attr/textAppearanceSmall"
-        android:textColor="@android:color/white"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="3dp" />
+        android:padding="5dp"
+        android:textColor="@android:color/white" />
     
     </LinearLayout>
     
@@ -49,6 +50,7 @@
         android:layout_height="fill_parent"
         android:background="@color/gcream"
         android:drawSelectorOnTop="false"
+        android:paddingTop="2dp"
         android:paddingLeft="7dp"
         android:paddingRight="7dp" >
     </ListView>

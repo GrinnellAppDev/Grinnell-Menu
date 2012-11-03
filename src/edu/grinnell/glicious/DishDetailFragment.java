@@ -7,6 +7,7 @@ import org.json.JSONObject;
 
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -47,6 +48,8 @@ public class DishDetailFragment extends ListFragment {
         View rootView = inflater.inflate(R.layout.fragment_dish_detail, container, false);
         if (mDish != null) {
             ((TextView) rootView.findViewById(R.id.dish_detail)).setText(mDish.name);
+            Log.d("detailcCV","\"" + mDish.servsize + "\"");
+            ((TextView) rootView.findViewById(R.id.dish_serv_size_amt)).setText(mDish.servsize);
         }
         return rootView;
     }
