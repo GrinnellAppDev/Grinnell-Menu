@@ -57,9 +57,8 @@ public class MenuListAdapter extends ArrayAdapter<Entree> {
 			
 			if (e.type == Entree.VENUENTREE) {
 				holder.label.setText(Utility.captializeWords(e.name));
-				convertView.setBackgroundColor(
-						r.getColor(R.color.gred));
-				convertView.setClickable(false);
+				convertView.setBackgroundColor(r.getColor(R.color.gred));
+				//convertView.setClickable(false);
 				holder.label.setTextSize(21.0f);
 				holder.label.setGravity(Gravity.LEFT);
 				convertView.setPadding(7, 10, 7, 10);
@@ -72,6 +71,7 @@ public class MenuListAdapter extends ArrayAdapter<Entree> {
 				holder.label.setText(e.name);
 				holder.label.setTextSize(17.0f);
 				convertView.setBackgroundColor(r.getColor(R.color.gcream));
+				convertView.setBackgroundDrawable(r.getDrawable(R.drawable.glistselector));
 				holder.label.setTextColor(Color.BLACK);
 				holder.label.setGravity(Gravity.LEFT);
 				convertView.setPadding(21, 11, 11, 11);

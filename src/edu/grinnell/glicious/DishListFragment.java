@@ -52,16 +52,16 @@ public class DishListFragment extends ListFragment {
     
 
     public static DishListFragment getInstance(String menuKey) {
-    	//if (mInstances.containsKey(menuKey)) {
-    		//return mInstances.get(menuKey);
-    	//} else {
+    	if (mInstances.containsKey(menuKey)) {
+    		return mInstances.get(menuKey);
+    	} else {
     		Bundle b = new Bundle();
     		b.putString(MENU, menuKey);
     		DishListFragment dlf = new DishListFragment();
     		dlf.setArguments(b);
     		mInstances.put(menuKey, dlf);
     		return dlf;
-    	//}
+    	}
     }
     
     

@@ -49,6 +49,7 @@
         android:layout_width="match_parent"
         android:layout_height="fill_parent"
         android:background="@color/gcream"
+        android:listSelector="@drawable/glistselector"
         android:drawSelectorOnTop="false"
         android:paddingTop="2dp"
         android:paddingLeft="21dp"
