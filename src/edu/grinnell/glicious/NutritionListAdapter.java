@@ -56,6 +56,7 @@ public class NutritionListAdapter extends ArrayAdapter<NutritionListAdapter.Labe
 		
 		final Label l = mData.get(position);
 		
+		
 		if (l != null) {
 			holder.label.setText(l.label);
 			holder.amount.setText(l.amount);

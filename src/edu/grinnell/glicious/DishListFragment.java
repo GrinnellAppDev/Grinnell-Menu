@@ -45,7 +45,7 @@ public class DishListFragment extends ListFragment {
     private String mMenuKey;
     List<Entree> mMenuList;
     private static Map<String, DishListFragment> mInstances = new HashMap<String, DishListFragment>(); 
-    protected ArrayAdapter<Entree> mListAdapter;
+    protected MenuListAdapter mListAdapter;
     
     public DishListFragment() {
     	super();
@@ -110,9 +110,8 @@ public class DishListFragment extends ListFragment {
         
         mMenuList = MenuContent.mMealsMap.get(mMenuKey);
         
-        mListAdapter = new ArrayAdapter<Entree>(getActivity(),
-                android.R.layout.simple_list_item_activated_1,
-                android.R.id.text1,
+        mListAdapter = new MenuListAdapter((DishListActivity) getActivity(),
+                R.layout.entree_row,
                 mMenuList);
         
     }
