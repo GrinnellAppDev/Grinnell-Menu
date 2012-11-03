@@ -8,6 +8,8 @@
 
     <string name="title">G-licious</string>
 	
+    <string name="serv_size_string">Serving Size:</string>
+    
     <string name="settingstitle">Filters and Settings</string>
     <string name="refresh">Refresh</string>
 	<string name="chooseDate">Select Date</string>

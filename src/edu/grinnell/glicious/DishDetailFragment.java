@@ -1,23 +1,19 @@
 package edu.grinnell.glicious;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Iterator;
 
 import org.json.JSONObject;
 
-import edu.grinnell.glicious.menucontent.Entree;
-import edu.grinnell.glicious.menucontent.MenuContent;
-import edu.grinnell.glicious.NutritionListAdapter.Label;
-import edu.grinnell.glicious.R;
-
-import android.support.v4.app.ListFragment;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
+import android.support.v4.app.ListFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import edu.grinnell.glicious.NutritionListAdapter.Label;
+import edu.grinnell.glicious.menucontent.Entree;
+import edu.grinnell.glicious.menucontent.MenuContent;
 
 public class DishDetailFragment extends ListFragment {
 

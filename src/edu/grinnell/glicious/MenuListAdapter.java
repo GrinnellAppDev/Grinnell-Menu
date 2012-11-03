@@ -1,12 +1,7 @@
 package edu.grinnell.glicious;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import edu.grinnell.glicious.menucontent.Entree;
-import android.R.anim;
-import android.app.Activity;
-import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.view.Gravity;
@@ -15,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
+import edu.grinnell.glicious.menucontent.Entree;
 
 public class MenuListAdapter extends ArrayAdapter<Entree> {
 	private DishListActivity mActivity;
@@ -53,32 +49,37 @@ public class MenuListAdapter extends ArrayAdapter<Entree> {
 		
 		
 		if (e != null) {
-			holder.label.setText(e.name);
+			
 			
 			Resources r = mActivity.getResources();
 			holder.label.setPadding(3, 3, 3, 3);
-			
+			holder.nut.setText("");
 			
 			if (e.type == Entree.VENUENTREE) {
+				holder.label.setText(Utility.captializeWords(e.name));
 				convertView.setBackgroundColor(
 						r.getColor(R.color.gred));
 				convertView.setClickable(false);
 				holder.label.setTextSize(21.0f);
 				holder.label.setGravity(Gravity.LEFT);
-				convertView.setPadding(3, 10, 3, 10);
+				convertView.setPadding(7, 10, 7, 10);
 				holder.label.setTextColor(r.getColor(R.color.gcream));
-				holder.nut.setText("");
+				
+				
 				
 				
 			} else {
+				holder.label.setText(e.name);
+				holder.label.setTextSize(17.0f);
 				convertView.setBackgroundColor(r.getColor(R.color.gcream));
 				holder.label.setTextColor(Color.BLACK);
 				holder.label.setGravity(Gravity.LEFT);
-				convertView.setPadding(17, 7, 7, 7);
+				convertView.setPadding(21, 11, 11, 11);
 				//convertView.setClickable(false);
 				
 				if (e.nutrition != null)
 					holder.nut.setText(">");
+					//holder.nut.setBackgroundColor(r.getColor(R.color.grinllightred));
 			}
 		}
 		

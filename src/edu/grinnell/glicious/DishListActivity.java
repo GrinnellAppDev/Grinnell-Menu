@@ -3,35 +3,29 @@ package edu.grinnell.glicious;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
-import edu.grinnell.glicious.menucontent.Entree;
-import edu.grinnell.glicious.menucontent.GetMenuTask;
-import edu.grinnell.glicious.menucontent.MenuContent;
-import edu.grinnell.glicious.menucontent.GetMenuTask.Result;
-import edu.grinnell.glicious.menucontent.GetMenuTask.RetrieveDataListener;
-import edu.grinnell.glicious.R;
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.support.v4.app.DialogFragment;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.NavUtils;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.CalendarView;
 import android.widget.DatePicker;
-import android.widget.TextView;
+import edu.grinnell.glicious.menucontent.Entree;
+import edu.grinnell.glicious.menucontent.GetMenuTask;
+import edu.grinnell.glicious.menucontent.GetMenuTask.Result;
+import edu.grinnell.glicious.menucontent.GetMenuTask.RetrieveDataListener;
+import edu.grinnell.glicious.menucontent.MenuContent;
 
 public class DishListActivity extends FragmentActivity
         implements DishListFragment.Callbacks {

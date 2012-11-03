@@ -50,12 +50,14 @@ public class NutritionListAdapter extends ArrayAdapter<NutritionListAdapter.Labe
 			holder.label = (TextView) convertView.findViewById(R.id.labelbox);
 			holder.amount = (TextView) convertView.findViewById(R.id.amountbox);
 			convertView.setTag(holder);
+			
 		} else {
 			holder = (ViewHolder)convertView.getTag();
 		}
 		
 		final Label l = mData.get(position);
 		
+		convertView.setClickable(false);
 		
 		if (l != null) {
 			holder.label.setText(l.label);

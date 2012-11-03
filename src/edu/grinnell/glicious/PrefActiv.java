@@ -1,7 +1,5 @@
 package edu.grinnell.glicious;
 
-import java.util.List;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Build;
