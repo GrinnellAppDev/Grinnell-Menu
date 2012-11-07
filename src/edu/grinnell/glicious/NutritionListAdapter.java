@@ -21,14 +21,26 @@ public class NutritionListAdapter extends ArrayAdapter<NutritionListAdapter.Labe
 		mData = data;
 	}
 	
-	public static class Label {
+	public static class Label implements Comparable<Label> {
 		
 		public String label;
 		public String amount;
+		public int order;
 		
 		public Label(String label, String amount) {
 			this.label = label;
 			this.amount = amount;
+			this.order = 0;
+		}
+		
+		public Label(String label, String amount, int norder) {
+			this(label, amount);
+			this.order = norder;
+		}
+		
+		@Override
+		public int compareTo(Label other) {
+			return this.order - other.order;
 		}
 	}
 	

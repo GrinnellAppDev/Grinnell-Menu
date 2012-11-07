@@ -1,6 +1,8 @@
 package edu.grinnell.glicious;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Iterator;
 
 import org.json.JSONObject;
@@ -15,6 +17,8 @@ import android.widget.TextView;
 import edu.grinnell.glicious.NutritionListAdapter.Label;
 import edu.grinnell.glicious.menucontent.Entree;
 import edu.grinnell.glicious.menucontent.MenuContent;
+import edu.grinnell.glicious.menucontent.NutritionUtil;
+import edu.grinnell.glicious.menucontent.NutritionUtil.NutritionInfo;
 
 public class DishDetailFragment extends ListFragment {
 
@@ -68,8 +72,16 @@ public class DishDetailFragment extends ListFragment {
 			Iterator<String> it = list.keys();
 	    	while(it.hasNext()) {
 	    		String label = it.next();
-	    		mNutrition.add(new Label(label, list.optString(label, "..empty..")));
+	    		NutritionInfo ni = NutritionUtil.INFO.get(label);
+	    		String value = (list.optString(label, "0"));
+	    		if ("0".equals(value) ) 
+	    			value = "~";
+	    		else
+	    			value = value + " " + ni.unit;
+	    		
+	    		mNutrition.add(new Label(ni.name, value, ni.order));
 	    	}
+	    	Collections.sort(mNutrition);
     	} else
     		mNutrition.add(new Label("Nutritional Information Unavailable", ""));
     }
