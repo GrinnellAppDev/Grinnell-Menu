@@ -1,5 +1,9 @@
 package edu.grinnell.glicious;
 
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+import java.util.Locale;
+
 import android.content.Context;
 import android.view.Gravity;
 import android.widget.Toast;
@@ -43,5 +47,17 @@ public class Utility {
 		default:
 			return;		
 		}
+	}
+	
+	public static String dateString(GregorianCalendar c) {
+		StringBuilder sb = new StringBuilder();
+		sb.append(c.getDisplayName(Calendar.MONTH, Calendar.SHORT, Locale.getDefault()));
+		sb.append(" ");
+		sb.append(c.get(Calendar.DAY_OF_MONTH));
+		sb.append(", ");
+		sb.append(c.get(Calendar.YEAR));
+		sb.append(" | ");
+		sb.append(c.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.LONG, Locale.getDefault()));
+		return sb.toString();
 	}
 }

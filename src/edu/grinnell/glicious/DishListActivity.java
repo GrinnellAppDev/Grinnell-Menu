@@ -6,7 +6,6 @@ import java.util.GregorianCalendar;
 import com.crittercism.app.Crittercism;
 import com.flurry.android.FlurryAgent;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
@@ -67,6 +66,11 @@ public class DishListActivity extends FragmentActivity
         /* Crittercism crash and error tracking */
 		Crittercism.init(getApplicationContext(), "4f8ab556b0931573b000033e");
         setContentView(R.layout.activity_dish_list);
+        /*
+        getActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM 
+        		| ActionBar.DISPLAY_USE_LOGO | ActionBar.DISPLAY_SHOW_HOME);
+        */
+        
         // Set default preferences..
         PreferenceManager.setDefaultValues(this, R.xml.preferences, false);
         // Get a reference to the preferences class..
@@ -84,6 +88,7 @@ public class DishListActivity extends FragmentActivity
         	mCurrentDate = mPendingDate;
         }
         loadMenu(this, mPendingDate);
+        getActionBar().setSubtitle(Utility.dateString(mPendingDate));
         
         if (findViewById(R.id.dish_detail_container) != null) {
             mTwoPane = true;
@@ -185,7 +190,6 @@ public class DishListActivity extends FragmentActivity
 			mContext = c;
 		}
 		
-		//TODO: fix..
 		@Override
 		public void onRetrieveData(Result result) {
 			switch(result.getCode()) {
@@ -194,6 +198,7 @@ public class DishListActivity extends FragmentActivity
 				/* On SUCCESS the menu string should be parsed into JSONObjects
 				 * and the venues and entrees should be put into the list. */
 				mCurrentDate = mPendingDate;
+				getActionBar().setSubtitle(Utility.dateString(mCurrentDate));
 				MenuContent.setMenuData(result.getValue());
 				refreshPager();
 				
@@ -296,16 +301,13 @@ public class DishListActivity extends FragmentActivity
 		case R.id.settings:
 			// Display the fragment as the main content.
 			startActivityForResult(new Intent(this, PrefActiv.class), PREFS);
-			//TODO: start pref fragment
-		
 		
 		}
-		
-		
+
 		return false;
 	}
 	
-	@SuppressLint("ValidFragment")
+	
 	public static class DatePickerFragment extends DialogFragment {
 	    
 		public static final String DATEMS = "datems"; 
@@ -368,7 +370,6 @@ public class DishListActivity extends FragmentActivity
 	
 	@Override
 	protected void onSaveInstanceState(Bundle outState) {
-		// TODO Auto-generated method stub
 		super.onSaveInstanceState(outState);
 		outState.putLong(DATE, mCurrentDate.getTimeInMillis());
 	}
