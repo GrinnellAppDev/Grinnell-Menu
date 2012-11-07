@@ -27,6 +27,8 @@ public class MenuContent {
 	public static final String DINNER	 = "dinner";
 	public static final String OUTTAKES	 = "outtakes";
 	
+	public static boolean valid = false;
+	
 	// Menu map
 	
 	private static Map<String, Integer> MEALINDEX = new HashMap<String, Integer>();
@@ -59,6 +61,9 @@ public class MenuContent {
     		Log.e(JSONError, jsone.getMessage());
     	}
     	
+    	// the MenuData has been set, this static instance is valid..
+    	valid = true;
+    	
     	// Update..
     	populateMealTable();
     	
@@ -70,24 +75,24 @@ public class MenuContent {
      * for example..
      */
     public static void refresh() {
-    	populateMealTable();
+    	if (valid)
+    		populateMealTable();
+    	else
+    		Log.d("MenuContent", "Cannot refresh(), class is invalid.");
     }
     
     private static void addMealAsAvailable(String menu, List<Entree> menuList) {
-    	
     	// Add the list of venues (menuList) into the map..
     	mMealsMap.put(menu,  menuList);
     	
     	// Determine where to put the menu in the order list
     	// Breakfast -> Lunch -> Dinner -> Outtakes
-    	
     	int x;
     	for (x = 0 ; x < mMenuOrder.size() 
     			&& MEALINDEX.get(mMenuOrder.get(x) ) < MEALINDEX.get(menu) ; 
     			x++ );
     	
     	mMenuOrder.add( x, menu );
-    	
     }
     
     private static void populateMealTable() {
@@ -180,10 +185,16 @@ public class MenuContent {
     }
     
     public static List<Entree> retrieveMenu(String key) {
-    	return mMealsMap.get(key);
+    	if (valid)
+    		return mMealsMap.get(key);
+    	else
+    		Log.d("MenuContent", "Cannot retrieveMenu(" + key + "), class is invalid.");
+    	return null;
     }
     
     public JSONObject getJSONData() {
+    	if (!valid)
+    		Log.d("MenuContent", "no JSONData: MenuContent class is invalid.");
     	return mMenuData;
     }
     

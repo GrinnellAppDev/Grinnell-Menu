@@ -115,10 +115,16 @@ public class GetMenuTask extends AsyncTask<Integer, Void, GetMenuTask.Result> {
 	@Override
 	protected void onPostExecute(Result result) {
 		// stop the progress dialog
+		try {
 		mStatus.dismiss();
-		
+		mStatus = null;
 		// notify the UI thread listener ..
 		mRetrieveDataListener.onRetrieveData(result);
+		} catch (Exception e) {
+			Log.d("post execute", e.toString());
+		}
+		
+		
 		super.onPostExecute(result);
 	}
 

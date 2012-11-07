@@ -104,7 +104,9 @@ public class DishListFragment extends ListFragment {
         
         setRetainInstance(true);
         
-        mMenuKey = getArguments().getString(MENU);
+        Bundle args = getArguments();
+        if (args != null)
+        	mMenuKey = args.getString(MENU);
         Log.d(DLF, mMenuKey);
         
         mMenuList = MenuContent.mMealsMap.get(mMenuKey);
@@ -131,8 +133,6 @@ public class DishListFragment extends ListFragment {
     @Override
     public void onActivityCreated(Bundle ofJoy) {
     	super.onActivityCreated(ofJoy);
-    	//setListAdapter(mListAdapter);
-    	//mCallbacks.setListActivateState();
     }
     
     @Override
@@ -143,14 +143,13 @@ public class DishListFragment extends ListFragment {
             //setActivatedPosition(savedInstanceState.getInt(STATE_ACTIVATED_POSITION));
         }
         
-        //setListAdapter(mListAdapter);
-    	//mCallbacks.setListActivateState();
     }
 
     @Override
     public void onResume() {
     	super.onResume();
-    	setListAdapter(mListAdapter);
+    	if (mMenuList != null)
+    		setListAdapter(mListAdapter);
     }
     
     public static void doSetListAdapter() {

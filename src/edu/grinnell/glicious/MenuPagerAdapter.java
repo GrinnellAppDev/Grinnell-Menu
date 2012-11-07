@@ -2,11 +2,11 @@ package edu.grinnell.glicious;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v4.app.FragmentPagerAdapter;
 import android.util.Log;
 import edu.grinnell.glicious.menucontent.MenuContent;
 
-public class MenuPagerAdapter extends FragmentStatePagerAdapter {
+public class MenuPagerAdapter extends FragmentPagerAdapter {
 
 	
 	
@@ -35,9 +35,11 @@ public class MenuPagerAdapter extends FragmentStatePagerAdapter {
 	}
 	
 	
+	/*
 	@Override
 	public int getItemPosition(Object o) {
 		return POSITION_NONE;
 	}
+	*/
 	
 }

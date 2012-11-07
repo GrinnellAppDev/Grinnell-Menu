@@ -3,6 +3,9 @@ package edu.grinnell.glicious;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
+import com.crittercism.app.Crittercism;
+import com.flurry.android.FlurryAgent;
+
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -24,7 +27,6 @@ import android.widget.DatePicker;
 import edu.grinnell.glicious.menucontent.Entree;
 import edu.grinnell.glicious.menucontent.GetMenuTask;
 import edu.grinnell.glicious.menucontent.GetMenuTask.Result;
-import edu.grinnell.glicious.menucontent.GetMenuTask.RetrieveDataListener;
 import edu.grinnell.glicious.menucontent.MenuContent;
 
 public class DishListActivity extends FragmentActivity
@@ -32,7 +34,7 @@ public class DishListActivity extends FragmentActivity
 	
     private boolean 			mTwoPane;
     
-    protected GregorianCalendar mRequestedDate,
+    protected GregorianCalendar mCurrentDate,
 								mPendingDate;
     protected static int 		mDaysRemaining = 7;
     
@@ -56,9 +58,14 @@ public class DishListActivity extends FragmentActivity
 	/* Intent Keys */
 	public static final String REFRESH = "refresh";
 	
+	/* Saved state keys.. */
+	public static final String DATE = "date";
+	
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        /* Crittercism crash and error tracking */
+		Crittercism.init(getApplicationContext(), "4f8ab556b0931573b000033e");
         setContentView(R.layout.activity_dish_list);
         // Set default preferences..
         PreferenceManager.setDefaultValues(this, R.xml.preferences, false);
@@ -72,26 +79,47 @@ public class DishListActivity extends FragmentActivity
         
         // Asynchronously load the menu data from nearest location (cache or server)..
         mPendingDate = new GregorianCalendar();
-        loadMenu(this, mPendingDate, new GetMenuTaskListener(this));
+        if (savedInstanceState != null && savedInstanceState.containsKey(DATE)) {
+        	mPendingDate.setTimeInMillis(savedInstanceState.getLong(DATE));
+        	mCurrentDate = mPendingDate;
+        }
+        loadMenu(this, mPendingDate);
         
         if (findViewById(R.id.dish_detail_container) != null) {
             mTwoPane = true;
         }
         
-        
-        
-        
     }
+
+    @Override
+	public void onStart() {
+    	super.onStart();
+    	/* Flurry is a user statistics reporting agent. */
+    	FlurryAgent.onStartSession(this, "S7MM444QPIJP91NGWGTA");
+	}
     
     @Override
+    public void onResume() {
+    	if (!MenuContent.valid) {
+    		loadMenu(this, mPendingDate);
+    	}
+    	super.onResume();
+    }
+    
+
+	@Override
     public void onNewIntent(Intent incoming) {
     	super.onNewIntent(incoming);
     	Log.i(DEBUG, "onNewIntent called");
     	
     	if (incoming.getBooleanExtra(REFRESH, false)) {
     		GliciousPrefs.refresh();
-    		MenuContent.refresh();
-    		refreshPager();
+    		if (!MenuContent.valid)
+    			loadMenu(this, mPendingDate);
+    		else {
+    			MenuContent.refresh();
+    			refreshPager();
+    		}
     	}
     	
     }
@@ -130,14 +158,14 @@ public class DishListActivity extends FragmentActivity
 	/* Since GetMenuTask is asynchronous, we only attempt to load the menu if there 
 	 * is no current instance of our task thread OR if the previous instance has 
 	 * FINISHED executing. */
-	protected void loadMenu(Context context, GregorianCalendar pendingDate, RetrieveDataListener rdl) {
-		refreshMenu(context, pendingDate, rdl, false);
+	protected void loadMenu(Context context, GregorianCalendar pendingDate) {
+		refreshMenu(context, pendingDate, false);
 	}
 	
-	private void refreshMenu(Context c, GregorianCalendar pending, RetrieveDataListener rdl, boolean force) {
+	private void refreshMenu(Context c, GregorianCalendar pending, boolean force) {
 		if (mGetMenuTask == null || mGetMenuTask.getStatus() == AsyncTask.Status.FINISHED)
 			mPendingDate = pending;
-			mGetMenuTask = new GetMenuTask(c, rdl, force);
+			mGetMenuTask = new GetMenuTask(c, new GetMenuTaskListener(c), force);
 			mGetMenuTask.execute(	pending.get(Calendar.MONTH),
 									pending.get(Calendar.DAY_OF_MONTH),
 									pending.get(Calendar.YEAR) );
@@ -165,7 +193,7 @@ public class DishListActivity extends FragmentActivity
 				Log.i(UITHREAD, "Menu successfully loaded!");
 				/* On SUCCESS the menu string should be parsed into JSONObjects
 				 * and the venues and entrees should be put into the list. */
-				mRequestedDate = mPendingDate;
+				mCurrentDate = mPendingDate;
 				MenuContent.setMenuData(result.getValue());
 				refreshPager();
 				
@@ -219,6 +247,7 @@ public class DishListActivity extends FragmentActivity
 						});
 			return builder.create();
 	    }
+	    
 	}
 	
 	@Override
@@ -233,7 +262,7 @@ public class DishListActivity extends FragmentActivity
 			refreshPager();
 			break;	
 		case NETWORK:
-			refreshMenu(this, mPendingDate, new GetMenuTaskListener(this), true);
+			refreshMenu(this, mPendingDate, true);
 			}
 		}
 	}
@@ -258,10 +287,10 @@ public class DishListActivity extends FragmentActivity
 		
 		switch (item.getItemId()) {
 		case R.id.action_refresh:
-			refreshMenu(this, mPendingDate, new GetMenuTaskListener(this), true);
+			refreshMenu(this, mPendingDate, true);
 			break;
 		case R.id.menu_date:
-			DialogFragment df = new DatePickerFragment(mRequestedDate);
+			DialogFragment df = new DatePickerFragment().getInstance(mCurrentDate.getTimeInMillis());
 			df.show(getSupportFragmentManager(), "date_picker");
 			break;
 		case R.id.settings:
@@ -279,14 +308,30 @@ public class DishListActivity extends FragmentActivity
 	@SuppressLint("ValidFragment")
 	public static class DatePickerFragment extends DialogFragment {
 	    
-		private GregorianCalendar date;
+		public static final String DATEMS = "datems"; 
+		
+		private static GregorianCalendar date;
 		
 		public DatePickerFragment() {
 			super();
 		}
 		
-		public DatePickerFragment(GregorianCalendar req) {
-			date = req;
+		public DatePickerFragment getInstance(Long dateInMS) {
+			DatePickerFragment dpf = new DatePickerFragment();
+			Bundle b = new Bundle();
+			b.putLong(DATEMS, dateInMS);
+			dpf.setArguments(b);
+			return dpf;
+		}
+		
+		@Override
+		public void onCreate(Bundle ofJoy) {
+			super.onCreate(ofJoy);
+			
+			Bundle b = (ofJoy == null) ? getArguments(): ofJoy;
+			date = new GregorianCalendar();
+			if (b != null)
+				date.setTimeInMillis(b.getLong(DATEMS));
 		}
 		
 		@Override
@@ -299,8 +344,7 @@ public class DishListActivity extends FragmentActivity
 						public void onDateSet(DatePicker view, int year, int monthOfYear,
 								int dayOfMonth) {
 							final DishListActivity dla = (DishListActivity) getActivity();
-							dla.loadMenu(dla, new GregorianCalendar(year, monthOfYear, dayOfMonth), 
-									dla.new GetMenuTaskListener(dla));
+							dla.loadMenu(dla, new GregorianCalendar(year, monthOfYear, dayOfMonth));
 							//dismiss();
 							
 						}
@@ -318,12 +362,31 @@ public class DishListActivity extends FragmentActivity
 		    
 			return dpd;
 	    }
+		
+		
+	}
+	
+	@Override
+	protected void onSaveInstanceState(Bundle outState) {
+		// TODO Auto-generated method stub
+		super.onSaveInstanceState(outState);
+		outState.putLong(DATE, mCurrentDate.getTimeInMillis());
+	}
+	
+	
+	@Override
+	protected void onStop() {
+		/*Stop the Flurry Session*/
+		FlurryAgent.onEndSession(this);
+
+		super.onStop();
 	}
 	
 	@Override
 	public void onDestroy() {
 		// Clean up the cache data.
 		GetMenuTask.pruneCache(this);
+		
 		
 		super.onDestroy();
 	}

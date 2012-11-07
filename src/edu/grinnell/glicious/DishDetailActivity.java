@@ -1,6 +1,7 @@
 package edu.grinnell.glicious;
 
 import edu.grinnell.glicious.R;
+import edu.grinnell.glicious.menucontent.MenuContent;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
@@ -28,6 +29,17 @@ public class DishDetailActivity extends FragmentActivity {
         }
     }
 
+    @Override
+	public void onStart() {
+    	super.onStart();
+    	if (!MenuContent.valid) {
+    		Intent upIntent = new Intent(this, DishListActivity.class);
+    		upIntent.putExtra(DishListActivity.REFRESH, true);
+    		startActivity(upIntent);
+    	}
+	}
+
+    
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {

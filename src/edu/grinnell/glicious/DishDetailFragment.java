@@ -31,8 +31,6 @@ public class DishDetailFragment extends ListFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         
-        setRetainInstance(true);
-        
         if (getArguments().containsKey(ARG_ENTREE_ID)) {
             mDish = MenuContent.mDishesMap.get(getArguments().getString(ARG_ENTREE_ID));
             fillNutrition(mDish.nutrition);

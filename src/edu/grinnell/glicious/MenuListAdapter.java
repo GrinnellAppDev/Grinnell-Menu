@@ -28,6 +28,7 @@ public class MenuListAdapter extends ArrayAdapter<Entree> {
         TextView nut;
     }
 	
+	@SuppressWarnings("deprecation")
 	@Override
 	public View getView(int position, View convertView, ViewGroup  parent) {
 		
@@ -57,7 +58,9 @@ public class MenuListAdapter extends ArrayAdapter<Entree> {
 			
 			if (e.type == Entree.VENUENTREE) {
 				holder.label.setText(Utility.captializeWords(e.name));
-				convertView.setBackgroundColor(r.getColor(R.color.gred));
+				convertView.setBackgroundResource(R.drawable.vheader);
+				
+				//convertView.setBackgroundColor(r.getColor(R.color.gred));
 				//convertView.setClickable(false);
 				holder.label.setTextSize(21.0f);
 				holder.label.setGravity(Gravity.LEFT);
