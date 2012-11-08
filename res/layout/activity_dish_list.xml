@@ -4,14 +4,14 @@
         android:layout_height="match_parent"
         android:layout_width="match_parent"
         android:layout_weight="1"
-        android:background="@color/gllightgrey"
+        android:background="@color/gdcream"
     >
 
     <android.support.v4.view.PagerTabStrip
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="top"
-        android:textColor="@color/gcream"
+        android:textColor="@color/gmdarkred"
         />
     
 </android.support.v4.view.ViewPager>

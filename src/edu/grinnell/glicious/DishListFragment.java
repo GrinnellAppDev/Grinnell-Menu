@@ -67,7 +67,6 @@ public class DishListFragment extends ListFragment {
     
     public static void refresh() {
     	
-    	
     	for (String key : mInstances.keySet()) {
     		mInstances.get(key).mListAdapter.notifyDataSetChanged();
     		Log.d(DLF, "DishListFragment: " + key + " refreshed");
@@ -77,16 +76,29 @@ public class DishListFragment extends ListFragment {
     	
     }
     
-    /*
+    
     public static void clearAdapters() {
     	for (String key : mInstances.keySet()) {
     		mInstances.get(key).mListAdapter.clear();
-    		Log.d(DLF, "DishListFragment: " + key + " cleared");
+    		Log.d(DLF, "DishListFragment: " + key + " adapter cleared");
     	}
     	Log.d(DLF, "DishListFragments cleared");
     }
-    */
     
+    public static void setAdapters() {
+    	for (String key : mInstances.keySet()) {
+    		mInstances.get(key).setAdapter();
+    		Log.d(DLF, "DishListFragment: " + key + " adapter set");
+    	}
+    	Log.d(DLF, "DishListFragments adapters set");
+    }
+    
+    private void setAdapter() {
+    	Log.d("DishListFrag", "menu key = " + mMenuKey);
+    	mListAdapter = new MenuListAdapter((DishListActivity) getActivity(), 
+    			R.layout.entree_row, MenuContent.mMealsMap.get(mMenuKey));
+    	setListAdapter(mListAdapter);
+    }
 
     @Override
     public void onAttach(Activity activity) {
@@ -109,11 +121,14 @@ public class DishListFragment extends ListFragment {
         	mMenuKey = args.getString(MENU);
         Log.d(DLF, mMenuKey);
         
+        setAdapter();
+        /*
         mMenuList = MenuContent.mMealsMap.get(mMenuKey);
         
         mListAdapter = new MenuListAdapter((DishListActivity) getActivity(),
                 R.layout.entree_row,
                 mMenuList);
+                */
         
     }
 

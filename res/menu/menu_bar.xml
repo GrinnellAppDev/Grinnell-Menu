@@ -17,7 +17,7 @@
 		android:id="@+id/settings"
 		android:title="@string/settingstitle"
 		android:icon="@android:drawable/ic_menu_preferences"
-		android:showAsAction="never"/>
+		android:showAsAction="ifRoom|collapseActionView"/>
     
     
 

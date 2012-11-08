@@ -19,14 +19,14 @@
             android:layout_height="wrap_content"
             android:paddingBottom="2dp"
             android:paddingLeft="17dp"
-            android:paddingTop="7dp"
+            android:paddingTop="9dp"
             android:textColor="@android:color/white" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:paddingBottom="2dp" >
+            android:paddingBottom="4dp" >
 
             <TextView
                 android:id="@+id/dish_serv_size"

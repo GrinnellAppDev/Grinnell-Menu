@@ -10,6 +10,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -23,9 +24,9 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.DatePicker;
+import edu.grinnell.glicious.Utility.Result;
 import edu.grinnell.glicious.menucontent.Entree;
 import edu.grinnell.glicious.menucontent.GetMenuTask;
-import edu.grinnell.glicious.menucontent.GetMenuTask.Result;
 import edu.grinnell.glicious.menucontent.MenuContent;
 
 public class DishListActivity extends FragmentActivity
@@ -78,8 +79,7 @@ public class DishListActivity extends FragmentActivity
         
         // Obtain a reference to the pager..
         mMenuPager = (ViewPager) findViewById(R.id.menu_pager);
-        mMenuPagerAdapter = new MenuPagerAdapter(getSupportFragmentManager());
-        mMenuPager.setAdapter(mMenuPagerAdapter);
+        // Old spot for pager adapter stuff..
         
         // Asynchronously load the menu data from nearest location (cache or server)..
         mPendingDate = new GregorianCalendar();
@@ -87,13 +87,14 @@ public class DishListActivity extends FragmentActivity
         	mPendingDate.setTimeInMillis(savedInstanceState.getLong(DATE));
         	mCurrentDate = mPendingDate;
         }
-        loadMenu(this, mPendingDate);
+        
         getActionBar().setSubtitle(Utility.dateString(mPendingDate));
         
         if (findViewById(R.id.dish_detail_container) != null) {
             mTwoPane = true;
         }
         
+        loadMenu(mPendingDate);     
     }
 
     @Override
@@ -105,8 +106,10 @@ public class DishListActivity extends FragmentActivity
     
     @Override
     public void onResume() {
+    	mMenuPagerAdapter = new MenuPagerAdapter(getSupportFragmentManager());
+    	mMenuPager.setAdapter(mMenuPagerAdapter);
     	if (!MenuContent.valid) {
-    		loadMenu(this, mPendingDate);
+    		loadMenu(mPendingDate);
     	}
     	super.onResume();
     }
@@ -119,12 +122,18 @@ public class DishListActivity extends FragmentActivity
     	
     	if (incoming.getBooleanExtra(REFRESH, false)) {
     		GliciousPrefs.refresh();
+    		if (mCurrentDate == null)
+    			mCurrentDate = new GregorianCalendar();
+    		loadMenu(mCurrentDate);
+    		
+    		/*
     		if (!MenuContent.valid)
     			loadMenu(this, mPendingDate);
     		else {
     			MenuContent.refresh();
     			refreshPager();
     		}
+    		*/
     	}
     	
     }
@@ -160,73 +169,86 @@ public class DishListActivity extends FragmentActivity
     }
     
     
-	/* Since GetMenuTask is asynchronous, we only attempt to load the menu if there 
-	 * is no current instance of our task thread OR if the previous instance has 
-	 * FINISHED executing. */
-	protected void loadMenu(Context context, GregorianCalendar pendingDate) {
-		refreshMenu(context, pendingDate, false);
+	
+	protected void loadMenu(GregorianCalendar pendingDate) {
+		refreshMenu(pendingDate, false);
 	}
 	
-	private void refreshMenu(Context c, GregorianCalendar pending, boolean force) {
-		if (mGetMenuTask == null || mGetMenuTask.getStatus() == AsyncTask.Status.FINISHED)
-			mPendingDate = pending;
-			mGetMenuTask = new GetMenuTask(c, new GetMenuTaskListener(c), force);
-			mGetMenuTask.execute(	pending.get(Calendar.MONTH),
-									pending.get(Calendar.DAY_OF_MONTH),
-									pending.get(Calendar.YEAR) );
-	}
-	
-	
-	/* GetMenuTask handles acquiring the menu from either the local cache or the
-	 * web server.  An instance of this listener is passed to GetMenuTask so that
-	 * the proper methods can be called (by the UI thread and not the separate 
-	 * thread which GetMenuTask runs on) once the data is acquired (or not).  See 
-	 * the source for GetMenuTask for more details. */
-	class GetMenuTaskListener implements GetMenuTask.RetrieveDataListener {
+	/* refreshMenu handles acquiring the menu from either the local cache or the
+	 * web server. */
+	private void refreshMenu(GregorianCalendar pending, boolean forced) {
 		
-		Context mContext;
+		Log.i(Utility.CACH, "loading menu");
 		
-		public GetMenuTaskListener(Context c) {
-			mContext = c;
-		}
+		mPendingDate = pending;
 		
-		@Override
-		public void onRetrieveData(Result result) {
-			switch(result.getCode()) {
-			case Result.SUCCESS:
-				Log.i(UITHREAD, "Menu successfully loaded!");
-				/* On SUCCESS the menu string should be parsed into JSONObjects
-				 * and the venues and entrees should be put into the list. */
-				mCurrentDate = mPendingDate;
-				getActionBar().setSubtitle(Utility.dateString(mCurrentDate));
-				MenuContent.setMenuData(result.getValue());
-				refreshPager();
-				
-				break;
-			case Result.NO_MEAL_DATA:
-				Log.i(UITHREAD, "No meal data returned from server.");
-				Utility.showToast(mContext, R.string.noMealContent);
-				
-				break;
-			case Result.NO_NETWORK:
-				Log.i(UITHREAD, "No network connection was available through which to retrieve the menu.");
-				DialogFragment df = new NoNetworkDialogFragment();
-				df.show(getSupportFragmentManager(), "network:dialog");
-				break;
-			case Result.NO_ROUTE:
-				Log.i(UITHREAD, "Could not find a route to the menu server through the available connections");
-				Utility.showToast(mContext, Result.NO_ROUTE);
-				break;
-			case Result.HTTP_ERROR:
-				Log.i(UITHREAD, "Bad HTTP response was recieved.");
-				Utility.showToast(mContext, Result.HTTP_ERROR);
-			case Result.UNKNOWN:
-				Log.i(UITHREAD, "Unknown result in method 'onRetrieveDate'");
-				break;
+		int month = pending.get(Calendar.MONTH);
+		int day   = pending.get(Calendar.DAY_OF_MONTH);
+		int year  = pending.get(Calendar.YEAR);
+		
+		
+		Utility.Result r = new Utility.Result();	
+		// check the local cache first.. this is MUCH faster...
+		if (!forced) {
+			Log.i(Utility.CACH, "attempting to load from cache..");
+			r.setValue(Utility.loadLocalMenu(this, Utility.getCacheFileName(month, day, year)));
+			if (r.getValue() != null)  {
+				Log.i("refreshMenu", "menu loaded from the cache");
+				onMenuLoaded( r.setCode(Result.SUCCESS) ); 
+				return; 
 			}
 		}
-	}	
+		
+		/* Since GetMenuTask is asynchronous, we only attempt to load the menu if there 
+		 * is no current instance of our task thread OR if the previous instance has 
+		 * FINISHED executing. */
+		if (mGetMenuTask == null || mGetMenuTask.getStatus() == AsyncTask.Status.FINISHED)
+			mPendingDate = pending;
+			mGetMenuTask = new GetMenuTask(this, new GetMenuTaskListener());
+			mGetMenuTask.execute(month, day, year);
+	}
 	
+	private void onMenuLoaded(Result result) {
+		switch(result.getCode()) {
+		case Result.SUCCESS:
+			Log.i(UITHREAD, "Menu successfully loaded!");
+			/* On SUCCESS the menu string should be parsed into JSONObjects
+			 * and the venues and entrees should be put into the list. */
+			mCurrentDate = mPendingDate;
+			getActionBar().setSubtitle(Utility.dateString(mCurrentDate));
+			MenuContent.setMenuData(result.getValue());
+			refreshPager();
+			
+			break;
+		case Result.NO_MEAL_DATA:
+			Log.i(UITHREAD, "No meal data returned from server.");
+			Utility.showToast(this, R.string.noMealContent);
+			
+			break;
+		case Result.NO_NETWORK:
+			Log.i(UITHREAD, "No network connection was available through which to retrieve the menu.");
+			DialogFragment df = new NoNetworkDialogFragment();
+			df.show(getSupportFragmentManager(), "network:dialog");
+			break;
+		case Result.NO_ROUTE:
+			Log.i(UITHREAD, "Could not find a route to the menu server through the available connections");
+			Utility.showToast(this, Result.NO_ROUTE);
+			break;
+		case Result.HTTP_ERROR:
+			Log.i(UITHREAD, "Bad HTTP response was recieved.");
+			Utility.showToast(this, Result.HTTP_ERROR);
+		case Result.UNKNOWN:
+			Log.i(UITHREAD, "Unknown result in method 'onRetrieveDate'");
+			break;
+		}
+	}
+	
+	class GetMenuTaskListener implements Utility.RetrieveDataListener {
+		@Override
+		public void onRetrieveData(Result result) {
+			onMenuLoaded(result);
+		}
+	}	
 	
 	public static class NoNetworkDialogFragment extends DialogFragment {
 	    @Override
@@ -267,22 +289,22 @@ public class DishListActivity extends FragmentActivity
 			refreshPager();
 			break;	
 		case NETWORK:
-			refreshMenu(this, mPendingDate, true);
+			refreshMenu(mPendingDate, true);
 			}
 		}
 	}
 
 	public void refreshPager() {
-		
-		
+		//DishListFragment.clearAdapters();
+		//DishListFragment.setAdapters();
 		DishListFragment.refresh();
-		mMenuPagerAdapter.notifyDataSetChanged();
+		if (mMenuPagerAdapter != null)
+			mMenuPagerAdapter.notifyDataSetChanged();
 	}
 	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 	    getMenuInflater().inflate(R.menu.menu_bar, menu);
-	    //CalendarView cv = (CalendarView) menu.findItem(R.id.menu_date).getActionView();
 	    
 	    return super.onCreateOptionsMenu(menu);
 	}
@@ -292,7 +314,7 @@ public class DishListActivity extends FragmentActivity
 		
 		switch (item.getItemId()) {
 		case R.id.action_refresh:
-			refreshMenu(this, mPendingDate, true);
+			refreshMenu(mPendingDate, true);
 			break;
 		case R.id.menu_date:
 			DialogFragment df = new DatePickerFragment().getInstance(mCurrentDate.getTimeInMillis());
@@ -346,7 +368,7 @@ public class DishListActivity extends FragmentActivity
 						public void onDateSet(DatePicker view, int year, int monthOfYear,
 								int dayOfMonth) {
 							final DishListActivity dla = (DishListActivity) getActivity();
-							dla.loadMenu(dla, new GregorianCalendar(year, monthOfYear, dayOfMonth));
+							dla.loadMenu(new GregorianCalendar(year, monthOfYear, dayOfMonth));
 							//dismiss();
 							
 						}
@@ -371,7 +393,8 @@ public class DishListActivity extends FragmentActivity
 	@Override
 	protected void onSaveInstanceState(Bundle outState) {
 		super.onSaveInstanceState(outState);
-		outState.putLong(DATE, mCurrentDate.getTimeInMillis());
+		if (mCurrentDate != null)
+			outState.putLong(DATE, mCurrentDate.getTimeInMillis());
 	}
 	
 	

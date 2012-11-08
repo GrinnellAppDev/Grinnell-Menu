@@ -21,6 +21,10 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.util.EntityUtils;
 
+import edu.grinnell.glicious.Utility;
+import edu.grinnell.glicious.Utility.Result;
+import edu.grinnell.glicious.Utility.RetrieveDataListener;
+
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.net.ConnectivityManager;
@@ -29,7 +33,7 @@ import android.os.AsyncTask;
 import android.util.Log;
 	
 /* Asynchronous task for downloading menu from the network. */
-public class GetMenuTask extends AsyncTask<Integer, Void, GetMenuTask.Result> {
+public class GetMenuTask extends AsyncTask<Integer, Void, Result> {
 		
 	/* JSON Menu Server Information: */
 	public static String 			MENU_SERVER 	= "tcdb.grinnell.edu";
@@ -41,28 +45,22 @@ public class GetMenuTask extends AsyncTask<Integer, Void, GetMenuTask.Result> {
 	/* Store the app context so a progress dialog can be shown. */
 	private Context 				mAppContext;
 	private RetrieveDataListener 	mRetrieveDataListener;
-	private boolean 				mForceUpdate;
+	
+	private ProgressDialog mStatus;
 	
 	private static final int 		MAX_ATTEMPTS 	= 3;
 				
-	public GetMenuTask(Context context, RetrieveDataListener rdl) {
-		this(context, rdl, false);
-	}
-	
 	public GetMenuTask(Context context, 
-			RetrieveDataListener rdl, Boolean forceUpdate) {
+			RetrieveDataListener rdl) {
 		super();
 		mAppContext = context;
 		mRetrieveDataListener = rdl;
-		mForceUpdate = forceUpdate;	
 	}
-	
-	private ProgressDialog mStatus;
 	
 	/* Setup the progress bar. */
 	@Override
 	protected void onPreExecute() {
-		mStatus = ProgressDialog.show(mAppContext,"","Retrieving Menu...", true);
+		mStatus = ProgressDialog.show(mAppContext,"","Loading Menu...", true);
 	}
 	
 	@Override
@@ -71,13 +69,7 @@ public class GetMenuTask extends AsyncTask<Integer, Void, GetMenuTask.Result> {
 		int month = args[0]+1, day = args[1], year = args[2];
 		
 		Result r = new Result();	
-		// check the local cache first.. this is MUCH faster...
-		if (!mForceUpdate) {
-			r.setValue(loadLocalMenu(mAppContext, getCacheFileName(month, day, year)));
-			if (r.getValue() != null)
-				return r.setCode(Result.SUCCESS);
-		}
-			
+		
 		//download menu if not cached..
 		ConnectivityManager cm = (ConnectivityManager)
 				mAppContext.getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -98,6 +90,7 @@ public class GetMenuTask extends AsyncTask<Integer, Void, GetMenuTask.Result> {
 				(args[0]+1)+"-"+args[1]+"-"+args[2]+".json";
 		
 		String menu = downloadDataFromServer(request);
+		
 		if (menu == null)
 			return r.setCode(Result.NO_MEAL_DATA);
 		else if (menu.equals(Integer.valueOf(Result.HTTP_ERROR).toString())) {
@@ -106,7 +99,7 @@ public class GetMenuTask extends AsyncTask<Integer, Void, GetMenuTask.Result> {
 		
 		r.setValue(menu);
 		//store the file in a cache and return the result
-		return writeCache(mAppContext, getCacheFileName(month, day, year), menu) ?
+		return Utility.writeCache(mAppContext, Utility.getCacheFileName(month-1, day, year), menu) ?
 				r.setCode(Result.SUCCESS) : r.setCode(Result.UNKNOWN);
 	}
 	
@@ -114,60 +107,20 @@ public class GetMenuTask extends AsyncTask<Integer, Void, GetMenuTask.Result> {
 	 * is loaded. */
 	@Override
 	protected void onPostExecute(Result result) {
-		// stop the progress dialog
+		
+		Log.i("getMenuTask", "menu loaded from the server");
+		
 		try {
-		mStatus.dismiss();
-		mStatus = null;
-		// notify the UI thread listener ..
-		mRetrieveDataListener.onRetrieveData(result);
+			// dismiss loading..
+			mStatus.dismiss();
+			// notify the UI thread listener ..
+			mRetrieveDataListener.onRetrieveData(result);
 		} catch (Exception e) {
 			Log.d("post execute", e.toString());
 		}
 		
 		
 		super.onPostExecute(result);
-	}
-
-	protected static String loadLocalMenu(Context AppContext, String cacheFile) {
-
-		/* String builder to store the JSON from the cache file. */
-		StringBuilder r = new StringBuilder();
-		
-		try {
-			File cacheDir = AppContext.getFilesDir();
-			File f = new File(cacheDir, cacheFile); 
-			BufferedReader br = new BufferedReader(new FileReader(f));
-			String l;
-			while ((l = br.readLine()) != null)
-				r.append(l); 
-			br.close();
-			
-		} catch (FileNotFoundException ffe) {
-			Log.i(CACH, "No Cache file found.  " +
-					"One will be created on first data retrieval.");
-			return null;
-		} catch (IOException e) {
-			Log.e(CACH, e.toString());
-			return null;
-		}
-
-		return r.toString();
-	}
-	
-	protected static boolean writeCache(Context context, String cacheFile, String json) {
-		
-		/* Write to the cache file. */
-		try {
-			File f = new File(context.getFilesDir(), cacheFile);
-			BufferedWriter bw = new BufferedWriter(new FileWriter(f));
-			bw.write(json);
-			bw.close();
-			
-		} catch (IOException e) {
-			Log.e(CACH, e.toString());
-			return false;
-		}
-		return true;		
 	}
 	
 	/* pruneCache deletes all cache files older than the specified year, month, day.
@@ -187,7 +140,7 @@ public class GetMenuTask extends AsyncTask<Integer, Void, GetMenuTask.Result> {
 		year	= g.get(Calendar.YEAR);
 		
 		// Calculate the decimal value of the given date.
-		final long cutDate = toDecimalDate(month, day, year);
+		final long cutDate = Utility.toDecimalDate(month, day, year);
 		
 		// Get a list of all files older than cutDate.
 		File dir = app.getFilesDir();
@@ -213,23 +166,6 @@ public class GetMenuTask extends AsyncTask<Integer, Void, GetMenuTask.Result> {
 			f.delete();
 		}
 	}
-	
-	/* File names constructed such that newer files will always be greater
-	 * numerically than older ones.  This way, it is easier to manage the cache.
-	 */
-	private static String getCacheFileName(int month, int day, int year) {
-		StringBuilder filename = new StringBuilder();
-		
-		return filename	.append(toDecimalDate(month, day, year).toString())
-						.append(".json").toString();
-	}
-	
-	/* Calculate the decimal value of the given date. */
-	private static Long toDecimalDate(int month, int day, int year) {
-		// Calculate the decimal value of the given date.
-		return Long.valueOf((day + (month * 100) + (year * 10000)));
-	};
-
 		
 	protected static String downloadDataFromServer(String request) {
 		// connection is up, attempt to retrieve the menu:
@@ -291,39 +227,6 @@ public class GetMenuTask extends AsyncTask<Integer, Void, GetMenuTask.Result> {
 					  b[0]		   );	// ipint bits[ 8- 1] = ddd 
 		
 		return cm.requestRouteToHost(ni.getType(), ipint);
-	}
-	
-	/* Result is meant to store the status and return data from the 
-		 * methods of GetMenuTask that attempt to acquire menu data. */
-	public class Result {
-		/* Result Code Constants */
-		public static final int UNKNOWN = -1;
-		public static final int SUCCESS = 0;
-		public static final int NO_NETWORK = 1;
-		public static final int NO_ROUTE = 2;
-		public static final int HTTP_ERROR = 3;
-		public static final int NO_CACHE = 4;
-		public static final int NO_MEAL_DATA = 5;
-		
-		private int code;
-		private String value;
-		
-		public Result (int resultCode, String resultValue) {
-			code = resultCode;
-			value = resultValue;
-		}
-		public Result () {this(-1, null);}
-		public int getCode() {return code;}
-		public String getValue() {return value;}
-		public Result setCode(int c) {code = c; return this;}
-		public Result setValue(String v) {value = v; return this;}
-	}
-	/* --- end result class --- */
-		
-	/* Listener you should implement for the callback method in the UI thread
-	 * and pass to the constructor of GetMenuTask */
-	public interface RetrieveDataListener {
-		public void onRetrieveData(Result result);
 	}
 	
 	/* Log Keys */

@@ -1,7 +1,6 @@
 package edu.grinnell.glicious;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
 
@@ -29,19 +28,24 @@ public class DishDetailFragment extends ListFragment {
     NutritionListAdapter mNLA;
 
     public DishDetailFragment() {
+    	super();
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         
-        if (getArguments().containsKey(ARG_ENTREE_ID)) {
-            mDish = MenuContent.mDishesMap.get(getArguments().getString(ARG_ENTREE_ID));
-            fillNutrition(mDish.nutrition);
+        Bundle args = getArguments();
+        if (args != null && args.containsKey(ARG_ENTREE_ID)) {
+            mDish = MenuContent.mDishesMap.get(args.getString(ARG_ENTREE_ID));
+            
+            if (mDish != null && mDish.nutrition != null)
+            	fillNutrition(mDish.nutrition);
+            else
+            	mNutrition.add(new Label("Nutritional Information Unavailable", ""));
+            
             mNLA = new NutritionListAdapter(getActivity(), R.layout.nutrition_row, mNutrition);
         }
-        
-        
     }
 
     @Override
@@ -66,23 +70,19 @@ public class DishDetailFragment extends ListFragment {
     }
     
     public void fillNutrition(JSONObject list) {
-    	
-    	if (list != null) {
-	    	@SuppressWarnings("unchecked")
-			Iterator<String> it = list.keys();
-	    	while(it.hasNext()) {
-	    		String label = it.next();
-	    		NutritionInfo ni = NutritionUtil.INFO.get(label);
-	    		String value = (list.optString(label, "0"));
-	    		if ("0".equals(value) ) 
-	    			value = "~";
-	    		else
-	    			value = value + " " + ni.unit;
-	    		
-	    		mNutrition.add(new Label(ni.name, value, ni.order));
-	    	}
-	    	Collections.sort(mNutrition);
-    	} else
-    		mNutrition.add(new Label("Nutritional Information Unavailable", ""));
+    	@SuppressWarnings("unchecked")
+		Iterator<String> it = list.keys();
+    	while(it.hasNext()) {
+    		String label = it.next();
+    		NutritionInfo ni = NutritionUtil.INFO.get(label);
+    		String value = (list.optString(label, "0"));
+    		if ("0".equals(value) ) 
+    			value = "~";
+    		else
+    			value = value + " " + ni.unit;
+    		
+    		mNutrition.add(new Label(ni.name, value, ni.order));
+    	}
+    	Collections.sort(mNutrition);
     }
 }

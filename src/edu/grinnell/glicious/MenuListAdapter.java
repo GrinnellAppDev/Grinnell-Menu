@@ -63,7 +63,8 @@ public class MenuListAdapter extends ArrayAdapter<Entree> {
 				//convertView.setBackgroundColor(r.getColor(R.color.gred));
 				//convertView.setClickable(false);
 				holder.label.setTextSize(21.0f);
-				holder.label.setGravity(Gravity.LEFT);
+				holder.label.setGravity(Gravity.RIGHT);
+				
 				convertView.setPadding(7, 10, 7, 10);
 				holder.label.setTextColor(r.getColor(R.color.gcream));
 				
