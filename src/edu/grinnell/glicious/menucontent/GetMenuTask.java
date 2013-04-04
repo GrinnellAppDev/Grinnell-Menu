@@ -1,11 +1,6 @@
 package edu.grinnell.glicious.menucontent;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.FilenameFilter;
 import java.io.IOException;
 import java.net.InetAddress;
@@ -21,16 +16,15 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.util.EntityUtils;
 
-import edu.grinnell.glicious.Utility;
-import edu.grinnell.glicious.Utility.Result;
-import edu.grinnell.glicious.Utility.RetrieveDataListener;
-
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.util.Log;
+import edu.grinnell.glicious.Utility;
+import edu.grinnell.glicious.Utility.Result;
+import edu.grinnell.glicious.Utility.RetrieveDataListener;
 	
 /* Asynchronous task for downloading menu from the network. */
 public class GetMenuTask extends AsyncTask<Integer, Void, Result> {
