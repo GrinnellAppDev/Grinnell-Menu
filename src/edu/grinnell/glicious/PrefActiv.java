@@ -22,7 +22,7 @@ public class PrefActiv extends SherlockPreferenceActivity {
 	    
 	    getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 	    
-	    if (Build.VERSION.SDK_INT<Build.VERSION_CODES.HONEYCOMB) {
+	    if (Build.VERSION.SDK_INT < Build.VERSION_CODES.HONEYCOMB) {
 	        addPreferencesFromResource(R.xml.preferences); 
 	    } else {
 	    	getFragmentManager().beginTransaction().replace(android.R.id.content,
