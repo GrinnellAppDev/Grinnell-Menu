@@ -6,17 +6,18 @@ import java.util.Map;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.support.v4.app.ListFragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+
+import com.actionbarsherlock.app.SherlockListFragment;
+
 import edu.grinnell.glicious.menucontent.Entree;
 import edu.grinnell.glicious.menucontent.MenuContent;
-import edu.grinnell.glicious.R;
 
-public class DishListFragment extends ListFragment {
+public class DishListFragment extends SherlockListFragment {
 	
     private static final String STATE_ACTIVATED_POSITION = "activated_position";
     private static final String MENU = "menu";

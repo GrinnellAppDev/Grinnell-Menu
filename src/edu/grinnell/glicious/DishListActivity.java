@@ -3,33 +3,32 @@ package edu.grinnell.glicious;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
-import com.crittercism.app.Crittercism;
-import com.flurry.android.FlurryAgent;
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
-import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.DialogFragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.widget.DatePicker;
+
+import com.actionbarsherlock.app.SherlockFragmentActivity;
+import com.actionbarsherlock.view.Menu;
+import com.actionbarsherlock.view.MenuItem;
+import com.crittercism.app.Crittercism;
+import com.flurry.android.FlurryAgent;
+
 import edu.grinnell.glicious.Utility.Result;
 import edu.grinnell.glicious.menucontent.Entree;
 import edu.grinnell.glicious.menucontent.GetMenuTask;
 import edu.grinnell.glicious.menucontent.MenuContent;
 
-public class DishListActivity extends FragmentActivity
+public class DishListActivity extends SherlockFragmentActivity
         implements DishListFragment.Callbacks {
 	
     private boolean 			mTwoPane;
@@ -88,7 +87,7 @@ public class DishListActivity extends FragmentActivity
         	mCurrentDate = mPendingDate;
         }
         
-        getActionBar().setSubtitle(Utility.dateString(mPendingDate));
+        getSupportActionBar().setSubtitle(Utility.dateString(mPendingDate));
         
         if (findViewById(R.id.dish_detail_container) != null) {
             mTwoPane = true;
@@ -215,7 +214,7 @@ public class DishListActivity extends FragmentActivity
 			/* On SUCCESS the menu string should be parsed into JSONObjects
 			 * and the venues and entrees should be put into the list. */
 			mCurrentDate = mPendingDate;
-			getActionBar().setSubtitle(Utility.dateString(mCurrentDate));
+			getSupportActionBar().setSubtitle(Utility.dateString(mCurrentDate));
 			MenuContent.setMenuData(result.getValue());
 			refreshPager();
 			
@@ -304,7 +303,7 @@ public class DishListActivity extends FragmentActivity
 	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-	    getMenuInflater().inflate(R.menu.menu_bar, menu);
+	    getSupportMenuInflater().inflate(R.menu.menu_bar, menu);
 	    
 	    return super.onCreateOptionsMenu(menu);
 	}
@@ -376,13 +375,23 @@ public class DishListActivity extends FragmentActivity
 					date.get(Calendar.MONTH), 
 					date.get(Calendar.DAY_OF_MONTH));
 	    	
-	    	DatePicker dp = dpd.getDatePicker();
-	    	//dp.setCalendarViewShown(true);
-	    	GregorianCalendar d = new GregorianCalendar();
+	    	/*DatePicker dp = null;
+	    	try {
+	    		Field dpf = dpd.getClass().getDeclaredField("mDatePicker");
+	    		dpf.setAccessible(true);
+	    		dp = (DatePicker) dpf.get(dpd);
+	    	} catch (IllegalAccessException iae) {
+	    		Log.e("DishListActivity", iae.toString());
+	    	} catch (NoSuchFieldException nsfe) {
+	    		Log.e("DishListActivity", nsfe.toString());
+	    	}*/
+	    	
+	    	////dp.setCalendarViewShown(true);
+	    	//GregorianCalendar d = new GregorianCalendar();
 	    	
 	    	//dp.setMinDate(Math.min(d.getTimeInMillis(), date.getTimeInMillis()));
-	    	d.add(Calendar.DAY_OF_YEAR, mDaysRemaining);
-	    	dp.setMaxDate(d.getTimeInMillis());
+	    	//d.add(Calendar.DAY_OF_YEAR, mDaysRemaining);
+	    	//dp.setMaxDate(d.getTimeInMillis());
 		    
 			return dpd;
 	    }
