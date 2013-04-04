@@ -1,23 +1,26 @@
 package edu.grinnell.glicious;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.preference.PreferenceActivity;
 import android.support.v4.app.NavUtils;
-import android.view.MenuItem;
 
-public class PrefActiv extends PreferenceActivity {
+import com.actionbarsherlock.app.SherlockPreferenceActivity;
+import com.actionbarsherlock.view.MenuItem;
+
+public class PrefActiv extends SherlockPreferenceActivity {
 	
 	/** Called when the activity is first created. */
+	@SuppressLint("NewApi")
 	@SuppressWarnings("deprecation")
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 	    super.onCreate(savedInstanceState);
 	    setContentView(R.layout.prefmain);
 	    
-	    getActionBar().setDisplayHomeAsUpEnabled(true);
+	    getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 	    
 	    if (Build.VERSION.SDK_INT<Build.VERSION_CODES.HONEYCOMB) {
 	        addPreferencesFromResource(R.xml.preferences); 
