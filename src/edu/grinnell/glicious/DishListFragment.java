@@ -1,5 +1,6 @@
 package edu.grinnell.glicious;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -97,7 +98,7 @@ public class DishListFragment extends SherlockListFragment {
     private void setAdapter() {
     	Log.d("DishListFrag", "menu key = " + mMenuKey);
     	mListAdapter = new MenuListAdapter((DishListActivity) getActivity(), 
-    			R.layout.entree_row, MenuContent.mMealsMap.get(mMenuKey));
+    			R.layout.entree_row, mMenuList);
     	setListAdapter(mListAdapter);
     }
 
@@ -121,6 +122,8 @@ public class DishListFragment extends SherlockListFragment {
         if (args != null)
         	mMenuKey = args.getString(MENU);
         Log.d(DLF, mMenuKey);
+        
+        mMenuList = new ArrayList<Entree>(MenuContent.mMealsMap.get(mMenuKey));
         
         setAdapter();
         /*
@@ -165,7 +168,7 @@ public class DishListFragment extends SherlockListFragment {
     public void onResume() {
     	super.onResume();
     	if (mMenuList != null)
-    		setListAdapter(mListAdapter);
+    		setListAdapter(mListAdapter); 
     }
     
     public static void doSetListAdapter() {

@@ -193,10 +193,22 @@ public class GetMenuTask extends AsyncTask<Integer, Void, Result> {
 		
 	/* Return true if the device has a network adapter that is capable of 
 	 * accessing the network. */
-	protected static boolean networkEnabled(ConnectivityManager cm) {
-		NetworkInfo n = cm.getActiveNetworkInfo();
-		return (n != null) && n.isConnectedOrConnecting();
+	protected static boolean networkEnabled(ConnectivityManager connec) {
+		// ARE WE CONNECTED TO THE NET
+		if (connec.getNetworkInfo(0).getState() == NetworkInfo.State.CONNECTED
+				|| connec.getNetworkInfo(1).getState() == NetworkInfo.State.CONNECTED) {
+			// MESSAGE TO SCREEN FOR TESTING (IF REQ)
+			// Toast.makeText(this, connectionType + ” connected”,
+			// Toast.LENGTH_SHORT).show();
+			return true;
+		} else if (connec.getNetworkInfo(0).getState() == NetworkInfo.State.DISCONNECTED
+				|| connec.getNetworkInfo(1).getState() == NetworkInfo.State.DISCONNECTED) {
+			return false;
+		}
+
+		return false;
 	}
+	
 	
 	/* Return true if the appropriate host can be reached. */
 	protected static boolean routeClear(String host, ConnectivityManager cm) {
