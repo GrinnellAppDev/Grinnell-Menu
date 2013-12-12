@@ -56,8 +56,8 @@
         android:listSelector="@drawable/glistselector"
         android:drawSelectorOnTop="false"
         android:paddingTop="2dp"
-        android:paddingLeft="21dp"
-        android:paddingRight="11dp" >
+        android:paddingLeft="0dp"
+        android:paddingRight="0dp" >
     </ListView>
 
 </LinearLayout>
