@@ -195,6 +195,11 @@ public class GetMenuTask extends AsyncTask<Integer, Void, Result> {
 	 * accessing the network. */
 	protected static boolean networkEnabled(ConnectivityManager connec) {
 		// ARE WE CONNECTED TO THE NET
+	
+		if (connec == null){
+			return false;
+		}
+		
 		if (connec.getNetworkInfo(0).getState() == NetworkInfo.State.CONNECTED
 				|| connec.getNetworkInfo(1).getState() == NetworkInfo.State.CONNECTED) {
 			// MESSAGE TO SCREEN FOR TESTING (IF REQ)
