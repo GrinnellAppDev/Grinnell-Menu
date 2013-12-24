@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="edu.grinnell.glicious"
-    android:versionCode="210"
-    android:versionName="2.1" >
+    android:versionCode="214"
+    android:versionName="2.2.1" >
 
     <uses-sdk
         android:minSdkVersion="9"

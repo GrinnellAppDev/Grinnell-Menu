@@ -65,6 +65,7 @@ public class GetMenuTask extends AsyncTask<Integer, Void, Result> {
 		Result r = new Result();	
 		
 		//download menu if not cached..
+		
 		ConnectivityManager cm = (ConnectivityManager)
 				mAppContext.getSystemService(Context.CONNECTIVITY_SERVICE);
 		//check connections before downloading..
