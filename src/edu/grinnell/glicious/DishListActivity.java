@@ -1,6 +1,5 @@
 package edu.grinnell.glicious;
 
-import com.crashlytics.android.Crashlytics;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
@@ -8,11 +7,8 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -20,12 +16,11 @@ import android.support.v4.app.DialogFragment;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.widget.DatePicker;
-import android.widget.Toast;
 
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
-import com.crittercism.app.Crittercism;
+import com.crashlytics.android.Crashlytics;
 import com.flurry.android.FlurryAgent;
 
 import edu.grinnell.glicious.Utility.Result;
