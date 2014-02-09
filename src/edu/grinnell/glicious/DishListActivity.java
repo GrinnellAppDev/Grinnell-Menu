@@ -1,5 +1,6 @@
 package edu.grinnell.glicious;
 
+import com.crashlytics.android.Crashlytics;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
@@ -65,8 +66,8 @@ public class DishListActivity extends SherlockFragmentActivity implements
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		/* Crittercism crash and error tracking */
-		Crittercism.init(getApplicationContext(), "4f8ab556b0931573b000033e");
+		Crashlytics.start(this);
+		
 		setContentView(R.layout.activity_dish_list);
 		/*
 		 * getActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM |
@@ -96,8 +97,7 @@ public class DishListActivity extends SherlockFragmentActivity implements
 			mTwoPane = true;
 		}
 
-
-			loadMenu(mPendingDate);
+		loadMenu(mPendingDate);
 
 	}
 

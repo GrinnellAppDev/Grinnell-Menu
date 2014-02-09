@@ -47,6 +47,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".DishListActivity" />
         </activity>
+        <meta-data android:name="com.crashlytics.ApiKey" android:value="45894d9e8a6bc3b8513651d6de36159e2c836e51"/>
         
     </application>
 
