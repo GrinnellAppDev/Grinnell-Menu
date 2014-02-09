@@ -208,14 +208,18 @@ public class GetMenuTask extends AsyncTask<Integer, Void, Result> {
 			return false;
 		}
 
-		if (connec.getNetworkInfo(1) != null
-				&& connec.getNetworkInfo(1).getState() == NetworkInfo.State.CONNECTED)
-			return true;
-		else if (connec.getNetworkInfo(0) != null
-				&& connec.getNetworkInfo(0).getState() == NetworkInfo.State.CONNECTED)
-			return true;
-		else
+		try {
+			if (connec.getNetworkInfo(1) != null
+					&& connec.getNetworkInfo(1).getState() == NetworkInfo.State.CONNECTED)
+				return true;
+			else if (connec.getNetworkInfo(0) != null
+					&& connec.getNetworkInfo(0).getState() == NetworkInfo.State.CONNECTED)
+				return true;
+			else
+				return false;
+		} catch (NullPointerException exception) {
 			return false;
+		}
 	}
 
 	/* Return true if the appropriate host can be reached. */
