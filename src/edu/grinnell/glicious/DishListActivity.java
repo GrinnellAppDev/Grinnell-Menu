@@ -92,7 +92,7 @@ public class DishListActivity extends SherlockFragmentActivity implements
 			mTwoPane = true;
 		}
 
-		loadMenu(mPendingDate);
+		loadMenu(mPendingDate);	
 
 	}
 
@@ -215,7 +215,7 @@ public class DishListActivity extends SherlockFragmentActivity implements
 			 */
 			mCurrentDate = mPendingDate;
 			getSupportActionBar().setSubtitle(Utility.dateString(mCurrentDate));
-			MenuContent.setMenuData(result.getValue());
+			MenuContent.setMenuData(result.getValue(), this);
 			refreshPager();
 
 			break;
@@ -290,7 +290,7 @@ public class DishListActivity extends SherlockFragmentActivity implements
 			case PREFS:
 				Log.i(UITHREAD, "prefs result");
 				GliciousPrefs.refresh();
-				MenuContent.refresh();
+				MenuContent.refresh(this);
 				refreshPager();
 				break;
 			case NETWORK:

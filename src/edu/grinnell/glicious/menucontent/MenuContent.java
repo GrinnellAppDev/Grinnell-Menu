@@ -14,8 +14,13 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import edu.grinnell.glicious.GliciousPrefs;
+import edu.grinnell.glicious.R;
+import edu.grinnell.glicious.Utility;
 
+import android.content.Context;
 import android.util.Log;
+import android.view.Gravity;
+import android.widget.Toast;
 
 public class MenuContent {
 
@@ -52,11 +57,12 @@ public class MenuContent {
 	}
 	
     
-    public static void setMenuData(String json) {
+    public static void setMenuData(String json, Context c) {
     	Assert.assertNotNull(json);
     	
     	try {
     		mMenuData = new JSONObject(json);
+    		mMenuData = null;
     	} catch (JSONException jsone) {
     		Log.e(JSONError, jsone.getMessage());
     	}
@@ -65,7 +71,7 @@ public class MenuContent {
     	valid = true;
     	
     	// Update..
-    	populateMealTable();
+    	populateMealTable(c);
     	
     }
     
@@ -74,9 +80,9 @@ public class MenuContent {
      * This method should be called after dietary preferences are updated,
      * for example..
      */
-    public static void refresh() {
+    public static void refresh(Context c) {
     	if (valid)
-    		populateMealTable();
+    		populateMealTable(c);
     	else
     		Log.d("MenuContent", "Cannot refresh(), class is invalid.");
     }
@@ -95,38 +101,46 @@ public class MenuContent {
     	mMenuOrder.add( x, menu );
     }
     
-    private static void populateMealTable() {
-    	
-    	Assert.assertNotNull(mMenuData);
-    	// Clear out the old data..
-    	//for ( String meal : mMealsMap.keySet() )
-    	//	mMealsMap.get(meal).clear();
-    	mMealsMap.clear();
-    	mDishesMap.clear();
-    	mMenuOrder.clear();
-    	
-    	// Iterate over meal keys..
-    	@SuppressWarnings("unchecked")
-		Iterator<String> it = (Iterator<String>) mMenuData.keys();
-    	while( it.hasNext() ) {
-    		String menu = it.next();
-    		// Create the list of dishes..
-    		JSONObject meal = null;
-    		
-    		meal = mMenuData.optJSONObject(menu);
-    		// TODO: temporary fix; tell Collin to make passover have a true / false value
-    		if (meal == null || menu.trim().toLowerCase().contains("passover") ) 
-    			continue;
-    		// --
-    		//Log.i("populateMealTable: ", meal.toString());
-    		//Assert.assertNotNull(meal);
-    		
-    		
-    		List<Entree> menuList = createEntreeList(meal);
-    		
-    		if( menuList != null && !menuList.isEmpty() )
-    			addMealAsAvailable(menu.toLowerCase().trim(), menuList);
-    	}
+    private static void populateMealTable(Context c) {
+    	//Assert.assertNotNull(mMenuData);
+	if (mMenuData != null){
+        	// Clear out the old data..
+        	//for ( String meal : mMealsMap.keySet() )
+        	//	mMealsMap.get(meal).clear();
+        	mMealsMap.clear();
+        	mDishesMap.clear();
+        	mMenuOrder.clear();
+        	
+        	// Iterate over meal keys..
+        	@SuppressWarnings("unchecked")
+    		Iterator<String> it = (Iterator<String>) mMenuData.keys();
+        	while( it.hasNext() ) {
+        		String menu = it.next();
+        		// Create the list of dishes..
+        		JSONObject meal = null;
+        		
+        		meal = mMenuData.optJSONObject(menu);
+        		// TODO: temporary fix; tell Collin to make passover have a true / false value
+        		if (meal == null || menu.trim().toLowerCase().contains("passover") ) 
+        			continue;
+        		// --
+        		//Log.i("populateMealTable: ", meal.toString());
+        		//Assert.assertNotNull(meal);
+        		
+        		
+        		List<Entree> menuList = createEntreeList(meal);
+        		
+        		if( menuList != null && !menuList.isEmpty() )
+        			addMealAsAvailable(menu.toLowerCase().trim(), menuList);
+        	}
+	}
+	else
+	{
+	    Utility.showToast(c, Utility.Result.NO_ROUTE);
+	    //Toast t = Toast.makeText(c, R.string.noRoute, Toast.LENGTH_SHORT);
+	    //t.setGravity(Gravity.TOP, 0, 70);
+	    //t.show();
+	}
     	
     	//TODO: finish..
     	//populateMenuList(menuData);
