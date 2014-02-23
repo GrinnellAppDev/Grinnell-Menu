@@ -62,7 +62,6 @@ public class MenuContent {
     	
     	try {
     		mMenuData = new JSONObject(json);
-    		mMenuData = null;
     	} catch (JSONException jsone) {
     		Log.e(JSONError, jsone.getMessage());
     	}
