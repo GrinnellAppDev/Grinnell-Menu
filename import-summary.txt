@@ -1,0 +1,142 @@
+ECLIPSE ANDROID PROJECT IMPORT SUMMARY
+======================================
+
+Manifest Merging:
+-----------------
+Your project uses libraries that provide manifests, and your Eclipse
+project did not explicitly turn on manifest merging. In Android Gradle
+projects, manifests are always merged (meaning that contents from your
+libraries' manifests will be merged into the app manifest. If you had
+manually copied contents from library manifests into your app manifest
+you may need to remove these for the app to build correctly.
+
+Ignored Files:
+--------------
+The following files were *not* copied into the new Gradle project; you
+should evaluate whether these are still needed in your project and if
+so manually move them:
+
+From Glicious:
+* .DS_Store
+* .gitignore
+* LICENSE
+* README
+* README.md
+* proguard-project.txt
+From ImageSlider:
+* .DS_Store
+* java/
+* java/.DS_Store
+* java/com/
+* java/com/.DS_Store
+* java/com/daimajia/
+* java/com/daimajia/.DS_Store
+* java/com/daimajia/slider/
+* java/com/daimajia/slider/.DS_Store
+* java/com/daimajia/slider/library/
+* java/com/daimajia/slider/library/.DS_Store
+* java/com/daimajia/slider/library/Animations/
+* java/com/daimajia/slider/library/Animations/BaseAnimationInterface.java
+* java/com/daimajia/slider/library/Animations/DescriptionAnimation.java
+* java/com/daimajia/slider/library/Indicators/
+* java/com/daimajia/slider/library/Indicators/PagerIndicator.java
+* java/com/daimajia/slider/library/SliderAdapter.java
+* java/com/daimajia/slider/library/SliderLayout.java
+* java/com/daimajia/slider/library/SliderTypes/
+* java/com/daimajia/slider/library/SliderTypes/BaseSliderView.java
+* java/com/daimajia/slider/library/SliderTypes/DefaultSliderView.java
+* java/com/daimajia/slider/library/SliderTypes/TextSliderView.java
+* java/com/daimajia/slider/library/Transformers/
+* java/com/daimajia/slider/library/Transformers/AccordionTransformer.java
+* java/com/daimajia/slider/library/Transformers/BackgroundToForegroundTransformer.java
+* java/com/daimajia/slider/library/Transformers/BaseTransformer.java
+* java/com/daimajia/slider/library/Transformers/CubeInTransformer.java
+* java/com/daimajia/slider/library/Transformers/DefaultTransformer.java
+* java/com/daimajia/slider/library/Transformers/DepthPageTransformer.java
+* java/com/daimajia/slider/library/Transformers/FadeTransformer.java
+* java/com/daimajia/slider/library/Transformers/FlipHorizontalTransformer.java
+* java/com/daimajia/slider/library/Transformers/FlipPageViewTransformer.java
+* java/com/daimajia/slider/library/Transformers/ForegroundToBackgroundTransformer.java
+* java/com/daimajia/slider/library/Transformers/RotateDownTransformer.java
+* java/com/daimajia/slider/library/Transformers/RotateUpTransformer.java
+* java/com/daimajia/slider/library/Transformers/StackTransformer.java
+* java/com/daimajia/slider/library/Transformers/TabletTransformer.java
+* java/com/daimajia/slider/library/Transformers/ZoomInTransformer.java
+* java/com/daimajia/slider/library/Transformers/ZoomOutSlideTransformer.java
+* java/com/daimajia/slider/library/Transformers/ZoomOutTransformer.java
+* java/com/daimajia/slider/library/Tricks/
+* java/com/daimajia/slider/library/Tricks/FixedSpeedScroller.java
+* java/com/daimajia/slider/library/Tricks/InfinitePagerAdapter.java
+* java/com/daimajia/slider/library/Tricks/InfiniteViewPager.java
+* java/com/daimajia/slider/library/Tricks/ViewPagerEx.java
+From ParallaxScroll:
+* build.gradle
+* proguard-project.txt
+
+Replaced Jars with Dependencies:
+--------------------------------
+The importer recognized the following .jar files as third party
+libraries and replaced them with Gradle dependencies instead. This has
+the advantage that more explicit version information is known, and the
+libraries can be updated automatically. However, it is possible that
+the .jar file in your project was of an older version than the
+dependency we picked, which could render the project not compileable.
+You can disable the jar replacement in the import wizard and try again:
+
+android-support-v4.jar => com.android.support:support-v4:+
+
+Replaced Libraries with Dependencies:
+-------------------------------------
+The importer recognized the following library projects as third party
+libraries and replaced them with Gradle dependencies instead. This has
+the advantage that more explicit version information is known, and the
+libraries can be updated automatically. However, it is possible that
+the source files in your project were of an older version than the
+dependency we picked, which could render the project not compileable.
+You can disable the library replacement in the import wizard and try
+again:
+
+actionbarsherlock =>
+    com.actionbarsherlock:actionbarsherlock:4.4.0@aar
+    com.android.support:support-v4:+
+
+Moved Files:
+------------
+Android Gradle projects use a different directory structure than ADT
+Eclipse projects. Here's how the projects were restructured:
+
+In ImageSlider:
+* AndroidManifest.xml => imageSlider/src/main/AndroidManifest.xml
+* assets/ => imageSlider/src/main/assets/
+* res/ => imageSlider/src/main/res/
+* src/ => imageSlider/src/main/java/
+In ParallaxScroll:
+* AndroidManifest.xml => parallaxScroll/src/main/AndroidManifest.xml
+* assets/ => parallaxScroll/src/main/assets/
+* res/ => parallaxScroll/src/main/res/
+* src/ => parallaxScroll/src/main/java/
+In Glicious:
+* AndroidManifest.xml => glicious/src/main/AndroidManifest.xml
+* assets/ => glicious/src/main/assets/
+* libs/FlurryAgent.jar => glicious/libs/FlurryAgent.jar
+* libs/Parse-1.3.9.jar => glicious/libs/Parse-1.3.9.jar
+* libs/crashlytics.jar => glicious/libs/crashlytics.jar
+* libs/crittercism_v3_0_3_sdkonly.jar => glicious/libs/crittercism_v3_0_3_sdkonly.jar
+* lint.xml => glicious/lint.xml
+* res/ => glicious/src/main/res/
+* src/ => glicious/src/main/java/
+
+Next Steps:
+-----------
+You can now build the project. The Gradle project needs network
+connectivity to download dependencies.
+
+Bugs:
+-----
+If for some reason your project does not build, and you determine that
+it is due to a bug or limitation of the Eclipse to Gradle importer,
+please file a bug at http://b.android.com with category
+Component-Tools.
+
+(This import summary is for your information only, and can be deleted
+after import once you are satisfied with the results.)

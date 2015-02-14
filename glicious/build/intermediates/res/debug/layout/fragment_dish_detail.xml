@@ -1,0 +1,64 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  	xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/gcream"
+    tools:context=".DishDetailFragment" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/dheader" >
+
+        <TextView
+            android:id="@+id/dish_detail"
+            style="?android:attr/textAppearanceLarge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="2dp"
+            android:paddingLeft="17dp"
+            android:paddingTop="9dp"
+            android:textColor="@android:color/white" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="4dp" >
+
+            <TextView
+                android:id="@+id/dish_serv_size"
+                style="?android:attr/textAppearanceSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="17dp"
+                android:text="@string/serv_size_string"
+                android:textColor="@android:color/white" />
+
+            <TextView
+                android:id="@+id/dish_serv_size_amt"
+                style="?android:attr/textAppearanceSmall"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:textColor="@android:color/white" />
+        </LinearLayout>
+
+    </LinearLayout>
+    
+    <ListView
+        android:id="@android:id/list"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:background="@color/gcream"
+        android:listSelector="@drawable/glistselector"
+        android:drawSelectorOnTop="false"
+        android:paddingTop="2dp"
+        android:paddingLeft="0dp"
+        android:paddingRight="0dp" >
+    </ListView>
+
+</LinearLayout>
+<!-- From: file:/Users/samee/Desktop/Grinnell-Menu/glicious/src/main/res/layout/fragment_dish_detail.xml -->

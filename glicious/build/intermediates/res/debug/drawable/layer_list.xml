@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    
+    <item android:id="@+id/first_image">
+     <shape android:shape="rectangle">
+            <solid android:color="#D40005"/>
+        </shape>
+    </item>
+    <item android:id="@+id/second_image" android:right="8dp">
+      <shape android:shape="rectangle">
+            <size android:width="8dp"/>
+            <solid android:color="#E3E5E9"/>
+        </shape>
+    </item>
+ 
+</layer-list><!-- From: file:/Users/samee/Desktop/Grinnell-Menu/glicious/src/main/res/drawable/layer_list.xml -->

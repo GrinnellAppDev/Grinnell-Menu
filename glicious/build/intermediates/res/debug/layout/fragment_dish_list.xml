@@ -1,0 +1,21 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+      android:layout_width="match_parent"
+      android:layout_height="0dip"
+      android:layout_weight="1" >
+      
+      <ListView android:id="@android:id/list"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:background="@color/gcream"
+          android:paddingLeft="0dp"
+          android:paddingRight="0dp"
+          android:listSelector="@drawable/glistselector"/>
+      
+      <TextView android:id="@android:id/empty"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:textAppearance="?android:attr/textAppearanceMedium"
+          android:text="@string/noMenuContent"/>
+
+</FrameLayout>
+<!-- From: file:/Users/samee/Desktop/Grinnell-Menu/glicious/src/main/res/layout/fragment_dish_list.xml -->
