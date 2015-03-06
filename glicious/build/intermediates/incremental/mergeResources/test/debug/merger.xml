@@ -1,2 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merger version="3"><dataSet config="main"><source path="/Users/samee/Desktop/Grinnell-Menu-NoRecipe/glicious/src/androidTest/res"/><source path="/Users/samee/Desktop/Grinnell-Menu-NoRecipe/glicious/build/generated/res/rs/test/debug"/><source path="/Users/samee/Desktop/Grinnell-Menu-NoRecipe/glicious/build/generated/res/generated/test/debug"/></dataSet><mergedItems/></merger>
+<merger version="3"><dataSet config="main"><source path="/Users/samee/Desktop/Grinnell-Menu/glicious/src/androidTest/res"/><source path="/Users/samee/Desktop/Grinnell-Menu/glicious/build/generated/res/rs/test/debug"/><source path="/Users/samee/Desktop/Grinnell-Menu/glicious/build/generated/res/generated/test/debug"/></dataSet><mergedItems/></merger>
