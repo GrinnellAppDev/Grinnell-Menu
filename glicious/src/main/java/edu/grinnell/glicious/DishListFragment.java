@@ -4,6 +4,7 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.app.Activity;
 import android.os.Bundle;
+import android.support.v4.app.ListFragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,8 +12,6 @@ import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.ListView;
 import android.widget.TextView;
-
-import com.actionbarsherlock.app.SherlockListFragment;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -25,7 +24,7 @@ import java.util.Map;
 import edu.grinnell.glicious.menucontent.Entree;
 import edu.grinnell.glicious.menucontent.MenuContent;
 
-public class DishListFragment extends SherlockListFragment{
+public class DishListFragment extends ListFragment{
 	
     private static final String STATE_ACTIVATED_POSITION = "activated_position";
     private static final String MENU = "menu";
@@ -145,12 +144,12 @@ public class DishListFragment extends SherlockListFragment{
         
         setRetainInstance(true);
 
-        HOURS.put("breakfast", "Hours: 7am - 10am");
-        HOURS.put("lunch", "Hours: 11am - 2pm");
-        HOURS.put("dinner", "Hours: 5pm - 8pm");
-        HOURS.put("breakfastW", "Hours: 9am - 10am");
-        HOURS.put("lunchW",  "Hours: 11am - 1:30pm");
-        HOURS.put("dinnerW", "Hours: 5pm - 7pm");
+        HOURS.put("breakfast", "7am - 10am");
+        HOURS.put("lunch", "11am - 2pm");
+        HOURS.put("dinner", "5pm - 8pm");
+        HOURS.put("breakfastW", "9am - 10am");
+        HOURS.put("lunchW",  "11am - 1:30pm");
+        HOURS.put("dinnerW", "5pm - 7pm");
 
         Bundle args = getArguments();
         if (args != null)

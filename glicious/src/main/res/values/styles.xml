@@ -5,7 +5,7 @@
         <item name="android:actionBarStyle">@style/Widget.ActionBar</item>
     </style>
     
-    <style name="RecipeTheme" parent="@style/Theme.Sherlock.Light.DarkActionBar">
+    <style name="RecipeTheme" parent="android:Theme.Black">
         <item name="android:actionBarStyle">@style/MyActionBar</item>
     </style>
 

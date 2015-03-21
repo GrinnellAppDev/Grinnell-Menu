@@ -6,6 +6,7 @@
     <color name="glightgrey">#575757</color>
     <color name="gllightgrey">#777177</color>
     <color name="glllightgrey">#a0a0a0</color>
+    <color name="actionBarMaterialGrey">#616161</color>
     <color name="gcream">#F5FFFA</color>
     <color name="gdcream">#f0eeef</color>
     <color name="gdarkred">#F44336</color>

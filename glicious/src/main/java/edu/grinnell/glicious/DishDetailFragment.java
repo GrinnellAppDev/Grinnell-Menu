@@ -1,19 +1,18 @@
 package edu.grinnell.glicious;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
-
-import org.json.JSONObject;
-
 import android.os.Bundle;
+import android.support.v4.app.ListFragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.actionbarsherlock.app.SherlockListFragment;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
 
 import edu.grinnell.glicious.NutritionListAdapter.Label;
 import edu.grinnell.glicious.menucontent.Entree;
@@ -21,7 +20,7 @@ import edu.grinnell.glicious.menucontent.MenuContent;
 import edu.grinnell.glicious.menucontent.NutritionUtil;
 import edu.grinnell.glicious.menucontent.NutritionUtil.NutritionInfo;
 
-public class DishDetailFragment extends SherlockListFragment {
+public class DishDetailFragment extends ListFragment {
 
     public static final String ARG_ENTREE_ID = "entree_id";
 

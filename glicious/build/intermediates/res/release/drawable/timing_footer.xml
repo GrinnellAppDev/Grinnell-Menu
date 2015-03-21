@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="rectangle">
-    <!--<stroke android:color="#D00000" android:width="4dp"/>-->
-    <corners android:radius="0dp"/>
-    <solid android:color="#000000"/>
-</shape><!-- From: file:/Users/samee/AndroidstudioProjects/Grinnell-Menu-NoRecipe/glicious/src/main/res/drawable/timing_footer.xml -->

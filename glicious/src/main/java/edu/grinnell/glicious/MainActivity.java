@@ -2,11 +2,9 @@ package edu.grinnell.glicious;
 
 
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 
-import com.actionbarsherlock.app.SherlockFragmentActivity;
-import com.parse.Parse;
-
-public class MainActivity extends SherlockFragmentActivity {
+public class MainActivity extends FragmentActivity {
 	
 
 

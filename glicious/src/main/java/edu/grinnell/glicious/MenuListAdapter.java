@@ -1,7 +1,5 @@
 package edu.grinnell.glicious;
 
-import java.util.List;
-
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.view.Gravity;
@@ -10,6 +8,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
+
+import java.util.List;
+
 import edu.grinnell.glicious.menucontent.Entree;
 
 public class MenuListAdapter extends ArrayAdapter<Entree> {
@@ -80,7 +81,7 @@ public class MenuListAdapter extends ArrayAdapter<Entree> {
 				holder.label.setGravity(Gravity.LEFT);
 				convertView.setPadding(21, 11, 11, 11);
 				//convertView.setClickable(false);
-				
+
 				if (e.nutrition != null)
 					holder.nut.setText(">");
 					//holder.nut.setBackgroundColor(r.getColor(R.color.grinllightred));

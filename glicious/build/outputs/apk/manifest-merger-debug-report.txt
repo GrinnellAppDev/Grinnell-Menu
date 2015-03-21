@@ -15,8 +15,6 @@ ADDED from AndroidManifest.xml:2:1
 		INJECTED from AndroidManifest.xml:0:0
 uses-sdk
 ADDED from AndroidManifest.xml:7:5
-MERGED from com.android.support:support-v4:20.0.0:16:5
-MERGED from com.actionbarsherlock:actionbarsherlock:4.4.0:3:3
 	android:targetSdkVersion
 		ADDED from AndroidManifest.xml:9:9
 		INJECTED from AndroidManifest.xml:0:0
@@ -47,16 +45,14 @@ ADDED from AndroidManifest.xml:15:5
 		ADDED from AndroidManifest.xml:15:22
 application
 ADDED from AndroidManifest.xml:17:5
-MERGED from com.android.support:support-v4:20.0.0:17:5
-MERGED from com.actionbarsherlock:actionbarsherlock:4.4.0:4:3
 	android:label
-		ADDED from AndroidManifest.xml:20:9
+		ADDED from AndroidManifest.xml:21:9
 	android:allowBackup
 		ADDED from AndroidManifest.xml:18:9
 	android:icon
 		ADDED from AndroidManifest.xml:19:9
 	android:theme
-		ADDED from AndroidManifest.xml:21:9
+		ADDED from AndroidManifest.xml:20:9
 activity#edu.grinnell.glicious.DishDetailActivity
 ADDED from AndroidManifest.xml:22:9
 	android:screenOrientation
@@ -91,17 +87,15 @@ ADDED from AndroidManifest.xml:43:9
 		ADDED from AndroidManifest.xml:45:13
 	android:label
 		ADDED from AndroidManifest.xml:46:13
-	android:theme
-		ADDED from AndroidManifest.xml:47:13
 	android:name
 		ADDED from AndroidManifest.xml:44:13
 intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
-ADDED from AndroidManifest.xml:48:13
+ADDED from AndroidManifest.xml:47:13
 action#android.intent.action.MAIN
-ADDED from AndroidManifest.xml:49:17
+ADDED from AndroidManifest.xml:48:17
 	android:name
-		ADDED from AndroidManifest.xml:49:25
+		ADDED from AndroidManifest.xml:48:25
 category#android.intent.category.LAUNCHER
-ADDED from AndroidManifest.xml:51:17
+ADDED from AndroidManifest.xml:50:17
 	android:name
-		ADDED from AndroidManifest.xml:51:27
+		ADDED from AndroidManifest.xml:50:27

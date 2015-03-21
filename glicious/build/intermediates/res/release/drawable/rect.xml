@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="rectangle">
-<stroke android:color="@android:color/black" android:width="30dp"/>
-<corners android:radius="0dp"/>
-<solid android:color="@color/selector"/>
-</shape><!-- From: file:/Users/samee/AndroidstudioProjects/Grinnell-Menu-NoRecipe/glicious/src/main/res/drawable/rect.xml -->

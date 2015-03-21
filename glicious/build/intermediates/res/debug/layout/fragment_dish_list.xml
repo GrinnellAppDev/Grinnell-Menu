@@ -7,7 +7,9 @@
       <ListView android:id="@android:id/list"
           android:layout_width="match_parent"
           android:layout_height="match_parent"
-          android:background="@color/gcream"
+          android:background="#EEEEEE"
+          android:footerDividersEnabled="false"
+          android:headerDividersEnabled="false"
           android:paddingLeft="0dp"
           android:paddingRight="0dp"
           android:listSelector="@drawable/glistselector"/>
@@ -18,25 +20,48 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="@string/noMenuContent"/>
     
-    <FrameLayout
+    <RelativeLayout
         android:id="@+id/hours_footer"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_gravity= "bottom"
+        android:layout_height="wrap_content"
+        android:padding="7dp"
+        android:orientation="horizontal"
+        android:layout_gravity= "bottom|center_horizontal"
         android:background="@drawable/timing_footer">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_centerInParent="true">
+
+            <edu.grinnell.glicious.CustomTextView
+                android:id="@+id/hours_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:gravity="center"
+                android:text="Hours"
+                app:fontName="RobotoCondensed-Light.ttf"
+                android:textColor="#fff"/>
 
             <edu.grinnell.glicious.CustomTextView
                 android:id="@+id/hours"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Hours :"
-                android:layout_gravity="center"
-                android:textSize="21sp"
+                android:gravity="center"
+                android:textSize="23sp"
                 android:textColor="#FFFFFF"
                 app:fontName="RobotoCondensed-Regular.ttf"
-                   />
-        </FrameLayout>
+                />
 
+            </LinearLayout>
+
+
+
+        </RelativeLayout>
 
 
 </FrameLayout>

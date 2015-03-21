@@ -1,13 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- From: file:/Users/samee/Desktop/Grinnell-Menu/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/values-land/values.xml -->
-    <eat-comment/>
-    <dimen name="abs__action_bar_default_height">40dip</dimen>
-    <dimen name="abs__action_bar_icon_vertical_padding">4dip</dimen>
-    <dimen name="abs__action_bar_subtitle_bottom_margin">4dip</dimen>
-    <dimen name="abs__action_bar_subtitle_text_size">12dp</dimen>
-    <dimen name="abs__action_bar_subtitle_top_margin">-2dp</dimen>
-    <dimen name="abs__action_bar_title_text_size">16dp</dimen>
     <!-- From: file:/Users/samee/Desktop/Grinnell-Menu/glicious/src/main/res/values-land/refs.xml -->
     <eat-comment/>
     <item name="activity_dish_list" type="layout">@layout/activity_dish_twopane</item>

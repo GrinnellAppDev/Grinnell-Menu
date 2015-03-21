@@ -5,12 +5,12 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.preference.PreferenceActivity;
 import android.support.v4.app.NavUtils;
+import android.view.MenuItem;
 
-import com.actionbarsherlock.app.SherlockPreferenceActivity;
-import com.actionbarsherlock.view.MenuItem;
 
-public class PrefActiv extends SherlockPreferenceActivity {
+public class PrefActiv extends PreferenceActivity {
 	
 	/** Called when the activity is first created. */
 	@SuppressLint("NewApi")
@@ -20,7 +20,7 @@ public class PrefActiv extends SherlockPreferenceActivity {
 	    super.onCreate(savedInstanceState);
 	    setContentView(R.layout.prefmain);
 	    
-	    getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+	    getActionBar().setDisplayHomeAsUpEnabled(true);
 	    
 	    if (Build.VERSION.SDK_INT < Build.VERSION_CODES.HONEYCOMB) {
 	        addPreferencesFromResource(R.xml.preferences); 

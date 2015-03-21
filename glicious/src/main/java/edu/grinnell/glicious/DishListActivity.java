@@ -6,19 +6,17 @@ import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.DialogFragment;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.DatePicker;
 
-import com.actionbarsherlock.app.SherlockFragmentActivity;
-import com.actionbarsherlock.view.Menu;
-import com.actionbarsherlock.view.MenuItem;
 import com.crashlytics.android.Crashlytics;
 import com.flurry.android.FlurryAgent;
 
@@ -30,7 +28,7 @@ import edu.grinnell.glicious.menucontent.Entree;
 import edu.grinnell.glicious.menucontent.GetMenuTask;
 import edu.grinnell.glicious.menucontent.MenuContent;
 
-public class DishListActivity extends SherlockFragmentActivity implements
+public class DishListActivity extends FragmentActivity implements
 		DishListFragment.Callbacks {
 
 	private boolean mTwoPane;
@@ -87,7 +85,7 @@ public class DishListActivity extends SherlockFragmentActivity implements
 			mPendingDate.setTimeInMillis(savedInstanceState.getLong(DATE));
 			mCurrentDate = mPendingDate;
 		}
-		getSupportActionBar().setSubtitle(Utility.dateString(mPendingDate));
+		getActionBar().setSubtitle(Utility.dateString(mPendingDate));
 
 		if (findViewById(R.id.dish_detail_container) != null) {
 			mTwoPane = true;
@@ -215,8 +213,8 @@ public class DishListActivity extends SherlockFragmentActivity implements
 			 * the venues and entrees should be put into the list.
 			 */
 			mCurrentDate = mPendingDate;
-            getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#616161")));
-			getSupportActionBar().setSubtitle(Utility.dateString(mCurrentDate));
+//            getActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#616161")));
+			getActionBar().setSubtitle(Utility.dateString(mCurrentDate));
 			MenuContent.setMenuData(result.getValue(), this);
 			refreshPager();
 
@@ -311,7 +309,7 @@ public class DishListActivity extends SherlockFragmentActivity implements
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		getSupportMenuInflater().inflate(R.menu.menu_bar, menu);
+		getMenuInflater().inflate(R.menu.menu_bar, menu);
 
 		return super.onCreateOptionsMenu(menu);
 	}

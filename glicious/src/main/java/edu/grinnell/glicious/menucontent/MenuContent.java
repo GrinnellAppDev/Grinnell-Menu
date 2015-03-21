@@ -1,11 +1,9 @@
 package edu.grinnell.glicious.menucontent;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
+import android.content.Context;
+import android.util.Log;
+
+import com.crashlytics.android.Crashlytics;
 
 import junit.framework.Assert;
 
@@ -13,10 +11,12 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import android.content.Context;
-import android.util.Log;
-
-import com.crashlytics.android.Crashlytics;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
 
 import edu.grinnell.glicious.GliciousPrefs;
 import edu.grinnell.glicious.Utility;
@@ -186,20 +186,6 @@ public class MenuContent {
 		}
 
 		return venueList;
-	}
-
-	public static List<Entree> retrieveMenu(String key) {
-		if (valid)
-			return mMealsMap.get(key);
-		else
-			Log.d("MenuContent", "Cannot retrieveMenu(" + key + "), class is invalid.");
-		return null;
-	}
-
-	public JSONObject getJSONData() {
-		if (!valid)
-			Log.d("MenuContent", "no JSONData: MenuContent class is invalid.");
-		return mMenuData;
 	}
 
 }

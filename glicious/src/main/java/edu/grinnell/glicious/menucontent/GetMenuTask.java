@@ -1,12 +1,11 @@
 package edu.grinnell.glicious.menucontent;
 
-import java.io.File;
-import java.io.FilenameFilter;
-import java.io.IOException;
-import java.net.InetAddress;
-import java.net.UnknownHostException;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
+import android.app.ProgressDialog;
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.os.AsyncTask;
+import android.util.Log;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
@@ -16,12 +15,12 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.util.EntityUtils;
 
-import android.app.ProgressDialog;
-import android.content.Context;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
-import android.os.AsyncTask;
-import android.util.Log;
+import java.io.File;
+import java.io.FilenameFilter;
+import java.io.IOException;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+
 import edu.grinnell.glicious.Utility;
 import edu.grinnell.glicious.Utility.Result;
 import edu.grinnell.glicious.Utility.RetrieveDataListener;
@@ -30,10 +29,7 @@ import edu.grinnell.glicious.Utility.RetrieveDataListener;
 public class GetMenuTask extends AsyncTask<Integer, Void, Result> {
 
 	/* JSON Menu Server Information: */
-	public static String DATA_PATH = "/apps/glicious/";
     public static String OFF_CAMPUS_SERVER = "appdev.grinnell.edu/glicious/";
-
-	public static final String CACHE_FILE = "menu_cache";
 	public static final int CACHE_AGE_LIMIT = -7;
 
 	/* Store the app context so a progress dialog can be shown. */
@@ -72,15 +68,8 @@ public class GetMenuTask extends AsyncTask<Integer, Void, Result> {
 		if (!networkEnabled(cm))
 			return (r = new Result(Result.NO_NETWORK, ""));
 
-		// THIS IS NOT WORKING AND APARENTLY DOESN'T ON SOME DEVICES..
-		// TODO: FIX IFF possible..
-		/*
-		 * else if (!routeClear(GrinnellMenuActivity.MENU_SERVER, cm)) return (r
-		 * = new Result(Result.NO_ROUTE, ""));
-		 */
-		// build the resource request..
-		String request = "https://" + OFF_CAMPUS_SERVER + (args[0] + 1)
-				+ "-" + args[1] + "-" + args[2] + ".json";
+		String request = "https://" + OFF_CAMPUS_SERVER + 4
+				+ "-" + 1 + "-" + args[2] + ".json";
         System.out.println(request);
 
 		String menu = downloadDataFromServer(request);
@@ -224,5 +213,4 @@ public class GetMenuTask extends AsyncTask<Integer, Void, Result> {
 
 	/* Log Keys */
 	public static final String HTTP = "HTTP Request";
-	public static final String CACH = "File Input";
 }
