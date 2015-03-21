@@ -1,14 +1,13 @@
 package edu.grinnell.glicious;
 
-import java.util.Calendar;
-import java.util.GregorianCalendar;
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -23,6 +22,9 @@ import com.actionbarsherlock.view.MenuItem;
 import com.crashlytics.android.Crashlytics;
 import com.flurry.android.FlurryAgent;
 
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+
 import edu.grinnell.glicious.Utility.Result;
 import edu.grinnell.glicious.menucontent.Entree;
 import edu.grinnell.glicious.menucontent.GetMenuTask;
@@ -33,7 +35,7 @@ public class DishListActivity extends SherlockFragmentActivity implements
 
 	private boolean mTwoPane;
 
-	protected GregorianCalendar mCurrentDate, mPendingDate;
+	public GregorianCalendar mCurrentDate, mPendingDate;
 	protected static int mDaysRemaining = 7;
 
 	protected GliciousPrefs mGPrefs;
@@ -85,7 +87,6 @@ public class DishListActivity extends SherlockFragmentActivity implements
 			mPendingDate.setTimeInMillis(savedInstanceState.getLong(DATE));
 			mCurrentDate = mPendingDate;
 		}
-
 		getSupportActionBar().setSubtitle(Utility.dateString(mPendingDate));
 
 		if (findViewById(R.id.dish_detail_container) != null) {
@@ -214,6 +215,7 @@ public class DishListActivity extends SherlockFragmentActivity implements
 			 * the venues and entrees should be put into the list.
 			 */
 			mCurrentDate = mPendingDate;
+            getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#616161")));
 			getSupportActionBar().setSubtitle(Utility.dateString(mCurrentDate));
 			MenuContent.setMenuData(result.getValue(), this);
 			refreshPager();
@@ -302,7 +304,7 @@ public class DishListActivity extends SherlockFragmentActivity implements
 	public void refreshPager() {
 		// DishListFragment.clearAdapters();
 		// DishListFragment.setAdapters();
-		DishListFragment.refresh();
+		DishListFragment.refresh(mCurrentDate);
 		if (mMenuPagerAdapter != null)
 			mMenuPagerAdapter.notifyDataSetChanged();
 	}

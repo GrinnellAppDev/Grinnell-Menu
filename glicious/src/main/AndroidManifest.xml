@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="edu.grinnell.glicious"
-    android:versionCode="220"
-    android:versionName="2.3.2" >
+    android:versionCode="221"
+    android:versionName="2.3.3" >
 
     <uses-sdk
-        android:minSdkVersion="11"
+        android:minSdkVersion="12"
         android:targetSdkVersion="17" />
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -21,6 +21,7 @@
         android:theme="@style/Theme.Sherlock.Light.DarkActionBar" >
         <activity
             android:name=".DishDetailActivity"
+            android:screenOrientation="portrait"
             android:label="@string/title_dish_detail" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -28,6 +29,7 @@
         </activity>
         <activity
             android:name=".PrefActiv"
+            android:screenOrientation="portrait"
             android:label="@string/settingstitle" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -40,6 +42,7 @@
 
         <activity
             android:name="edu.grinnell.glicious.DishListActivity"
+            android:screenOrientation="portrait"
             android:label="G-licious"
             android:theme="@style/AppTheme">
             <intent-filter>

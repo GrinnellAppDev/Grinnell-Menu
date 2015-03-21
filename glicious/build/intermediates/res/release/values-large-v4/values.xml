@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- From: file:/Users/samee/AndroidstudioProjects/Grinnell-Menu-NoRecipe/glicious/src/main/res/values-large/refs.xml -->
+    <eat-comment/>
+    <item name="activity_dish_list" type="layout">@layout/activity_dish_twopane</item>
+</resources>

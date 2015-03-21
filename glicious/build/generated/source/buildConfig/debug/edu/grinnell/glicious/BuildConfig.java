@@ -8,6 +8,6 @@ public final class BuildConfig {
   public static final String APPLICATION_ID = "edu.grinnell.glicious";
   public static final String BUILD_TYPE = "debug";
   public static final String FLAVOR = "";
-  public static final int VERSION_CODE = 220;
+  public static final int VERSION_CODE = 221;
   public static final String VERSION_NAME = "";
 }

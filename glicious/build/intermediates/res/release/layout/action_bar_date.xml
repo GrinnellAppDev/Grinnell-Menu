@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal" >
+    
+	<TextView android:layout_width="match_parent"
+	    android:layout_height="match_parent"
+	    android:text="@string/exit"
+	    android:textColor="@android:color/white"/>
+    
+</LinearLayout><!-- From: file:/Users/samee/AndroidstudioProjects/Grinnell-Menu-NoRecipe/glicious/src/main/res/layout/action_bar_date.xml -->

@@ -30,8 +30,8 @@ import edu.grinnell.glicious.Utility.RetrieveDataListener;
 public class GetMenuTask extends AsyncTask<Integer, Void, Result> {
 
 	/* JSON Menu Server Information: */
-	public static String MENU_SERVER = "tcdb.grinnell.edu";
 	public static String DATA_PATH = "/apps/glicious/";
+    public static String OFF_CAMPUS_SERVER = "appdev.grinnell.edu/glicious/";
 
 	public static final String CACHE_FILE = "menu_cache";
 	public static final int CACHE_AGE_LIMIT = -7;
@@ -78,10 +78,10 @@ public class GetMenuTask extends AsyncTask<Integer, Void, Result> {
 		 * else if (!routeClear(GrinnellMenuActivity.MENU_SERVER, cm)) return (r
 		 * = new Result(Result.NO_ROUTE, ""));
 		 */
-
 		// build the resource request..
-		String request = "http://" + MENU_SERVER + DATA_PATH + (args[0] + 1)
+		String request = "https://" + OFF_CAMPUS_SERVER + (args[0] + 1)
 				+ "-" + args[1] + "-" + args[2] + ".json";
+        System.out.println(request);
 
 		String menu = downloadDataFromServer(request);
 
@@ -220,31 +220,6 @@ public class GetMenuTask extends AsyncTask<Integer, Void, Result> {
 		} catch (NullPointerException exception) {
 			return false;
 		}
-	}
-
-	/* Return true if the appropriate host can be reached. */
-	protected static boolean routeClear(String host, ConnectivityManager cm) {
-		/* RequestRouteToHost apparently doesn't work over wifi: return true. */
-		NetworkInfo ni = cm.getActiveNetworkInfo();
-		if (ni.getType() == ConnectivityManager.TYPE_WIFI)
-			return true;
-
-		/* Do the DNS lookup using java.net library. */
-		InetAddress a;
-		try {
-			a = InetAddress.getByName(MENU_SERVER);
-		} catch (UnknownHostException uhe) {
-			Log.d(HTTP, uhe.toString());
-			return false;
-		}
-		/* Convert a byte array IP address into an integer representation. */
-		byte[] b = a.getAddress(); // aaa.bbb.ccc.ddd
-		int ipint = ((b[3] << 24) | // ipint bits[32-25] = aaa
-				(b[2] << 16) | // ipint bits[24-17] = bbb
-				(b[1] << 8) | // ipint bits[16- 9] = ccc
-		b[0]); // ipint bits[ 8- 1] = ddd
-
-		return cm.requestRouteToHost(ni.getType(), ipint);
 	}
 
 	/* Log Keys */

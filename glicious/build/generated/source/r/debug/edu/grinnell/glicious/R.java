@@ -836,7 +836,8 @@ containing a value of this type.
         public static final int selected_nopress=0x7f02007a;
         public static final int selected_press=0x7f02007b;
         public static final int shadow=0x7f02007c;
-        public static final int vheader=0x7f02007d;
+        public static final int timing_footer=0x7f02007d;
+        public static final int vheader=0x7f02007e;
     }
     public static final class id {
         public static final int abs__action_bar=0x7f080020;
@@ -878,9 +879,9 @@ containing a value of this type.
         public static final int abs__textButton=0x7f080013;
         public static final int abs__title=0x7f08001b;
         public static final int abs__up=0x7f08000f;
-        public static final int action_refresh=0x7f080042;
-        public static final int action_settings=0x7f080040;
-        public static final int amountbox=0x7f08003c;
+        public static final int action_refresh=0x7f080044;
+        public static final int action_settings=0x7f080042;
+        public static final int amountbox=0x7f08003e;
         public static final int date_pick=0x7f080035;
         public static final int disableHome=0x7f080008;
         public static final int dish_detail=0x7f080038;
@@ -888,18 +889,20 @@ containing a value of this type.
         public static final int dish_serv_size=0x7f080039;
         public static final int dish_serv_size_amt=0x7f08003a;
         public static final int edit_query=0x7f080026;
-        public static final int first_image=0x7f08003e;
+        public static final int first_image=0x7f080040;
         public static final int homeAsUp=0x7f080005;
-        public static final int labelbox=0x7f08003b;
+        public static final int hours=0x7f08003c;
+        public static final int hours_footer=0x7f08003b;
+        public static final int labelbox=0x7f08003d;
         public static final int listMode=0x7f080001;
-        public static final int lselect=0x7f08003d;
-        public static final int menu_date=0x7f080041;
+        public static final int lselect=0x7f08003f;
+        public static final int menu_date=0x7f080043;
         public static final int menu_pager=0x7f080034;
         public static final int namebox=0x7f080036;
         public static final int normal=0x7f080000;
         public static final int nutritionbox=0x7f080037;
-        public static final int second_image=0x7f08003f;
-        public static final int settings=0x7f080043;
+        public static final int second_image=0x7f080041;
+        public static final int settings=0x7f080045;
         public static final int showCustom=0x7f080007;
         public static final int showHome=0x7f080004;
         public static final int showTitle=0x7f080006;

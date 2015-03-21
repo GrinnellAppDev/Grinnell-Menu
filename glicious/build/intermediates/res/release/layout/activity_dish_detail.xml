@@ -1,0 +1,7 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/dish_detail_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DishDetailActivity" />
+<!-- From: file:/Users/samee/AndroidstudioProjects/Grinnell-Menu-NoRecipe/glicious/src/main/res/layout/activity_dish_detail.xml -->
