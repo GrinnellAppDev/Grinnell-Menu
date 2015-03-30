@@ -68,8 +68,8 @@ public class GetMenuTask extends AsyncTask<Integer, Void, Result> {
 		if (!networkEnabled(cm))
 			return (r = new Result(Result.NO_NETWORK, ""));
 
-		String request = "https://" + OFF_CAMPUS_SERVER + 4
-				+ "-" + 1 + "-" + args[2] + ".json";
+		String request = "https://" + OFF_CAMPUS_SERVER + (args[0] + 1)
+				+ "-" + args[1] + "-" + args[2] + ".json";
         System.out.println(request);
 
 		String menu = downloadDataFromServer(request);

@@ -25,371 +25,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="61a9124e-469e-4f97-93b9-2ca0806960b9" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/glicious/src/main/assets/fonts/RobotoCondensed-Italic.ttf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/glicious/src/main/assets/fonts/RobotoCondensed-LightItalic.ttf" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/actionbarsherlock_4_4_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/support_v4_20_0_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/generated/source/buildConfig/release/edu/grinnell/glicious/BuildConfig.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/generated/source/buildConfig/test/debug/edu/grinnell/glicious/test/BuildConfig.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/generated/source/r/debug/com/actionbarsherlock/R.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/generated/source/r/release/com/actionbarsherlock/R.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/generated/source/r/release/edu/grinnell/glicious/R.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/AndroidManifest.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/R.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/classes.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/color/abs__primary_text_disable_only_holo_dark.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/color/abs__primary_text_disable_only_holo_light.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/color/abs__primary_text_holo_dark.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/color/abs__primary_text_holo_light.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-hdpi/abs__ab_bottom_solid_dark_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-hdpi/abs__ab_bottom_solid_inverse_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-hdpi/abs__ab_bottom_solid_light_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-hdpi/abs__ab_bottom_transparent_dark_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-hdpi/abs__ab_bottom_transparent_light_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-hdpi/abs__ab_share_pack_holo_dark.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-hdpi/abs__ab_share_pack_holo_light.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-hdpi/abs__ab_solid_dark_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-hdpi/abs__ab_solid_light_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-hdpi/abs__ab_solid_shadow_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-hdpi/abs__ab_stacked_solid_dark_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-hdpi/abs__ab_stacked_solid_light_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-hdpi/abs__ab_stacked_transparent_dark_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-hdpi/abs__ab_stacked_transparent_light_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-hdpi/abs__ab_transparent_dark_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-hdpi/abs__ab_transparent_light_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-hdpi/abs__btn_cab_done_default_holo_dark.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-hdpi/abs__btn_cab_done_default_holo_light.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-hdpi/abs__btn_cab_done_focused_holo_dark.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-hdpi/abs__btn_cab_done_focused_holo_light.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-hdpi/abs__btn_cab_done_pressed_holo_dark.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-hdpi/abs__btn_cab_done_pressed_holo_light.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-hdpi/abs__cab_background_bottom_holo_dark.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-hdpi/abs__cab_background_bottom_holo_light.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-hdpi/abs__cab_background_top_holo_dark.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-hdpi/abs__cab_background_top_holo_light.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-hdpi/abs__ic_ab_back_holo_dark.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-hdpi/abs__ic_ab_back_holo_light.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-hdpi/abs__ic_cab_done_holo_dark.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-hdpi/abs__ic_cab_done_holo_light.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-hdpi/abs__ic_clear_disabled.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-hdpi/abs__ic_clear_normal.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-hdpi/abs__ic_clear_search_api_disabled_holo_light.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-hdpi/abs__ic_clear_search_api_holo_light.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-hdpi/abs__ic_commit_search_api_holo_dark.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-hdpi/abs__ic_commit_search_api_holo_light.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-hdpi/abs__ic_go.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-hdpi/abs__ic_go_search_api_holo_light.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-hdpi/abs__ic_menu_moreoverflow_normal_holo_dark.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-hdpi/abs__ic_menu_moreoverflow_normal_holo_light.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-hdpi/abs__ic_menu_share_holo_dark.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-hdpi/abs__ic_menu_share_holo_light.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-hdpi/abs__ic_search.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-hdpi/abs__ic_search_api_holo_light.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-hdpi/abs__ic_voice_search.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-hdpi/abs__ic_voice_search_api_holo_light.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-hdpi/abs__list_activated_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-hdpi/abs__list_divider_holo_dark.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-hdpi/abs__list_divider_holo_light.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-hdpi/abs__list_focused_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-hdpi/abs__list_longpressed_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-hdpi/abs__list_pressed_holo_dark.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-hdpi/abs__list_pressed_holo_light.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-hdpi/abs__list_selector_disabled_holo_dark.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-hdpi/abs__list_selector_disabled_holo_light.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-hdpi/abs__menu_dropdown_panel_holo_dark.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-hdpi/abs__menu_dropdown_panel_holo_light.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-hdpi/abs__progress_bg_holo_dark.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-hdpi/abs__progress_bg_holo_light.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-hdpi/abs__progress_primary_holo_dark.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-hdpi/abs__progress_primary_holo_light.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-hdpi/abs__progress_secondary_holo_dark.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-hdpi/abs__progress_secondary_holo_light.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-hdpi/abs__spinner_48_inner_holo.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-hdpi/abs__spinner_48_outer_holo.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-hdpi/abs__spinner_ab_default_holo_dark.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-hdpi/abs__spinner_ab_default_holo_light.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-hdpi/abs__spinner_ab_disabled_holo_dark.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-hdpi/abs__spinner_ab_disabled_holo_light.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-hdpi/abs__spinner_ab_focused_holo_dark.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-hdpi/abs__spinner_ab_focused_holo_light.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-hdpi/abs__spinner_ab_pressed_holo_dark.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-hdpi/abs__spinner_ab_pressed_holo_light.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-hdpi/abs__tab_selected_focused_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-hdpi/abs__tab_selected_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-hdpi/abs__tab_selected_pressed_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-hdpi/abs__tab_unselected_pressed_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-hdpi/abs__textfield_search_default_holo_dark.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-hdpi/abs__textfield_search_default_holo_light.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-hdpi/abs__textfield_search_right_default_holo_dark.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-hdpi/abs__textfield_search_right_default_holo_light.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-hdpi/abs__textfield_search_right_selected_holo_dark.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-hdpi/abs__textfield_search_right_selected_holo_light.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-hdpi/abs__textfield_search_selected_holo_dark.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-hdpi/abs__textfield_search_selected_holo_light.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-hdpi/abs__toast_frame.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-mdpi/abs__ab_bottom_solid_dark_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-mdpi/abs__ab_bottom_solid_inverse_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-mdpi/abs__ab_bottom_solid_light_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-mdpi/abs__ab_bottom_transparent_dark_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-mdpi/abs__ab_bottom_transparent_light_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-mdpi/abs__ab_share_pack_holo_dark.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-mdpi/abs__ab_share_pack_holo_light.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-mdpi/abs__ab_solid_dark_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-mdpi/abs__ab_solid_light_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-mdpi/abs__ab_solid_shadow_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-mdpi/abs__ab_stacked_solid_dark_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-mdpi/abs__ab_stacked_solid_light_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-mdpi/abs__ab_stacked_transparent_dark_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-mdpi/abs__ab_stacked_transparent_light_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-mdpi/abs__ab_transparent_dark_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-mdpi/abs__ab_transparent_light_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-mdpi/abs__btn_cab_done_default_holo_dark.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-mdpi/abs__btn_cab_done_default_holo_light.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-mdpi/abs__btn_cab_done_focused_holo_dark.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-mdpi/abs__btn_cab_done_focused_holo_light.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-mdpi/abs__btn_cab_done_pressed_holo_dark.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-mdpi/abs__btn_cab_done_pressed_holo_light.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-mdpi/abs__cab_background_bottom_holo_dark.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-mdpi/abs__cab_background_bottom_holo_light.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-mdpi/abs__cab_background_top_holo_dark.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-mdpi/abs__cab_background_top_holo_light.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-mdpi/abs__ic_ab_back_holo_dark.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-mdpi/abs__ic_ab_back_holo_light.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-mdpi/abs__ic_cab_done_holo_dark.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-mdpi/abs__ic_cab_done_holo_light.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-mdpi/abs__ic_clear_disabled.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-mdpi/abs__ic_clear_normal.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-mdpi/abs__ic_clear_search_api_disabled_holo_light.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-mdpi/abs__ic_clear_search_api_holo_light.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-mdpi/abs__ic_commit_search_api_holo_dark.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-mdpi/abs__ic_commit_search_api_holo_light.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-mdpi/abs__ic_go.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-mdpi/abs__ic_go_search_api_holo_light.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-mdpi/abs__ic_menu_moreoverflow_normal_holo_dark.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-mdpi/abs__ic_menu_moreoverflow_normal_holo_light.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-mdpi/abs__ic_menu_share_holo_dark.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-mdpi/abs__ic_menu_share_holo_light.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-mdpi/abs__ic_search.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-mdpi/abs__ic_search_api_holo_light.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-mdpi/abs__ic_voice_search.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-mdpi/abs__ic_voice_search_api_holo_light.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-mdpi/abs__list_activated_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-mdpi/abs__list_divider_holo_dark.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-mdpi/abs__list_divider_holo_light.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-mdpi/abs__list_focused_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-mdpi/abs__list_longpressed_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-mdpi/abs__list_pressed_holo_dark.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-mdpi/abs__list_pressed_holo_light.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-mdpi/abs__list_selector_disabled_holo_dark.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-mdpi/abs__list_selector_disabled_holo_light.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-mdpi/abs__menu_dropdown_panel_holo_dark.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-mdpi/abs__menu_dropdown_panel_holo_light.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-mdpi/abs__progress_bg_holo_dark.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-mdpi/abs__progress_bg_holo_light.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-mdpi/abs__progress_primary_holo_dark.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-mdpi/abs__progress_primary_holo_light.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-mdpi/abs__progress_secondary_holo_dark.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-mdpi/abs__progress_secondary_holo_light.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-mdpi/abs__spinner_48_inner_holo.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-mdpi/abs__spinner_48_outer_holo.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-mdpi/abs__spinner_ab_default_holo_dark.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-mdpi/abs__spinner_ab_default_holo_light.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-mdpi/abs__spinner_ab_disabled_holo_dark.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-mdpi/abs__spinner_ab_disabled_holo_light.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-mdpi/abs__spinner_ab_focused_holo_dark.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-mdpi/abs__spinner_ab_focused_holo_light.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-mdpi/abs__spinner_ab_pressed_holo_dark.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-mdpi/abs__spinner_ab_pressed_holo_light.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-mdpi/abs__tab_selected_focused_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-mdpi/abs__tab_selected_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-mdpi/abs__tab_selected_pressed_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-mdpi/abs__tab_unselected_pressed_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-mdpi/abs__textfield_search_default_holo_dark.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-mdpi/abs__textfield_search_default_holo_light.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-mdpi/abs__textfield_search_right_default_holo_dark.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-mdpi/abs__textfield_search_right_default_holo_light.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-mdpi/abs__textfield_search_right_selected_holo_dark.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-mdpi/abs__textfield_search_right_selected_holo_light.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-mdpi/abs__textfield_search_selected_holo_dark.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-mdpi/abs__textfield_search_selected_holo_light.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-mdpi/abs__toast_frame.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-v11/abs__progress_medium_holo.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-xhdpi/abs__ab_bottom_solid_dark_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-xhdpi/abs__ab_bottom_solid_inverse_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-xhdpi/abs__ab_bottom_solid_light_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-xhdpi/abs__ab_bottom_transparent_dark_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-xhdpi/abs__ab_bottom_transparent_light_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-xhdpi/abs__ab_share_pack_holo_dark.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-xhdpi/abs__ab_share_pack_holo_light.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-xhdpi/abs__ab_solid_dark_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-xhdpi/abs__ab_solid_light_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-xhdpi/abs__ab_solid_shadow_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-xhdpi/abs__ab_stacked_solid_dark_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-xhdpi/abs__ab_stacked_solid_light_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-xhdpi/abs__ab_stacked_transparent_dark_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-xhdpi/abs__ab_stacked_transparent_light_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-xhdpi/abs__ab_transparent_dark_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-xhdpi/abs__ab_transparent_light_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-xhdpi/abs__btn_cab_done_default_holo_dark.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-xhdpi/abs__btn_cab_done_default_holo_light.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-xhdpi/abs__btn_cab_done_focused_holo_dark.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-xhdpi/abs__btn_cab_done_focused_holo_light.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-xhdpi/abs__btn_cab_done_pressed_holo_dark.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-xhdpi/abs__btn_cab_done_pressed_holo_light.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-xhdpi/abs__cab_background_bottom_holo_dark.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-xhdpi/abs__cab_background_bottom_holo_light.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-xhdpi/abs__cab_background_top_holo_dark.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-xhdpi/abs__cab_background_top_holo_light.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-xhdpi/abs__ic_ab_back_holo_dark.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-xhdpi/abs__ic_ab_back_holo_light.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-xhdpi/abs__ic_cab_done_holo_dark.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-xhdpi/abs__ic_cab_done_holo_light.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-xhdpi/abs__ic_clear_disabled.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-xhdpi/abs__ic_clear_search_api_disabled_holo_light.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-xhdpi/abs__ic_clear_search_api_holo_light.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-xhdpi/abs__ic_commit_search_api_holo_dark.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-xhdpi/abs__ic_commit_search_api_holo_light.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-xhdpi/abs__ic_go.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-xhdpi/abs__ic_go_search_api_holo_light.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-xhdpi/abs__ic_menu_moreoverflow_normal_holo_dark.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-xhdpi/abs__ic_menu_moreoverflow_normal_holo_light.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-xhdpi/abs__ic_menu_share_holo_dark.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-xhdpi/abs__ic_menu_share_holo_light.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-xhdpi/abs__ic_search.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-xhdpi/abs__ic_search_api_holo_light.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-xhdpi/abs__ic_voice_search.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-xhdpi/abs__ic_voice_search_api_holo_light.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-xhdpi/abs__list_activated_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-xhdpi/abs__list_divider_holo_dark.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-xhdpi/abs__list_divider_holo_light.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-xhdpi/abs__list_focused_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-xhdpi/abs__list_longpressed_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-xhdpi/abs__list_pressed_holo_dark.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-xhdpi/abs__list_pressed_holo_light.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-xhdpi/abs__list_selector_disabled_holo_dark.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-xhdpi/abs__list_selector_disabled_holo_light.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-xhdpi/abs__menu_dropdown_panel_holo_dark.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-xhdpi/abs__menu_dropdown_panel_holo_light.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-xhdpi/abs__progress_bg_holo_dark.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-xhdpi/abs__progress_bg_holo_light.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-xhdpi/abs__progress_primary_holo_dark.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-xhdpi/abs__progress_primary_holo_light.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-xhdpi/abs__progress_secondary_holo_dark.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-xhdpi/abs__progress_secondary_holo_light.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-xhdpi/abs__spinner_48_inner_holo.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-xhdpi/abs__spinner_48_outer_holo.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-xhdpi/abs__spinner_ab_default_holo_dark.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-xhdpi/abs__spinner_ab_default_holo_light.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-xhdpi/abs__spinner_ab_disabled_holo_dark.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-xhdpi/abs__spinner_ab_disabled_holo_light.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-xhdpi/abs__spinner_ab_focused_holo_dark.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-xhdpi/abs__spinner_ab_focused_holo_light.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-xhdpi/abs__spinner_ab_pressed_holo_dark.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-xhdpi/abs__spinner_ab_pressed_holo_light.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-xhdpi/abs__tab_selected_focused_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-xhdpi/abs__tab_selected_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-xhdpi/abs__tab_selected_pressed_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-xhdpi/abs__tab_unselected_pressed_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-xhdpi/abs__textfield_search_default_holo_dark.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-xhdpi/abs__textfield_search_default_holo_light.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-xhdpi/abs__textfield_search_right_default_holo_dark.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-xhdpi/abs__textfield_search_right_default_holo_light.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-xhdpi/abs__textfield_search_right_selected_holo_dark.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-xhdpi/abs__textfield_search_right_selected_holo_light.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-xhdpi/abs__textfield_search_selected_holo_dark.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-xhdpi/abs__textfield_search_selected_holo_light.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable-xhdpi/abs__toast_frame.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable/abs__activated_background_holo_dark.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable/abs__activated_background_holo_light.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable/abs__btn_cab_done_holo_dark.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable/abs__btn_cab_done_holo_light.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable/abs__ic_clear.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable/abs__ic_clear_holo_light.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable/abs__ic_menu_moreoverflow_holo_dark.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable/abs__ic_menu_moreoverflow_holo_light.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable/abs__item_background_holo_dark.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable/abs__item_background_holo_light.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable/abs__list_selector_background_transition_holo_dark.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable/abs__list_selector_background_transition_holo_light.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable/abs__list_selector_holo_dark.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable/abs__list_selector_holo_light.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable/abs__progress_horizontal_holo_dark.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable/abs__progress_horizontal_holo_light.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable/abs__progress_medium_holo.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable/abs__search_dropdown_dark.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable/abs__search_dropdown_light.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable/abs__spinner_ab_holo_dark.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable/abs__spinner_ab_holo_light.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable/abs__tab_indicator_ab_holo.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable/abs__textfield_searchview_holo_dark.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable/abs__textfield_searchview_holo_light.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable/abs__textfield_searchview_right_holo_dark.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/drawable/abs__textfield_searchview_right_holo_light.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/layout-large/abs__action_mode_close_item.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/layout-v14/sherlock_spinner_dropdown_item.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/layout-v14/sherlock_spinner_item.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/layout-xlarge/abs__screen_action_bar.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/layout-xlarge/abs__screen_action_bar_overlay.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/layout/abs__action_bar_home.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/layout/abs__action_bar_tab.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/layout/abs__action_bar_tab_bar_view.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/layout/abs__action_bar_title_item.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/layout/abs__action_menu_item_layout.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/layout/abs__action_menu_layout.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/layout/abs__action_mode_bar.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/layout/abs__action_mode_close_item.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/layout/abs__activity_chooser_view.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/layout/abs__activity_chooser_view_list_item.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/layout/abs__list_menu_item_checkbox.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/layout/abs__list_menu_item_icon.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/layout/abs__list_menu_item_radio.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/layout/abs__popup_menu_item_layout.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/layout/abs__screen_action_bar.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/layout/abs__screen_action_bar_overlay.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/layout/abs__screen_simple.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/layout/abs__screen_simple_overlay_action_mode.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/layout/abs__search_dropdown_item_icons_2line.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/layout/abs__search_view.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/layout/abs__simple_dropdown_hint.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/layout/sherlock_spinner_dropdown_item.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/layout/sherlock_spinner_item.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/values-land/values.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/values-large-hdpi-1024x600/values.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/values-large-land-hdpi-1024x600/values.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/values-large-land-mdpi-1024x600/values.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/values-large-mdpi-1024x600/values.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/values-sw600dp/values.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/values-v11/values.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/values-v14/values.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/values-w360dp/values.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/values-w480dp/values.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/values-w500dp/values.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/values-w600dp/values.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/values-xlarge/values.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/values/values.xml" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/.idea/libraries/support_annotations_20_0_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/support_v4_18_0_0.xml" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glicious/src/main/res/drawable/shadow.xml" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/model_data.bin" afterPath="$PROJECT_DIR$/build/intermediates/model_data.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glicious/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/glicious/src/main/AndroidManifest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glicious/src/main/java/edu/grinnell/glicious/DishDetailActivity.java" afterPath="$PROJECT_DIR$/glicious/src/main/java/edu/grinnell/glicious/DishDetailActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glicious/src/main/java/edu/grinnell/glicious/DishDetailFragment.java" afterPath="$PROJECT_DIR$/glicious/src/main/java/edu/grinnell/glicious/DishDetailFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glicious/src/main/java/edu/grinnell/glicious/DishListActivity.java" afterPath="$PROJECT_DIR$/glicious/src/main/java/edu/grinnell/glicious/DishListActivity.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glicious/src/main/java/edu/grinnell/glicious/DishListFragment.java" afterPath="$PROJECT_DIR$/glicious/src/main/java/edu/grinnell/glicious/DishListFragment.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glicious/src/main/java/edu/grinnell/glicious/menucontent/GetMenuTask.java" afterPath="$PROJECT_DIR$/glicious/src/main/java/edu/grinnell/glicious/menucontent/GetMenuTask.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glicious/src/main/java/edu/grinnell/glicious/MainActivity.java" afterPath="$PROJECT_DIR$/glicious/src/main/java/edu/grinnell/glicious/MainActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glicious/src/main/java/edu/grinnell/glicious/menucontent/MenuContent.java" afterPath="$PROJECT_DIR$/glicious/src/main/java/edu/grinnell/glicious/menucontent/MenuContent.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glicious/src/main/java/edu/grinnell/glicious/MenuListAdapter.java" afterPath="$PROJECT_DIR$/glicious/src/main/java/edu/grinnell/glicious/MenuListAdapter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glicious/src/main/java/edu/grinnell/glicious/PrefActiv.java" afterPath="$PROJECT_DIR$/glicious/src/main/java/edu/grinnell/glicious/PrefActiv.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glicious/build/generated/source/r/debug/edu/grinnell/glicious/R.java" afterPath="$PROJECT_DIR$/glicious/build/generated/source/r/debug/edu/grinnell/glicious/R.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glicious/src/main/res/layout/action_bar.xml" afterPath="$PROJECT_DIR$/glicious/src/main/res/layout/action_bar.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glicious/build.gradle" afterPath="$PROJECT_DIR$/glicious/build.gradle" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" afterPath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glicious/src/main/res/values/colors.xml" afterPath="$PROJECT_DIR$/glicious/src/main/res/values/colors.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glicious/src/main/res/layout/entree_row.xml" afterPath="$PROJECT_DIR$/glicious/src/main/res/layout/entree_row.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glicious/src/main/res/layout/fragment_dish_list.xml" afterPath="$PROJECT_DIR$/glicious/src/main/res/layout/fragment_dish_list.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glicious/glicious.iml" afterPath="$PROJECT_DIR$/glicious/glicious.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glicious/src/main/res/values/styles.xml" afterPath="$PROJECT_DIR$/glicious/src/main/res/values/styles.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glicious/src/main/res/values-v11/styles.xml" afterPath="$PROJECT_DIR$/glicious/src/main/res/values-v11/styles.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glicious/src/main/res/values-v14/styles.xml" afterPath="$PROJECT_DIR$/glicious/src/main/res/values-v14/styles.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glicious/src/main/res/drawable/selected_nopress.xml" afterPath="$PROJECT_DIR$/glicious/src/main/res/drawable/selected_nopress.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glicious/src/main/res/drawable/selected_press.xml" afterPath="$PROJECT_DIR$/glicious/src/main/res/drawable/selected_press.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Grinnell-Menu.iws" />
@@ -416,8 +59,8 @@
       <file leaf-file-name="GetMenuTask.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/glicious/src/main/java/edu/grinnell/glicious/menucontent/GetMenuTask.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1050" max-vertical-offset="3330">
-              <caret line="70" column="8" selection-start-line="70" selection-start-column="8" selection-end-line="71" selection-end-column="52" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="1352" max-vertical-offset="2940">
+              <caret line="121" column="58" selection-start-line="121" selection-start-column="58" selection-end-line="121" selection-end-column="58" />
               <folding />
             </state>
           </provider>
@@ -436,8 +79,28 @@
       <file leaf-file-name="DishListFragment.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/glicious/src/main/java/edu/grinnell/glicious/DishListFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="2265" max-vertical-offset="4230">
-              <caret line="151" column="30" selection-start-line="151" selection-start-column="30" selection-end-line="151" selection-end-column="30" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3855">
+              <caret line="31" column="64" selection-start-line="31" selection-start-column="64" selection-end-line="31" selection-end-column="64" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="selected_nopress.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/glicious/src/main/res/drawable/selected_nopress.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="285">
+              <caret line="1" column="71" selection-start-line="1" selection-start-column="71" selection-end-line="1" selection-end-column="71" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="selected_press.xml" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/glicious/src/main/res/drawable/selected_press.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.30405405" vertical-offset="0" max-vertical-offset="444">
+              <caret line="9" column="50" selection-start-line="9" selection-start-column="50" selection-end-line="9" selection-end-column="50" />
               <folding />
             </state>
           </provider>
@@ -445,50 +108,40 @@
       </file>
       <file leaf-file-name="entree_row.xml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/glicious/src/main/res/layout/entree_row.xml">
-          <provider editor-type-id="android-designer">
-            <state />
-          </provider>
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0" vertical-offset="195" max-vertical-offset="555">
               <caret line="13" column="32" selection-start-line="13" selection-start-column="32" selection-end-line="13" selection-end-column="32" />
               <folding />
             </state>
           </provider>
+          <provider editor-type-id="android-designer">
+            <state />
+          </provider>
         </entry>
       </file>
       <file leaf-file-name="action_bar.xml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/glicious/src/main/res/layout/action_bar.xml">
-          <provider editor-type-id="android-designer">
-            <state />
-          </provider>
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="270" max-vertical-offset="570">
+            <state vertical-scroll-proportion="-4.3333335" vertical-offset="153" max-vertical-offset="570">
               <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
               <folding />
             </state>
           </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MenuListAdapter.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/glicious/src/main/java/edu/grinnell/glicious/MenuListAdapter.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="510" max-vertical-offset="1485">
-              <caret line="43" column="0" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="80" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="fragment_dish_list.xml" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/glicious/src/main/res/layout/fragment_dish_list.xml">
           <provider editor-type-id="android-designer">
             <state />
           </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="fragment_dish_list.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/glicious/src/main/res/layout/fragment_dish_list.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.2877698" vertical-offset="495" max-vertical-offset="1110">
-              <caret line="25" column="26" selection-start-line="25" selection-start-column="26" selection-end-line="25" selection-end-column="26" />
+            <state vertical-scroll-proportion="-6.0" vertical-offset="408" max-vertical-offset="1110">
+              <caret line="38" column="49" selection-start-line="38" selection-start-column="49" selection-end-line="38" selection-end-column="49" />
               <folding />
             </state>
+          </provider>
+          <provider editor-type-id="android-designer">
+            <state />
           </provider>
         </entry>
       </file>
@@ -1629,7 +1282,6 @@
         <option value="$PROJECT_DIR$/glicious/src/main/res/values/styles.xml" />
         <option value="$PROJECT_DIR$/glicious/build/intermediates/manifests/full/debug/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/glicious/src/main/java/edu/grinnell/glicious/PrefActiv.java" />
-        <option value="$PROJECT_DIR$/glicious/src/main/java/edu/grinnell/glicious/menucontent/GetMenuTask.java" />
         <option value="$PROJECT_DIR$/glicious/src/main/java/edu/grinnell/glicious/DishDetailActivity.java" />
         <option value="$PROJECT_DIR$/glicious/build.gradle" />
         <option value="$PROJECT_DIR$/glicious/src/main/res/values/themes.xml" />
@@ -1642,8 +1294,12 @@
         <option value="$PROJECT_DIR$/glicious/src/main/java/edu/grinnell/glicious/MenuListAdapter.java" />
         <option value="$PROJECT_DIR$/glicious/src/main/res/layout/entree_row.xml" />
         <option value="$PROJECT_DIR$/glicious/src/main/res/layout/action_bar.xml" />
-        <option value="$PROJECT_DIR$/glicious/src/main/java/edu/grinnell/glicious/DishListFragment.java" />
         <option value="$PROJECT_DIR$/glicious/src/main/res/layout/fragment_dish_list.xml" />
+        <option value="$PROJECT_DIR$/glicious/src/main/java/edu/grinnell/glicious/menucontent/GetMenuTask.java" />
+        <option value="$PROJECT_DIR$/glicious/src/main/java/edu/grinnell/glicious/DishListFragment.java" />
+        <option value="$PROJECT_DIR$/glicious/src/main/res/drawable/shadow.xml" />
+        <option value="$PROJECT_DIR$/glicious/src/main/res/drawable/selected_nopress.xml" />
+        <option value="$PROJECT_DIR$/glicious/src/main/res/drawable/selected_press.xml" />
       </list>
     </option>
   </component>
@@ -1678,8 +1334,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="ProjectPane" />
-      <pane id="Scope" />
       <pane id="PackagesPane" />
       <pane id="AndroidView">
         <subPane>
@@ -1803,6 +1457,24 @@
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="drawable" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderTypeNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Grinnell-Menu" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="glicious" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="java" />
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
             </PATH_ELEMENT>
@@ -1849,6 +1521,8 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="ProjectPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -2039,7 +1713,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="820" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -2052,7 +1726,8 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32954547" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32954547" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32954547" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -2067,7 +1742,6 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32954547" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -2091,6 +1765,44 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/glicious/src/main/res/layout/action_bar.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="270" max-vertical-offset="570">
+          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/glicious/src/main/java/edu/grinnell/glicious/MenuListAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="510" max-vertical-offset="1485">
+          <caret line="43" column="0" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="80" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/glicious/src/main/res/layout/fragment_dish_list.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="495" max-vertical-offset="1110">
+          <caret line="25" column="26" selection-start-line="25" selection-start-column="26" selection-end-line="25" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/glicious/src/main/java/edu/grinnell/glicious/menucontent/MenuContent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="2820" max-vertical-offset="2955">
+          <caret line="188" column="5" selection-start-line="188" selection-start-column="5" selection-end-line="188" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/glicious/src/main/java/edu/grinnell/glicious/menucontent/GetMenuTask.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1050" max-vertical-offset="3330">
@@ -2116,25 +1828,25 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/glicious/src/main/res/layout/entree_row.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="195" max-vertical-offset="555">
           <caret line="13" column="32" selection-start-line="13" selection-start-column="32" selection-end-line="13" selection-end-column="32" />
           <folding />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/glicious/src/main/res/layout/action_bar.xml">
       <provider editor-type-id="android-designer">
         <state />
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/glicious/src/main/res/layout/action_bar.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="270" max-vertical-offset="570">
           <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
           <folding />
         </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/glicious/src/main/java/edu/grinnell/glicious/MenuListAdapter.java">
@@ -2146,14 +1858,14 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/glicious/src/main/res/layout/fragment_dish_list.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="135" max-vertical-offset="1110">
           <caret line="26" column="26" selection-start-line="26" selection-start-column="26" selection-end-line="26" selection-end-column="26" />
           <folding />
         </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/glicious/src/main/java/edu/grinnell/glicious/menucontent/MenuContent.java">
@@ -2259,20 +1971,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/glicious/src/main/java/edu/grinnell/glicious/DishDetailActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3325359" vertical-offset="86" max-vertical-offset="945">
-          <caret line="15" column="13" selection-start-line="15" selection-start-column="11" selection-end-line="15" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/glicious/src/main/java/edu/grinnell/glicious/DishDetailFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6770335" vertical-offset="977" max-vertical-offset="1395">
-          <caret line="86" column="11" selection-start-line="86" selection-start-column="8" selection-end-line="86" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/glicious/src/main/java/edu/grinnell/glicious/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.16891892" vertical-offset="0" max-vertical-offset="444">
@@ -2319,36 +2017,36 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/glicious/src/main/res/layout/action_bar_date.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="417">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/glicious/src/main/res/layout/activity_dish_detail.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="417">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/glicious/src/main/res/layout/activity_main_activity.xml">
-      <provider selected="true" editor-type-id="android-designer">
+      <provider editor-type-id="android-designer">
         <state />
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/glicious/src/main/res/layout/activity_main_activity.xml">
       <provider editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="210">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
+      </provider>
+      <provider selected="true" editor-type-id="android-designer">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/glicious/src/main/res/values-v14/styles.xml">
@@ -2367,84 +2065,42 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/glicious/src/main/res/layout/activity_dish_list.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="417">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/glicious/src/main/java/edu/grinnell/glicious/menucontent/GetMenuTask.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="525" max-vertical-offset="2940">
-          <caret line="70" column="8" selection-start-line="70" selection-start-column="8" selection-end-line="71" selection-end-column="52" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/glicious/src/main/res/layout/entree_row.xml">
       <provider editor-type-id="android-designer">
         <state />
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/glicious/src/main/res/layout/entree_row.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="195" max-vertical-offset="555">
           <caret line="13" column="32" selection-start-line="13" selection-start-column="32" selection-end-line="13" selection-end-column="32" />
           <folding />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/glicious/src/main/res/layout/date_picker.xml">
       <provider editor-type-id="android-designer">
         <state />
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/glicious/src/main/res/layout/date_picker.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="417">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/glicious/src/main/res/layout/action_bar.xml">
       <provider editor-type-id="android-designer">
         <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="270" max-vertical-offset="570">
-          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/glicious/src/main/java/edu/grinnell/glicious/DishListActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3325359" vertical-offset="2606" max-vertical-offset="5940">
-          <caret line="211" column="46" selection-start-line="211" selection-start-column="43" selection-end-line="211" selection-end-column="46" />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/glicious/src/main/AndroidManifest.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="675" max-vertical-offset="900">
           <caret line="45" column="37" selection-start-line="45" selection-start-column="37" selection-end-line="45" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/glicious/src/main/java/edu/grinnell/glicious/DishListFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2265" max-vertical-offset="4230">
-          <caret line="151" column="30" selection-start-line="151" selection-start-column="30" selection-end-line="151" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/glicious/src/main/java/edu/grinnell/glicious/MenuListAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="510" max-vertical-offset="1485">
-          <caret line="43" column="0" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="80" />
           <folding />
         </state>
       </provider>
@@ -2457,13 +2113,88 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/glicious/src/main/res/layout/fragment_dish_list.xml">
+    <entry file="file://$PROJECT_DIR$/glicious/src/main/java/edu/grinnell/glicious/DishDetailFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="2.2297297" vertical-offset="0" max-vertical-offset="1125">
+          <caret line="86" column="11" selection-start-line="86" selection-start-column="8" selection-end-line="86" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/glicious/src/main/java/edu/grinnell/glicious/DishListActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="6.1824327" vertical-offset="0" max-vertical-offset="5835">
+          <caret line="211" column="46" selection-start-line="211" selection-start-column="43" selection-end-line="211" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/glicious/src/main/java/edu/grinnell/glicious/MenuListAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.30405405" vertical-offset="345" max-vertical-offset="1320">
+          <caret line="43" column="0" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="80" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/glicious/src/main/res/layout/action_bar.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.3333335" vertical-offset="153" max-vertical-offset="570">
+          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
       <provider editor-type-id="android-designer">
         <state />
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/glicious/src/main/java/edu/grinnell/glicious/DishDetailActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.2877698" vertical-offset="495" max-vertical-offset="1110">
-          <caret line="25" column="26" selection-start-line="25" selection-start-column="26" selection-end-line="25" selection-end-column="26" />
+        <state vertical-scroll-proportion="0.30405405" vertical-offset="0" max-vertical-offset="855">
+          <caret line="15" column="13" selection-start-line="15" selection-start-column="11" selection-end-line="15" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/glicious/src/main/java/edu/grinnell/glicious/menucontent/GetMenuTask.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1352" max-vertical-offset="2940">
+          <caret line="121" column="58" selection-start-line="121" selection-start-column="58" selection-end-line="121" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/glicious/src/main/res/layout/fragment_dish_list.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.0" vertical-offset="408" max-vertical-offset="1110">
+          <caret line="38" column="49" selection-start-line="38" selection-start-column="49" selection-end-line="38" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/glicious/src/main/java/edu/grinnell/glicious/DishListFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3855">
+          <caret line="31" column="64" selection-start-line="31" selection-start-column="64" selection-end-line="31" selection-end-column="64" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/glicious/src/main/res/drawable/selected_nopress.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="285">
+          <caret line="1" column="71" selection-start-line="1" selection-start-column="71" selection-end-line="1" selection-end-column="71" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/glicious/src/main/res/drawable/selected_press.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.30405405" vertical-offset="0" max-vertical-offset="444">
+          <caret line="9" column="50" selection-start-line="9" selection-start-column="50" selection-end-line="9" selection-end-column="50" />
           <folding />
         </state>
       </provider>

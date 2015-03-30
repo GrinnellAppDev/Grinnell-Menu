@@ -129,9 +129,8 @@ containing a value of this type.
         public static final int selected=0x7f020009;
         public static final int selected_nopress=0x7f02000a;
         public static final int selected_press=0x7f02000b;
-        public static final int shadow=0x7f02000c;
-        public static final int timing_footer=0x7f02000d;
-        public static final int vheader=0x7f02000e;
+        public static final int timing_footer=0x7f02000c;
+        public static final int vheader=0x7f02000d;
     }
     public static final class id {
         public static final int action_refresh=0x7f0b0014;

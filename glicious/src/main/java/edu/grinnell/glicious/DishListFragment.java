@@ -29,7 +29,8 @@ public class DishListFragment extends ListFragment{
     private static final String STATE_ACTIVATED_POSITION = "activated_position";
     private static final String MENU = "menu";
     private static final String DLF = "DishListFragment";
-    private final static int ANIMATION_DURATION_FOOTER = 120;
+    private final static int ANIMATION_DURATION_FOOTER_SHOW = 120;
+    private final static int ANIMATION_DURATION_FOOTER_HIDE = 150;
     private static HashMap<String, String> HOURS = new HashMap<String, String>();
     private TextView mHours;
     private View mHoursFooter;
@@ -117,14 +118,14 @@ public class DishListFragment extends ListFragment{
     private void hideFooter(View footer){
         footer.animate()
                 .translationY(footer.getHeight())
-                .setDuration(ANIMATION_DURATION_FOOTER)
+                .setDuration(ANIMATION_DURATION_FOOTER_HIDE)
                 .setListener(mAnimatorListenerAdapter);
     }
 
     private void showFooter(View footer){
         footer.animate()
                 .translationY(0)
-                .setDuration(ANIMATION_DURATION_FOOTER)
+                .setDuration(ANIMATION_DURATION_FOOTER_SHOW)
                 .setListener(mAnimatorListenerAdapter);
     }
 
