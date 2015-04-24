@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- From: file:/Users/samee/Desktop/Grinnell-Menu/glicious/src/main/res/values-v14/styles.xml -->
+    <eat-comment/>
+    <style name="AppTheme" parent="android:Theme.Holo.Light.DarkActionBar">
+        <item name="android:actionBarStyle">@style/MaterialGreyActionBarStyle</item>
+    </style>
+    <style name="MaterialGreyActionBarStyle" parent="android:Widget.Holo.ActionBar">
+        <item name="android:titleTextStyle">@style/TitleTextStyle</item>
+        <item name="android:background">@color/actionBarMaterialGrey</item>
+        <item name="android:subtitleTextStyle">@style/SubTitleTextStyle</item>
+    </style>
+    <style name="SubTitleTextStyle" parent="@android:style/TextAppearance.Holo.Widget.ActionBar.Subtitle">
+        <item name="android:textColor">#BDBDBD</item>
+    </style>
+    <style name="TitleTextStyle" parent="@android:style/TextAppearance.Holo.Widget.ActionBar.Title">
+        <item name="android:textColor">@color/gcream</item>
+    </style>
+</resources>

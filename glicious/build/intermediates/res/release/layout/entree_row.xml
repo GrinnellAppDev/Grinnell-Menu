@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+    
+    <edu.grinnell.glicious.CustomTextView
+        android:id="@+id/namebox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:fontName="Roboto-Regular.ttf"
+        android:layout_gravity="left|center_vertical"
+        android:layout_margin="2dp"
+        android:textColor="#424242"
+        android:layout_weight="1"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <edu.grinnell.glicious.CustomTextView
+        android:id="@+id/nutritionbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        app:fontName="Roboto-Thin.ttf"
+        android:layout_weight="1"
+        android:textColor="#424242"
+        android:gravity="right"
+        android:paddingRight="10dp"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+    
+
+</LinearLayout><!-- From: file:/Users/samee/Desktop/Grinnell-Menu/glicious/src/main/res/layout/entree_row.xml -->

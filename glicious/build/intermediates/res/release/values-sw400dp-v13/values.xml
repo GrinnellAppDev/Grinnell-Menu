@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- From: file:/Users/samee/Desktop/Grinnell-Menu/glicious/src/main/res/values-sw400dp/refs.xml -->
+    <eat-comment/>
+    <item name="activity_dish_list" type="layout">@layout/activity_dish_twopane</item>
+</resources>

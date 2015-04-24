@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.ToggleButton;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -32,10 +33,12 @@ public class DishListFragment extends ListFragment{
     private final static int ANIMATION_DURATION_FOOTER_SHOW = 120;
     private final static int ANIMATION_DURATION_FOOTER_HIDE = 150;
     private static HashMap<String, String> HOURS = new HashMap<String, String>();
+    private ToggleButton mStar;
     private TextView mHours;
     private View mHoursFooter;
     private int mLastItem = 0;
     private boolean mIsAnimating = false;
+    public FavoritesPrefs prefs;
     private AnimatorListenerAdapter mAnimatorListenerAdapter = new AnimatorListenerAdapter() {
         @Override
         public void onAnimationEnd(Animator animation) {
@@ -145,6 +148,8 @@ public class DishListFragment extends ListFragment{
         
         setRetainInstance(true);
 
+        prefs = new FavoritesPrefs(getActivity());
+
         HOURS.put("breakfast", "7am - 10am");
         HOURS.put("lunch", "11am - 2pm");
         HOURS.put("dinner", "5pm - 8pm");
@@ -171,6 +176,30 @@ public class DishListFragment extends ListFragment{
 
         mHours = (TextView) v.findViewById(R.id.hours);
         mHoursFooter = v.findViewById(R.id.hours_footer);
+        mStar = (ToggleButton) v.findViewById(R.id.fav_star);
+
+        setHours(mHours, mMenuKey);
+
+    	return v;
+    }
+
+
+//    public void setFavs(){
+//
+//        mStar.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+//            @Override
+//            public void onCheckedChanged(CompoundButton toggleButton, boolean isChecked) {
+//
+//                if (isChecked)
+//                    prefs.favoritesMap.put()
+//            }
+//        });
+//
+//    }
+
+
+    public void setHours(TextView hours, String menukey){
+
         int day = mDate.get(Calendar.DAY_OF_WEEK);
         Log.v("DAY IS ", day + "");
         int[] weekend = {1,6,7};
@@ -179,17 +208,14 @@ public class DishListFragment extends ListFragment{
          */
         if (Arrays.binarySearch(weekend, day) >= 0) {
             Log.v("WEEKEND 6, 7", day + "");
-            if(!mMenuKey.equals("dinner") && day == 6)
-                mHours.setText(HOURS.get(mMenuKey));
+            if(!menukey.equals("dinner") && day == 6)
+                hours.setText(HOURS.get(mMenuKey));
             else
-                mHours.setText(HOURS.get(mMenuKey + "W"));
+                hours.setText(HOURS.get(mMenuKey + "W"));
         }
         else
-            mHours.setText(HOURS.get(mMenuKey));
+            hours.setText(HOURS.get(mMenuKey));
 
-//           if (mMenuKey == "dinner")
-//            mHours.setText(HOURS.get(mMenuKey));
-    	return v;
     }
     
     @Override
