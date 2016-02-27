@@ -7,6 +7,7 @@
     <string name="menu_date">Select Date</string>
     <string name="title">G-licious</string>
     <string name="serv_size_string">Serving Size:</string>
+    <string name="dialog_message">G-licious is temporarily a portal for Grinnell Dining\'s Net Nutrition! We\'re looking into ways to bring the old G-licious back, but in the meantime, please enjoy this convenient method to check the daily menu for the D-hall.</string>
     <string name="settingstitle">Filters and Settings</string>
     <string name="refresh">Refresh</string>
     <string name="chooseDate">Select Date</string>
@@ -33,5 +34,6 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_launcher">LauncherActivity</string>
+    <string name="title_activity_browser">BrowserActivity</string>
 
 </resources>

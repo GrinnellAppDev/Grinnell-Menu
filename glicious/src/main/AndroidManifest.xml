@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="edu.grinnell.glicious"
-    android:versionCode="240"
-    android:versionName="2.4.0" >
+    android:versionCode="241"
+    android:versionName="2.4.1">
 
     <uses-sdk
         android:minSdkVersion="12"
@@ -14,23 +14,27 @@
     <uses-permission android:name="android.permission.READ_LOGS" />
     <uses-permission android:name="android.permission.GET_TASKS" />
 
+    <!--<android:uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />-->
+    <!--<android:uses-permission android:name="android.permission.READ_PHONE_STATE" />-->
+    <!--<android:uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />-->
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/glicious5"
-        android:theme="@style/AppTheme"
-        android:label="@string/app_name" >
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme">
         <activity
             android:name=".DishDetailActivity"
-            android:screenOrientation="portrait"
-            android:label="@string/title_dish_detail" >
+            android:label="@string/title_dish_detail"
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".DishListActivity" />
         </activity>
         <activity
             android:name=".PrefActiv"
-            android:screenOrientation="portrait"
-            android:label="@string/settingstitle" >
+            android:label="@string/settingstitle"
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".DishListActivity" />
@@ -41,8 +45,12 @@
             android:value="45894d9e8a6bc3b8513651d6de36159e2c836e51" />
 
         <activity
-            android:name="edu.grinnell.glicious.DishListActivity"
-            android:screenOrientation="portrait"
+            android:name=".DishListActivity"
+            android:label="G-licious"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".BrowserActivity"
             android:label="G-licious">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
