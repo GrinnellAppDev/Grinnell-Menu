@@ -1,0 +1,4 @@
+#Thu Feb 01 18:58:15 CST 2018
+base.0=/home/phamlinh/Documents/AppDev/Grinnell-Menu/glicious/build/intermediates/transforms/dexMerger/debug/4
+path.0=classes.dex
+renamed.0=classes.dex

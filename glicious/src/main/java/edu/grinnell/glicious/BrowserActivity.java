@@ -26,7 +26,7 @@ public class BrowserActivity extends Activity {
         mWebView.setWebViewClient(new WebViewClient());
         mWebView.getSettings().setJavaScriptEnabled(true);
         mWebView.setInitialScale(100);
-        mWebView.loadUrl("http://nutrition.grinnell.edu/NetNutrition/1/Mobile/Mobile");
+        mWebView.loadUrl("http://nutrition.grinnell.edu/NetNutrition/1");
     }
 
     @Override

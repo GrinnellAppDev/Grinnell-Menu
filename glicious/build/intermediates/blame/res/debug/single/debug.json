@@ -1,0 +1,210 @@
+[
+    {
+        "merged": "/home/phamlinh/Documents/AppDev/Grinnell-Menu/glicious/build/intermediates/res/merged/debug/drawable-hdpi_ic_launcher.png.flat",
+        "source": "/home/phamlinh/Documents/AppDev/Grinnell-Menu/glicious/src/main/res/drawable-hdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/home/phamlinh/Documents/AppDev/Grinnell-Menu/glicious/build/intermediates/res/merged/debug/drawable_rect.xml.flat",
+        "source": "/home/phamlinh/Documents/AppDev/Grinnell-Menu/glicious/src/main/res/drawable/rect.xml"
+    },
+    {
+        "merged": "/home/phamlinh/Documents/AppDev/Grinnell-Menu/glicious/build/intermediates/res/merged/debug/drawable_timing_footer.xml.flat",
+        "source": "/home/phamlinh/Documents/AppDev/Grinnell-Menu/glicious/src/main/res/drawable/timing_footer.xml"
+    },
+    {
+        "merged": "/home/phamlinh/Documents/AppDev/Grinnell-Menu/glicious/build/intermediates/res/merged/debug/drawable_question_new.png.flat",
+        "source": "/home/phamlinh/Documents/AppDev/Grinnell-Menu/glicious/src/main/res/drawable/question_new.png"
+    },
+    {
+        "merged": "/home/phamlinh/Documents/AppDev/Grinnell-Menu/glicious/build/intermediates/res/merged/debug/anim_right_slide_out.xml.flat",
+        "source": "/home/phamlinh/Documents/AppDev/Grinnell-Menu/glicious/src/main/res/anim/right_slide_out.xml"
+    },
+    {
+        "merged": "/home/phamlinh/Documents/AppDev/Grinnell-Menu/glicious/build/intermediates/res/merged/debug/drawable_glistselector.xml.flat",
+        "source": "/home/phamlinh/Documents/AppDev/Grinnell-Menu/glicious/src/main/res/drawable/glistselector.xml"
+    },
+    {
+        "merged": "/home/phamlinh/Documents/AppDev/Grinnell-Menu/glicious/build/intermediates/res/merged/debug/menu_my.xml.flat",
+        "source": "/home/phamlinh/Documents/AppDev/Grinnell-Menu/glicious/src/main/res/menu/my.xml"
+    },
+    {
+        "merged": "/home/phamlinh/Documents/AppDev/Grinnell-Menu/glicious/build/intermediates/res/merged/debug/drawable_main.jpg.flat",
+        "source": "/home/phamlinh/Documents/AppDev/Grinnell-Menu/glicious/src/main/res/drawable/main.jpg"
+    },
+    {
+        "merged": "/home/phamlinh/Documents/AppDev/Grinnell-Menu/glicious/build/intermediates/res/merged/debug/layout_activity_dish_list.xml.flat",
+        "source": "/home/phamlinh/Documents/AppDev/Grinnell-Menu/glicious/src/main/res/layout/activity_dish_list.xml"
+    },
+    {
+        "merged": "/home/phamlinh/Documents/AppDev/Grinnell-Menu/glicious/build/intermediates/res/merged/debug/drawable_star_toggle.xml.flat",
+        "source": "/home/phamlinh/Documents/AppDev/Grinnell-Menu/glicious/src/main/res/drawable/star_toggle.xml"
+    },
+    {
+        "merged": "/home/phamlinh/Documents/AppDev/Grinnell-Menu/glicious/build/intermediates/res/merged/debug/drawable-xhdpi_ic_launcher.png.flat",
+        "source": "/home/phamlinh/Documents/AppDev/Grinnell-Menu/glicious/src/main/res/drawable-xhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/home/phamlinh/Documents/AppDev/Grinnell-Menu/glicious/build/intermediates/res/merged/debug/drawable_selected_press.xml.flat",
+        "source": "/home/phamlinh/Documents/AppDev/Grinnell-Menu/glicious/src/main/res/drawable/selected_press.xml"
+    },
+    {
+        "merged": "/home/phamlinh/Documents/AppDev/Grinnell-Menu/glicious/build/intermediates/res/merged/debug/menu_menu_bar.xml.flat",
+        "source": "/home/phamlinh/Documents/AppDev/Grinnell-Menu/glicious/src/main/res/menu/menu_bar.xml"
+    },
+    {
+        "merged": "/home/phamlinh/Documents/AppDev/Grinnell-Menu/glicious/build/intermediates/res/merged/debug/drawable-hdpi_ic_action_search.png.flat",
+        "source": "/home/phamlinh/Documents/AppDev/Grinnell-Menu/glicious/src/main/res/drawable-hdpi/ic_action_search.png"
+    },
+    {
+        "merged": "/home/phamlinh/Documents/AppDev/Grinnell-Menu/glicious/build/intermediates/res/merged/debug/layout_action_bar_date.xml.flat",
+        "source": "/home/phamlinh/Documents/AppDev/Grinnell-Menu/glicious/src/main/res/layout/action_bar_date.xml"
+    },
+    {
+        "merged": "/home/phamlinh/Documents/AppDev/Grinnell-Menu/glicious/build/intermediates/res/merged/debug/drawable_selected_nopress.xml.flat",
+        "source": "/home/phamlinh/Documents/AppDev/Grinnell-Menu/glicious/src/main/res/drawable/selected_nopress.xml"
+    },
+    {
+        "merged": "/home/phamlinh/Documents/AppDev/Grinnell-Menu/glicious/build/intermediates/res/merged/debug/layout_entree_row.xml.flat",
+        "source": "/home/phamlinh/Documents/AppDev/Grinnell-Menu/glicious/src/main/res/layout/entree_row.xml"
+    },
+    {
+        "merged": "/home/phamlinh/Documents/AppDev/Grinnell-Menu/glicious/build/intermediates/res/merged/debug/anim_fade_out.xml.flat",
+        "source": "/home/phamlinh/Documents/AppDev/Grinnell-Menu/glicious/src/main/res/anim/fade_out.xml"
+    },
+    {
+        "merged": "/home/phamlinh/Documents/AppDev/Grinnell-Menu/glicious/build/intermediates/res/merged/debug/layout_fragment_dish_list.xml.flat",
+        "source": "/home/phamlinh/Documents/AppDev/Grinnell-Menu/glicious/src/main/res/layout/fragment_dish_list.xml"
+    },
+    {
+        "merged": "/home/phamlinh/Documents/AppDev/Grinnell-Menu/glicious/build/intermediates/res/merged/debug/layout_fragment_dish_detail.xml.flat",
+        "source": "/home/phamlinh/Documents/AppDev/Grinnell-Menu/glicious/src/main/res/layout/fragment_dish_detail.xml"
+    },
+    {
+        "merged": "/home/phamlinh/Documents/AppDev/Grinnell-Menu/glicious/build/intermediates/res/merged/debug/layout_activity_dish_detail.xml.flat",
+        "source": "/home/phamlinh/Documents/AppDev/Grinnell-Menu/glicious/src/main/res/layout/activity_dish_detail.xml"
+    },
+    {
+        "merged": "/home/phamlinh/Documents/AppDev/Grinnell-Menu/glicious/build/intermediates/res/merged/debug/drawable_vheader.xml.flat",
+        "source": "/home/phamlinh/Documents/AppDev/Grinnell-Menu/glicious/src/main/res/drawable/vheader.xml"
+    },
+    {
+        "merged": "/home/phamlinh/Documents/AppDev/Grinnell-Menu/glicious/build/intermediates/res/merged/debug/drawable_dheader.xml.flat",
+        "source": "/home/phamlinh/Documents/AppDev/Grinnell-Menu/glicious/src/main/res/drawable/dheader.xml"
+    },
+    {
+        "merged": "/home/phamlinh/Documents/AppDev/Grinnell-Menu/glicious/build/intermediates/res/merged/debug/drawable_selected.xml.flat",
+        "source": "/home/phamlinh/Documents/AppDev/Grinnell-Menu/glicious/src/main/res/drawable/selected.xml"
+    },
+    {
+        "merged": "/home/phamlinh/Documents/AppDev/Grinnell-Menu/glicious/build/intermediates/res/merged/debug/drawable_layer_list.xml.flat",
+        "source": "/home/phamlinh/Documents/AppDev/Grinnell-Menu/glicious/src/main/res/drawable/layer_list.xml"
+    },
+    {
+        "merged": "/home/phamlinh/Documents/AppDev/Grinnell-Menu/glicious/build/intermediates/res/merged/debug/xml_preferences.xml.flat",
+        "source": "/home/phamlinh/Documents/AppDev/Grinnell-Menu/glicious/src/main/res/xml/preferences.xml"
+    },
+    {
+        "merged": "/home/phamlinh/Documents/AppDev/Grinnell-Menu/glicious/build/intermediates/res/merged/debug/layout_date_picker.xml.flat",
+        "source": "/home/phamlinh/Documents/AppDev/Grinnell-Menu/glicious/src/main/res/layout/date_picker.xml"
+    },
+    {
+        "merged": "/home/phamlinh/Documents/AppDev/Grinnell-Menu/glicious/build/intermediates/res/merged/debug/menu_launcher.xml.flat",
+        "source": "/home/phamlinh/Documents/AppDev/Grinnell-Menu/glicious/src/main/res/menu/launcher.xml"
+    },
+    {
+        "merged": "/home/phamlinh/Documents/AppDev/Grinnell-Menu/glicious/build/intermediates/res/merged/debug/drawable_clicked_360.png.flat",
+        "source": "/home/phamlinh/Documents/AppDev/Grinnell-Menu/glicious/src/main/res/drawable/clicked_360.png"
+    },
+    {
+        "merged": "/home/phamlinh/Documents/AppDev/Grinnell-Menu/glicious/build/intermediates/res/merged/debug/anim_loading.xml.flat",
+        "source": "/home/phamlinh/Documents/AppDev/Grinnell-Menu/glicious/src/main/res/anim/loading.xml"
+    },
+    {
+        "merged": "/home/phamlinh/Documents/AppDev/Grinnell-Menu/glicious/build/intermediates/res/merged/debug/drawable_ic_launcher.png.flat",
+        "source": "/home/phamlinh/Documents/AppDev/Grinnell-Menu/glicious/src/main/res/drawable/ic_launcher.png"
+    },
+    {
+        "merged": "/home/phamlinh/Documents/AppDev/Grinnell-Menu/glicious/build/intermediates/res/merged/debug/drawable-xhdpi_glicious5.png.flat",
+        "source": "/home/phamlinh/Documents/AppDev/Grinnell-Menu/glicious/src/main/res/drawable-xhdpi/glicious5.png"
+    },
+    {
+        "merged": "/home/phamlinh/Documents/AppDev/Grinnell-Menu/glicious/build/intermediates/res/merged/debug/anim_left_slide_in.xml.flat",
+        "source": "/home/phamlinh/Documents/AppDev/Grinnell-Menu/glicious/src/main/res/anim/left_slide_in.xml"
+    },
+    {
+        "merged": "/home/phamlinh/Documents/AppDev/Grinnell-Menu/glicious/build/intermediates/res/merged/debug/drawable_circle.xml.flat",
+        "source": "/home/phamlinh/Documents/AppDev/Grinnell-Menu/glicious/src/main/res/drawable/circle.xml"
+    },
+    {
+        "merged": "/home/phamlinh/Documents/AppDev/Grinnell-Menu/glicious/build/intermediates/res/merged/debug/anim_fade_in.xml.flat",
+        "source": "/home/phamlinh/Documents/AppDev/Grinnell-Menu/glicious/src/main/res/anim/fade_in.xml"
+    },
+    {
+        "merged": "/home/phamlinh/Documents/AppDev/Grinnell-Menu/glicious/build/intermediates/res/merged/debug/color_selector.xml.flat",
+        "source": "/home/phamlinh/Documents/AppDev/Grinnell-Menu/glicious/src/main/res/color/selector.xml"
+    },
+    {
+        "merged": "/home/phamlinh/Documents/AppDev/Grinnell-Menu/glicious/build/intermediates/res/merged/debug/anim_right_slide_in.xml.flat",
+        "source": "/home/phamlinh/Documents/AppDev/Grinnell-Menu/glicious/src/main/res/anim/right_slide_in.xml"
+    },
+    {
+        "merged": "/home/phamlinh/Documents/AppDev/Grinnell-Menu/glicious/build/intermediates/res/merged/debug/layout_activity_browser.xml.flat",
+        "source": "/home/phamlinh/Documents/AppDev/Grinnell-Menu/glicious/src/main/res/layout/activity_browser.xml"
+    },
+    {
+        "merged": "/home/phamlinh/Documents/AppDev/Grinnell-Menu/glicious/build/intermediates/res/merged/debug/xml_preference_headers.xml.flat",
+        "source": "/home/phamlinh/Documents/AppDev/Grinnell-Menu/glicious/src/main/res/xml/preference_headers.xml"
+    },
+    {
+        "merged": "/home/phamlinh/Documents/AppDev/Grinnell-Menu/glicious/build/intermediates/res/merged/debug/layout_action_bar.xml.flat",
+        "source": "/home/phamlinh/Documents/AppDev/Grinnell-Menu/glicious/src/main/res/layout/action_bar.xml"
+    },
+    {
+        "merged": "/home/phamlinh/Documents/AppDev/Grinnell-Menu/glicious/build/intermediates/res/merged/debug/layout_activity_dish_twopane.xml.flat",
+        "source": "/home/phamlinh/Documents/AppDev/Grinnell-Menu/glicious/src/main/res/layout/activity_dish_twopane.xml"
+    },
+    {
+        "merged": "/home/phamlinh/Documents/AppDev/Grinnell-Menu/glicious/build/intermediates/res/merged/debug/anim_left_slide_out.xml.flat",
+        "source": "/home/phamlinh/Documents/AppDev/Grinnell-Menu/glicious/src/main/res/anim/left_slide_out.xml"
+    },
+    {
+        "merged": "/home/phamlinh/Documents/AppDev/Grinnell-Menu/glicious/build/intermediates/res/merged/debug/layout_activity_main_activity.xml.flat",
+        "source": "/home/phamlinh/Documents/AppDev/Grinnell-Menu/glicious/src/main/res/layout/activity_main_activity.xml"
+    },
+    {
+        "merged": "/home/phamlinh/Documents/AppDev/Grinnell-Menu/glicious/build/intermediates/res/merged/debug/menu_browser_launch.xml.flat",
+        "source": "/home/phamlinh/Documents/AppDev/Grinnell-Menu/glicious/src/main/res/menu/browser_launch.xml"
+    },
+    {
+        "merged": "/home/phamlinh/Documents/AppDev/Grinnell-Menu/glicious/build/intermediates/res/merged/debug/drawable_unclicked_360.png.flat",
+        "source": "/home/phamlinh/Documents/AppDev/Grinnell-Menu/glicious/src/main/res/drawable/unclicked_360.png"
+    },
+    {
+        "merged": "/home/phamlinh/Documents/AppDev/Grinnell-Menu/glicious/build/intermediates/res/merged/debug/drawable-xhdpi_ic_action_search.png.flat",
+        "source": "/home/phamlinh/Documents/AppDev/Grinnell-Menu/glicious/src/main/res/drawable-xhdpi/ic_action_search.png"
+    },
+    {
+        "merged": "/home/phamlinh/Documents/AppDev/Grinnell-Menu/glicious/build/intermediates/res/merged/debug/anim_anim_in.xml.flat",
+        "source": "/home/phamlinh/Documents/AppDev/Grinnell-Menu/glicious/src/main/res/anim/anim_in.xml"
+    },
+    {
+        "merged": "/home/phamlinh/Documents/AppDev/Grinnell-Menu/glicious/build/intermediates/res/merged/debug/anim_anim_out.xml.flat",
+        "source": "/home/phamlinh/Documents/AppDev/Grinnell-Menu/glicious/src/main/res/anim/anim_out.xml"
+    },
+    {
+        "merged": "/home/phamlinh/Documents/AppDev/Grinnell-Menu/glicious/build/intermediates/res/merged/debug/drawable-mdpi_ic_action_search.png.flat",
+        "source": "/home/phamlinh/Documents/AppDev/Grinnell-Menu/glicious/src/main/res/drawable-mdpi/ic_action_search.png"
+    },
+    {
+        "merged": "/home/phamlinh/Documents/AppDev/Grinnell-Menu/glicious/build/intermediates/res/merged/debug/layout_prefmain.xml.flat",
+        "source": "/home/phamlinh/Documents/AppDev/Grinnell-Menu/glicious/src/main/res/layout/prefmain.xml"
+    },
+    {
+        "merged": "/home/phamlinh/Documents/AppDev/Grinnell-Menu/glicious/build/intermediates/res/merged/debug/layout_nutrition_row.xml.flat",
+        "source": "/home/phamlinh/Documents/AppDev/Grinnell-Menu/glicious/src/main/res/layout/nutrition_row.xml"
+    },
+    {
+        "merged": "/home/phamlinh/Documents/AppDev/Grinnell-Menu/glicious/build/intermediates/res/merged/debug/drawable-mdpi_ic_launcher.png.flat",
+        "source": "/home/phamlinh/Documents/AppDev/Grinnell-Menu/glicious/src/main/res/drawable-mdpi/ic_launcher.png"
+    }
+]
