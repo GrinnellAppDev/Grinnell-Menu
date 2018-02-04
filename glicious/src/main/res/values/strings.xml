@@ -3,6 +3,7 @@
 
     <string name="app_name">G-licious</string>
     <string name="title_dish_detail">Dish Information</string>
+    <string name="app_url">http://nutrition.grinnell.edu/NetNutrition/1</string>
     <string name="title_menu">G-licious</string>
     <string name="menu_date">Select Date</string>
     <string name="title">G-licious</string>
