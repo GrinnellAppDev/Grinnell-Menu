@@ -22,7 +22,6 @@ public class BrowserActivity extends Activity {
         setContentView(R.layout.activity_browser);
         getActionBar().setTitle("G-licious");
         getActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#EF5350")));
-//        getActionBar().hide();
         mWebView = (WebView) findViewById(R.id.webView);
         mWebView.setWebViewClient(new WebViewClient());
         mWebView.getSettings().setJavaScriptEnabled(true);
