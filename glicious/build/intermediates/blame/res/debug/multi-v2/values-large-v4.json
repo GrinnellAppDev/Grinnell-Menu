@@ -1,0 +1,26 @@
+{
+    "logs": [
+        {
+            "outputFile": "/home/phamlinh/Documents/AppDev/Grinnell-Menu/glicious/build/intermediates/incremental/mergeDebugResources/merged.dir/values-large-v4/values-large-v4.xml",
+            "map": [
+                {
+                    "source": "/home/phamlinh/Documents/AppDev/Grinnell-Menu/glicious/src/main/res/values-large/refs.xml",
+                    "from": {
+                        "startLines": "1",
+                        "startColumns": "4",
+                        "startOffsets": "16",
+                        "endColumns": "86",
+                        "endOffsets": "98"
+                    },
+                    "to": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "86",
+                        "endOffsets": "137"
+                    }
+                }
+            ]
+        }
+    ]
+}

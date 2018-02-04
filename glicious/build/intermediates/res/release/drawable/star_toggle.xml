@@ -1,0 +1,10 @@
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:state_checked="true"
+        android:drawable="@drawable/clicked_360" />
+
+    <item
+        android:state_checked="false"
+        android:drawable="@drawable/unclicked_360" />
+</selector><!-- From: file:/Users/samee/Desktop/Grinnell-Menu/glicious/src/main/res/drawable/star_toggle.xml -->

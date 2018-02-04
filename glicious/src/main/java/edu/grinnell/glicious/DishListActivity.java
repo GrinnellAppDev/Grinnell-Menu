@@ -91,7 +91,7 @@ public class DishListActivity extends FragmentActivity implements
 			mTwoPane = true;
 		}
 
-		loadMenu(mPendingDate);	
+		loadMenu(mPendingDate);
 
 	}
 
