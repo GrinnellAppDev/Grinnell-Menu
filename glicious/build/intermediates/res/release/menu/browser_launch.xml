@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id="@+id/new_game"
-        android:icon="@drawable/question_new"
-        android:title="question_mark"
-        android:onClick="handleQuestionClick"
-        android:showAsAction="always"/>
-</menu><!-- From: file:/Users/samee/Desktop/Grinnell-Menu/glicious/src/main/res/menu/browser_launch.xml -->
