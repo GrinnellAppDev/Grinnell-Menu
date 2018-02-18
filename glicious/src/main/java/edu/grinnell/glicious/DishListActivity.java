@@ -20,6 +20,7 @@ import android.widget.DatePicker;
 import com.crashlytics.android.Crashlytics;
 import com.flurry.android.FlurryAgent;
 
+import io.fabric.sdk.android.Fabric;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
@@ -61,7 +62,7 @@ public class DishListActivity extends FragmentActivity implements
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		Crashlytics.start(this);
+		Fabric.with(this, new Crashlytics());
 		
 		setContentView(R.layout.activity_dish_list);
 		/*
