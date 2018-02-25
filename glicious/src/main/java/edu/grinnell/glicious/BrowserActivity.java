@@ -30,10 +30,13 @@ public class BrowserActivity extends Activity {
         mWebView.getSettings().setJavaScriptEnabled(true);
         mWebView.setInitialScale(100);
         String url = getApplicationContext().getResources().getString(R.string.app_url);
+
+        // Add Progress Dialog
         mProgressDialog = new ProgressDialog(BrowserActivity.this);
         mProgressDialog.setMessage("Loading...");
         mProgressDialog.show();
 
+        // Show dialog when loading and hide it after finishing loading
         mWebView.setWebViewClient(new WebViewClient() {
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
@@ -51,7 +54,6 @@ public class BrowserActivity extends Activity {
             @Override
             public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
                 Toast.makeText(BrowserActivity.this, "Error:" + description, Toast.LENGTH_SHORT).show();
-
             }
         });
 
@@ -70,6 +72,5 @@ public class BrowserActivity extends Activity {
                 .setTitle("Info")
                 .setPositiveButton("Ok", null);
         builder.create().show();
-//        Toast.makeText(this, "Hello World", Toast.LENGTH_LONG).show();
     }
 }
